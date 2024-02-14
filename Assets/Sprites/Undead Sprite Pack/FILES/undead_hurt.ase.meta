@@ -1,0 +1,587 @@
+fileFormatVersion: 2
+guid: cae8d652355ed514784507ccd79f23ee
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: undead_hurt_Frame_0
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 209
+      width: 30
+      height: 26
+    spriteID: 8fb45a3be6f324046a6dfea85208d437
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 209}
+  - name: undead_hurt_Frame_1
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 46
+      y: 4
+      width: 30
+      height: 26
+    spriteID: acc3a212aae2cb946b49c50a3831767e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 46, y: 4}
+  - name: undead_hurt_Frame_2
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 46
+      y: 38
+      width: 30
+      height: 26
+    spriteID: 2eeeb9ca15a9c3b4fb0ffb32ce998350
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 46, y: 38}
+  - name: undead_hurt_Frame_3
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 46
+      y: 72
+      width: 30
+      height: 26
+    spriteID: 63e16407c3f4ad0448735e64e6621202
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 46, y: 72}
+  - name: undead_hurt_Frame_4
+    originalName: 
+    pivot: {x: 0.7407407, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 46
+      y: 208
+      width: 27
+      height: 26
+    spriteID: d8e0e7cca0df3a340a2276582c389f76
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 46, y: 208}
+  - name: undead_hurt_Frame_5
+    originalName: 
+    pivot: {x: 0.76666665, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 46
+      y: 106
+      width: 30
+      height: 26
+    spriteID: 6112bd82c104a8e4d8c9c400e476791d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 46, y: 106}
+  - name: undead_hurt_Frame_6
+    originalName: 
+    pivot: {x: 0.8235294, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 34
+      height: 26
+    spriteID: ab362b45605e203458feac029bbe2058
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: undead_hurt_Frame_7
+    originalName: 
+    pivot: {x: 0.8235294, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 38
+      width: 34
+      height: 26
+    spriteID: a49be0a1caca944418fdd6442a8b98dc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 38}
+  - name: undead_hurt_Frame_8
+    originalName: 
+    pivot: {x: 0.8235294, y: -0.26923075}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 72
+      width: 34
+      height: 26
+    spriteID: 42c14c92148058e41892611a9dbd7d95
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 72}
+  - name: undead_hurt_Frame_9
+    originalName: 
+    pivot: {x: 0.875, y: -0.26923075}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 106
+      width: 32
+      height: 26
+    spriteID: 8d364ad235a22dd4fba8973535b54c5c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 106}
+  - name: undead_hurt_Frame_10
+    originalName: 
+    pivot: {x: 0.875, y: -0.26923075}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 140
+      width: 32
+      height: 26
+    spriteID: 3910f8e66eb16b44d85f918237f8425c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 140}
+  - name: undead_hurt_Frame_11
+    originalName: 
+    pivot: {x: 0.5862069, y: -0.16666667}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 84
+      y: 4
+      width: 29
+      height: 24
+    spriteID: ba5fdc599ff41684bb0735a7ff85cbe3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 84, y: 4}
+  - name: undead_hurt_Frame_12
+    originalName: 
+    pivot: {x: 0.5862069, y: -0.20833333}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 84
+      y: 36
+      width: 29
+      height: 24
+    spriteID: 00de5024c6b54a646a31bdcd58ab0903
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 84, y: 36}
+  - name: undead_hurt_Frame_13
+    originalName: 
+    pivot: {x: 0.7241379, y: -0.22222222}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 174
+      width: 29
+      height: 27
+    spriteID: bb081be4def80824882843b2af41a3fd
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 174}
+  - name: undead_hurt_Frame_14
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 46
+      y: 140
+      width: 30
+      height: 26
+    spriteID: c42e196c6ae4fbd4dbd5aa7f07411e13
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 46, y: 140}
+  - name: undead_hurt_Frame_15
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 46
+      y: 174
+      width: 30
+      height: 26
+    spriteID: 3393a62ccd4e5494a9db113b498971e1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 46, y: 174}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: 314772351
+    name: undead_hurt
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: undead_hurt_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 26
+      spriteId: 8fb45a3be6f324046a6dfea85208d437
+    - name: undead_hurt_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 26
+      spriteId: acc3a212aae2cb946b49c50a3831767e
+    - name: undead_hurt_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 26
+      spriteId: 2eeeb9ca15a9c3b4fb0ffb32ce998350
+    - name: undead_hurt_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 26
+      spriteId: 63e16407c3f4ad0448735e64e6621202
+    - name: undead_hurt_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 8
+        y: 8
+        width: 27
+        height: 26
+      spriteId: d8e0e7cca0df3a340a2276582c389f76
+    - name: undead_hurt_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 5
+        y: 8
+        width: 30
+        height: 26
+      spriteId: 6112bd82c104a8e4d8c9c400e476791d
+    - name: undead_hurt_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 0
+        y: 8
+        width: 34
+        height: 26
+      spriteId: ab362b45605e203458feac029bbe2058
+    - name: undead_hurt_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 0
+        y: 8
+        width: 34
+        height: 26
+      spriteId: a49be0a1caca944418fdd6442a8b98dc
+    - name: undead_hurt_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 0
+        y: 7
+        width: 34
+        height: 26
+      spriteId: 42c14c92148058e41892611a9dbd7d95
+    - name: undead_hurt_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 0
+        y: 7
+        width: 32
+        height: 26
+      spriteId: 8d364ad235a22dd4fba8973535b54c5c
+    - name: undead_hurt_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 0
+        y: 7
+        width: 32
+        height: 26
+      spriteId: 3910f8e66eb16b44d85f918237f8425c
+    - name: undead_hurt_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 11
+        y: 4
+        width: 29
+        height: 24
+      spriteId: ba5fdc599ff41684bb0735a7ff85cbe3
+    - name: undead_hurt_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 11
+        y: 5
+        width: 29
+        height: 24
+      spriteId: 00de5024c6b54a646a31bdcd58ab0903
+    - name: undead_hurt_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 7
+        y: 6
+        width: 29
+        height: 27
+      spriteId: bb081be4def80824882843b2af41a3fd
+    - name: undead_hurt_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 26
+      spriteId: c42e196c6ae4fbd4dbd5aa7f07411e13
+    - name: undead_hurt_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 26
+      spriteId: 3393a62ccd4e5494a9db113b498971e1
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 56, y: 48}

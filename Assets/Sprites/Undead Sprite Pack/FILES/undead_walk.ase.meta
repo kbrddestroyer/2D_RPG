@@ -1,0 +1,699 @@
+fileFormatVersion: 2
+guid: fdd80263c87d6c44a8f5325b1a3ce1b6
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: undead_walk_Frame_0
+    originalName: 
+    pivot: {x: 0.74193543, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 103
+      width: 31
+      height: 25
+    spriteID: 959fbf310327de7458f5b58d62c2b465
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 88, y: 103}
+  - name: undead_walk_Frame_1
+    originalName: 
+    pivot: {x: 0.7647059, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 138
+      width: 34
+      height: 25
+    spriteID: 62b6a181f902ec5428230d820524f1e1
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 138}
+  - name: undead_walk_Frame_2
+    originalName: 
+    pivot: {x: 0.7714286, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 105
+      width: 35
+      height: 25
+    spriteID: bdaf5b102c224a74497de91fb2efdd59
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 105}
+  - name: undead_walk_Frame_3
+    originalName: 
+    pivot: {x: 0.7241379, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 71
+      width: 29
+      height: 25
+    spriteID: 9eb6ad5456a4f2e40aee414912bd2a90
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 71}
+  - name: undead_walk_Frame_4
+    originalName: 
+    pivot: {x: 0.7241379, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 104
+      width: 29
+      height: 25
+    spriteID: ac6e7073e7f77f74698899b2c7148e50
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 104}
+  - name: undead_walk_Frame_5
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 69
+      width: 30
+      height: 26
+    spriteID: 65b737e3fd7410941a4915004f070423
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 88, y: 69}
+  - name: undead_walk_Frame_6
+    originalName: 
+    pivot: {x: 0.74193543, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 136
+      width: 31
+      height: 25
+    spriteID: 659070067f9552e4e87dd7ed74c48795
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 88, y: 136}
+  - name: undead_walk_Frame_7
+    originalName: 
+    pivot: {x: 0.75757575, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 204
+      width: 33
+      height: 25
+    spriteID: 989890c575f66b94aa0f6f4a0ae2e059
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 204}
+  - name: undead_walk_Frame_8
+    originalName: 
+    pivot: {x: 0.7941177, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 37
+      width: 34
+      height: 26
+    spriteID: b9639c7a7954061419de018265127d48
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 37}
+  - name: undead_walk_Frame_9
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 170
+      width: 30
+      height: 24
+    spriteID: 09e17c47c459a5549b20e10dd56af743
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 170}
+  - name: undead_walk_Frame_10
+    originalName: 
+    pivot: {x: 0.74193543, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 169
+      width: 31
+      height: 25
+    spriteID: 2d49c233258a6dc459bafc0580096d05
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 88, y: 169}
+  - name: undead_walk_Frame_11
+    originalName: 
+    pivot: {x: 0.75, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 202
+      width: 32
+      height: 24
+    spriteID: 76b25379c911dda45968c5067f644910
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 88, y: 202}
+  - name: undead_walk_Frame_12
+    originalName: 
+    pivot: {x: 0.75757575, y: -0.33333334}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 37
+      width: 33
+      height: 24
+    spriteID: 637984b586f94d549976f4a69c56be9e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 88, y: 37}
+  - name: undead_walk_Frame_13
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 38
+      width: 30
+      height: 25
+    spriteID: 29bf664bf9fe8fa4dbe10f5d7b2046f2
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 38}
+  - name: undead_walk_Frame_14
+    originalName: 
+    pivot: {x: 0.75, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 88
+      y: 4
+      width: 32
+      height: 25
+    spriteID: dd9effce9815761459bd472f4d682664
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 88, y: 4}
+  - name: undead_walk_Frame_15
+    originalName: 
+    pivot: {x: 0.7647059, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 71
+      width: 34
+      height: 26
+    spriteID: a0d7c357fdf9b1448be25aa63433a932
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 71}
+  - name: undead_walk_Frame_16
+    originalName: 
+    pivot: {x: 0.7241379, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 137
+      width: 29
+      height: 25
+    spriteID: e0254d60e4a865d48b98a502806ad1c9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 137}
+  - name: undead_walk_Frame_17
+    originalName: 
+    pivot: {x: 0.74193543, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 49
+      y: 4
+      width: 31
+      height: 26
+    spriteID: 5e4fea5527887d548807d5e799fad7d3
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 49, y: 4}
+  - name: undead_walk_Frame_18
+    originalName: 
+    pivot: {x: 0.7837838, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 37
+      height: 25
+    spriteID: 01f52cac54d969b4293008cd3ccb0b3a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: undead_walk_Frame_19
+    originalName: 
+    pivot: {x: 0.7647059, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 171
+      width: 34
+      height: 25
+    spriteID: 4eb1534230a30274aafa1be9c97418e5
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 171}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -410923983
+    name: undead_walk
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: undead_walk_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 5
+        y: 8
+        width: 31
+        height: 25
+      spriteId: 959fbf310327de7458f5b58d62c2b465
+    - name: undead_walk_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 2
+        y: 8
+        width: 34
+        height: 25
+      spriteId: 62b6a181f902ec5428230d820524f1e1
+    - name: undead_walk_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 1
+        y: 8
+        width: 35
+        height: 25
+      spriteId: bdaf5b102c224a74497de91fb2efdd59
+    - name: undead_walk_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 7
+        y: 8
+        width: 29
+        height: 25
+      spriteId: 9eb6ad5456a4f2e40aee414912bd2a90
+    - name: undead_walk_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 7
+        y: 8
+        width: 29
+        height: 25
+      spriteId: ac6e7073e7f77f74698899b2c7148e50
+    - name: undead_walk_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 26
+      spriteId: 65b737e3fd7410941a4915004f070423
+    - name: undead_walk_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 5
+        y: 8
+        width: 31
+        height: 25
+      spriteId: 659070067f9552e4e87dd7ed74c48795
+    - name: undead_walk_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 3
+        y: 8
+        width: 33
+        height: 25
+      spriteId: 989890c575f66b94aa0f6f4a0ae2e059
+    - name: undead_walk_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 1
+        y: 8
+        width: 34
+        height: 26
+      spriteId: b9639c7a7954061419de018265127d48
+    - name: undead_walk_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 24
+      spriteId: 09e17c47c459a5549b20e10dd56af743
+    - name: undead_walk_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 5
+        y: 8
+        width: 31
+        height: 25
+      spriteId: 2d49c233258a6dc459bafc0580096d05
+    - name: undead_walk_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 4
+        y: 8
+        width: 32
+        height: 24
+      spriteId: 76b25379c911dda45968c5067f644910
+    - name: undead_walk_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 3
+        y: 8
+        width: 33
+        height: 24
+      spriteId: 637984b586f94d549976f4a69c56be9e
+    - name: undead_walk_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 25
+      spriteId: 29bf664bf9fe8fa4dbe10f5d7b2046f2
+    - name: undead_walk_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 4
+        y: 8
+        width: 32
+        height: 25
+      spriteId: dd9effce9815761459bd472f4d682664
+    - name: undead_walk_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 2
+        y: 8
+        width: 34
+        height: 26
+      spriteId: a0d7c357fdf9b1448be25aa63433a932
+    - name: undead_walk_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 7
+        y: 8
+        width: 29
+        height: 25
+      spriteId: e0254d60e4a865d48b98a502806ad1c9
+    - name: undead_walk_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 5
+        y: 8
+        width: 31
+        height: 26
+      spriteId: 5e4fea5527887d548807d5e799fad7d3
+    - name: undead_walk_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: -1
+        y: 8
+        width: 37
+        height: 25
+      spriteId: 01f52cac54d969b4293008cd3ccb0b3a
+    - name: undead_walk_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 2
+        y: 8
+        width: 34
+        height: 25
+      spriteId: 4eb1534230a30274aafa1be9c97418e5
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 56, y: 48}

@@ -1,0 +1,699 @@
+fileFormatVersion: 2
+guid: 1307694cc07f42047bd7fa748903509b
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 62a9f0aa5b59740cfbadc7e5f9823bb0, type: 3}
+  textureImporterSettings:
+    alphaSource: 1
+    mipMapMode: 0
+    enableMipMap: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+    convertToNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+    swizzle: 50462976
+    isReadable: 0
+    streamingMipmaps: 0
+    streamingMipmapsPriority: 0
+    vTOnly: 0
+    ignoreMipmapLimit: 0
+    nPOTScale: 1
+    sRGBTexture: 1
+    spriteMode: 2
+    spriteExtrude: 1
+    spriteMeshType: 1
+    alignment: 0
+    spritePivot: {x: 0.5, y: 0.5}
+    spritePixelsToUnits: 100
+    spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+    spriteGenerateFallbackPhysicsShape: 0
+    generateCubemap: 6
+    cubemapConvolution: 0
+    seamlessCubemap: 0
+    alphaIsTransparency: 1
+    spriteTessellationDetail: -1
+    textureType: 8
+    textureShape: 1
+    singleChannelComponent: 0
+    flipbookRows: 0
+    flipbookColumns: 0
+    ignorePngGamma: 0
+    cookieMode: 0
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+    normalMap: 0
+    textureFormat: 0
+    maxTextureSize: 0
+    lightmap: 0
+    compressionQuality: 0
+    linearTexture: 0
+    grayScaleToAlpha: 0
+    rGBM: 0
+    cubemapConvolutionSteps: 0
+    cubemapConvolutionExponent: 0
+    maxTextureSizeSet: 0
+    compressionQualitySet: 0
+    textureFormatSet: 0
+    applyGammaDecoding: 0
+  previousAsepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  asepriteImporterSettings:
+    fileImportMode: 1
+    importHiddenLayers: 0
+    layerImportMode: 1
+    defaultPivotSpace: 0
+    defaultPivotAlignment: 7
+    customPivotPosition: {x: 0.5, y: 0.5}
+    mosaicPadding: 4
+    spritePadding: 0
+    generateModelPrefab: 1
+    generateAnimationClips: 1
+    addSortingGroup: 1
+    addShadowCasters: 0
+  importFileNodeState: 1
+  platformSettingsDirtyTick: 0
+  textureAssetName: 
+  singleSpriteImportData:
+  - name: 
+    originalName: 
+    pivot: {x: 0, y: 0}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 0
+      y: 0
+      width: 0
+      height: 0
+    spriteID: 
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  animatedSpriteImportData:
+  - name: undead_attack_Frame_0
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 38
+      width: 30
+      height: 26
+    spriteID: 028cbf0b63a079a47beb598a9749a843
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 38}
+  - name: undead_attack_Frame_1
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 72
+      width: 30
+      height: 26
+    spriteID: 59d4f9a7c78d3034d8140517b4ca9bf6
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 72}
+  - name: undead_attack_Frame_2
+    originalName: 
+    pivot: {x: 0.62068963, y: -0.22857144}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 133
+      width: 29
+      height: 35
+    spriteID: 7e072e2585610004f8636a9f52d7e993
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 133}
+  - name: undead_attack_Frame_3
+    originalName: 
+    pivot: {x: 0.62068963, y: -0.22857144}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 176
+      width: 29
+      height: 35
+    spriteID: 0750fec974bc86b4889f22e5e7d04259
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 176}
+  - name: undead_attack_Frame_4
+    originalName: 
+    pivot: {x: 0.76666665, y: -0.22857144}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 47
+      width: 30
+      height: 35
+    spriteID: a55a9e93cd236ef4881a6e394ec47dbf
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 47}
+  - name: undead_attack_Frame_5
+    originalName: 
+    pivot: {x: 0.76666665, y: -0.22857144}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 90
+      width: 30
+      height: 35
+    spriteID: b23371c415bcc07458eb472b3cd2f426
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 90}
+  - name: undead_attack_Frame_6
+    originalName: 
+    pivot: {x: 0.71875, y: -0.22857144}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 4
+      width: 32
+      height: 35
+    spriteID: bf04b8d7401ef1849bb97043522f2b2e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 4}
+  - name: undead_attack_Frame_7
+    originalName: 
+    pivot: {x: 0.33333334, y: -0.16129032}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 219
+      width: 30
+      height: 31
+    spriteID: bb2bc8ce78b36594ea359e73c766b5cc
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 219}
+  - name: undead_attack_Frame_8
+    originalName: 
+    pivot: {x: 0.28571427, y: -0.18518518}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 140
+      width: 28
+      height: 27
+    spriteID: fe6142a2aa423164a889ea3167b0afa9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 140}
+  - name: undead_attack_Frame_9
+    originalName: 
+    pivot: {x: 0.28571427, y: -0.26086956}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 71
+      width: 28
+      height: 23
+    spriteID: 1e891813fc337264db95ea5fac313b64
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 71}
+  - name: undead_attack_Frame_10
+    originalName: 
+    pivot: {x: 0.28571427, y: -0.26086956}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 102
+      width: 28
+      height: 23
+    spriteID: 97544e0e5858c494897d0832078c365a
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 102}
+  - name: undead_attack_Frame_11
+    originalName: 
+    pivot: {x: 0.30769232, y: -0.19999999}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 4
+      width: 26
+      height: 25
+    spriteID: 4ac550debc365c14d9b077748f1a18aa
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 4}
+  - name: undead_attack_Frame_12
+    originalName: 
+    pivot: {x: 0.34782606, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 133
+      width: 23
+      height: 25
+    spriteID: 44e67a784873a3347aced0d9cb94272c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 133}
+  - name: undead_attack_Frame_13
+    originalName: 
+    pivot: {x: 0.32, y: -0.26923075}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 37
+      width: 25
+      height: 26
+    spriteID: cba8c7c426654934d82109a7553b6a8e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 37}
+  - name: undead_attack_Frame_14
+    originalName: 
+    pivot: {x: 0.27586204, y: -0.26923075}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 175
+      width: 29
+      height: 26
+    spriteID: e8f1e02b4c31fe0448124e8ecc52db3f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 175}
+  - name: undead_attack_Frame_15
+    originalName: 
+    pivot: {x: 0.49999997, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 199
+      width: 16
+      height: 25
+    spriteID: 04fb9607cfcede84ab73b6048d182724
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 199}
+  - name: undead_attack_Frame_16
+    originalName: 
+    pivot: {x: 0.45000002, y: -0.32}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 83
+      y: 166
+      width: 20
+      height: 25
+    spriteID: 5b8c8907f60da3741aca7511116ff69e
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 83, y: 166}
+  - name: undead_attack_Frame_17
+    originalName: 
+    pivot: {x: 0.71428573, y: -0.26923075}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 209
+      width: 28
+      height: 26
+    spriteID: f53deb236bcecea40ad1051d2e4a2536
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 209}
+  - name: undead_attack_Frame_18
+    originalName: 
+    pivot: {x: 0.74193543, y: -0.26923075}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 4
+      width: 31
+      height: 26
+    spriteID: 5eac8b7c2af683d4eb2df9d461e16e59
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 4}
+  - name: undead_attack_Frame_19
+    originalName: 
+    pivot: {x: 0.73333335, y: -0.30769232}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 44
+      y: 106
+      width: 30
+      height: 26
+    spriteID: 74fe561a4582fcd47896df554964a54c
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 44, y: 106}
+  spriteSheetImportData: []
+  asepriteLayers:
+  - layerIndex: 0
+    guid: -231441728
+    name: undead_attack
+    layerFlags: 0
+    layerType: 0
+    blendMode: 0
+    cells:
+    - name: undead_attack_Frame_0
+      frameIndex: 0
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 26
+      spriteId: 028cbf0b63a079a47beb598a9749a843
+    - name: undead_attack_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 26
+      spriteId: 59d4f9a7c78d3034d8140517b4ca9bf6
+    - name: undead_attack_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 10
+        y: 8
+        width: 29
+        height: 35
+      spriteId: 7e072e2585610004f8636a9f52d7e993
+    - name: undead_attack_Frame_3
+      frameIndex: 3
+      cellRect:
+        x: 10
+        y: 8
+        width: 29
+        height: 35
+      spriteId: 0750fec974bc86b4889f22e5e7d04259
+    - name: undead_attack_Frame_4
+      frameIndex: 4
+      cellRect:
+        x: 5
+        y: 8
+        width: 30
+        height: 35
+      spriteId: a55a9e93cd236ef4881a6e394ec47dbf
+    - name: undead_attack_Frame_5
+      frameIndex: 5
+      cellRect:
+        x: 5
+        y: 8
+        width: 30
+        height: 35
+      spriteId: b23371c415bcc07458eb472b3cd2f426
+    - name: undead_attack_Frame_6
+      frameIndex: 6
+      cellRect:
+        x: 5
+        y: 8
+        width: 32
+        height: 35
+      spriteId: bf04b8d7401ef1849bb97043522f2b2e
+    - name: undead_attack_Frame_7
+      frameIndex: 7
+      cellRect:
+        x: 18
+        y: 5
+        width: 30
+        height: 31
+      spriteId: bb2bc8ce78b36594ea359e73c766b5cc
+    - name: undead_attack_Frame_8
+      frameIndex: 8
+      cellRect:
+        x: 20
+        y: 5
+        width: 28
+        height: 27
+      spriteId: fe6142a2aa423164a889ea3167b0afa9
+    - name: undead_attack_Frame_9
+      frameIndex: 9
+      cellRect:
+        x: 20
+        y: 6
+        width: 28
+        height: 23
+      spriteId: 1e891813fc337264db95ea5fac313b64
+    - name: undead_attack_Frame_10
+      frameIndex: 10
+      cellRect:
+        x: 20
+        y: 6
+        width: 28
+        height: 23
+      spriteId: 97544e0e5858c494897d0832078c365a
+    - name: undead_attack_Frame_11
+      frameIndex: 11
+      cellRect:
+        x: 20
+        y: 5
+        width: 26
+        height: 25
+      spriteId: 4ac550debc365c14d9b077748f1a18aa
+    - name: undead_attack_Frame_12
+      frameIndex: 12
+      cellRect:
+        x: 20
+        y: 8
+        width: 23
+        height: 25
+      spriteId: 44e67a784873a3347aced0d9cb94272c
+    - name: undead_attack_Frame_13
+      frameIndex: 13
+      cellRect:
+        x: 20
+        y: 7
+        width: 25
+        height: 26
+      spriteId: cba8c7c426654934d82109a7553b6a8e
+    - name: undead_attack_Frame_14
+      frameIndex: 14
+      cellRect:
+        x: 20
+        y: 7
+        width: 29
+        height: 26
+      spriteId: e8f1e02b4c31fe0448124e8ecc52db3f
+    - name: undead_attack_Frame_15
+      frameIndex: 15
+      cellRect:
+        x: 20
+        y: 8
+        width: 16
+        height: 25
+      spriteId: 04fb9607cfcede84ab73b6048d182724
+    - name: undead_attack_Frame_16
+      frameIndex: 16
+      cellRect:
+        x: 19
+        y: 8
+        width: 20
+        height: 25
+      spriteId: 5b8c8907f60da3741aca7511116ff69e
+    - name: undead_attack_Frame_17
+      frameIndex: 17
+      cellRect:
+        x: 8
+        y: 7
+        width: 28
+        height: 26
+      spriteId: f53deb236bcecea40ad1051d2e4a2536
+    - name: undead_attack_Frame_18
+      frameIndex: 18
+      cellRect:
+        x: 5
+        y: 7
+        width: 31
+        height: 26
+      spriteId: 5eac8b7c2af683d4eb2df9d461e16e59
+    - name: undead_attack_Frame_19
+      frameIndex: 19
+      cellRect:
+        x: 6
+        y: 8
+        width: 30
+        height: 26
+      spriteId: 74fe561a4582fcd47896df554964a54c
+    linkedCells: []
+    parentIndex: -1
+  platformSettings: []
+  generatePhysicsShape: 0
+  secondarySpriteTextures: []
+  spritePackingTag: 
+  canvasSize: {x: 56, y: 48}
