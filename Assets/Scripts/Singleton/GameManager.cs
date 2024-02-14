@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     // Asynchronous scene loading
     // SINGLETON
     private static GameManager instance;
-    public static GameManager Instance { get => instance; } 
+    public static GameManager Instance { get => instance; }
 
     private IEnumerator LoadSceneCoroutine(string sceneName)
     {
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadSceneCoroutine(sceneName));
     }
 
-    private void Load(string sceneName)
+    public void Load(string sceneName)
     {
         LoadScene(sceneName);
     }
