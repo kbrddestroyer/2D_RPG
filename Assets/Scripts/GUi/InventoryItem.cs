@@ -18,8 +18,14 @@ public class InventoryItem : MonoBehaviour
 
     public Button.ButtonClickedEvent onClick { set => button.onClick = value; }
 
-    private void Awake()
+    public Item ItemSettings
     {
-        InventoryManager.Instance.Insert(this);
+        set {
+            image.sprite = value.icon;
+            label.text = value.label;
+            button.enabled = value.isUsable;
+            if (value.isUsable)
+                button.onClick = value.onClick;
+        }
     }
 }

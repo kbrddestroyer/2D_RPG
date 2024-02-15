@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,7 +11,9 @@ public class InventoryManager : MonoBehaviour
     private static InventoryManager instance;
     public static InventoryManager Instance { get => instance; }
 
-    private List<InventoryItem> items = new List<InventoryItem>();
+    private List<Item> items = new List<Item>();
+
+    public List<Item> Items { get => items; }
 
     private void Awake()
     {
@@ -25,14 +28,15 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void Insert(InventoryItem item)
+    [Obsolete]
+    public void Insert(Item item)
     {
         items.Add(item);
     }
 
-    public void Remove(InventoryItem item)
+    [Obsolete]
+    public void Remove(Item item)
     {
         items.Remove(item);
-        Destroy(item.gameObject);
     }
 }

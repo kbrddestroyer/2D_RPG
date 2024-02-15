@@ -1,18 +1,30 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Pickable : MonoBehaviour
+public class Pickable : MonoBehaviour, IPickable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    /*
+     *  Parent class for every usable item 
+     */
+    [SerializeField] private Item itemSettings;
+    [Header("Required")]
+    [SerializeField] private InventoryItem guiPrefab;
 
-    // Update is called once per frame
-    void Update()
+    public void Pickup()
     {
-        
+        InventoryItem item = Instantiate(guiPrefab, LevelManagement.GameLevelManager.Instance.Root);
+        item.Icon = itemSettings.icon;
+        item.Label = itemSettings.label;
+        item.Usable = itemSettings.isUsable;
+        if (itemSettings.isUsable)
+        {
+            item.onClick = itemSettings.onClick;
+        }
+        InventoryManager.Instance.Items.Add(itemSettings);
+        Destroy(this.gameObject);
     }
 }

@@ -18,6 +18,7 @@ namespace GameControllers
         [SerializeField, Range(0f, 10f)] private float fDamageDistance;
         [SerializeField, Range(0f, 10f)] private float fMaxHP;
         [SerializeField] private LayerMask enemy;
+        [SerializeField] private LayerMask pickables;
 
         [Header("Required Components")]
         [SerializeField] private Animator animator;
@@ -72,6 +73,24 @@ namespace GameControllers
             }
         }
 
+        private IPickable GetClosestPickableItem() 
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fDamageDistance, pickables);
+
+            IPickable closest = null;
+
+            foreach (Collider2D collider in colliders)
+            {
+                IPickable pickable;
+                if ((pickable = collider.GetComponent<IPickable>()) != null)
+                {
+                    closest = pickable;
+                }
+            }
+
+            return closest;
+        }
+
         private void Update()
         {
             Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed;  // Direction vector
@@ -84,6 +103,14 @@ namespace GameControllers
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 Attack();
+            }
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                IPickable closest;
+                if ((closest = GetClosestPickableItem()) != null)
+                {
+                    closest.Pickup();
+                }
             }
         }
 
