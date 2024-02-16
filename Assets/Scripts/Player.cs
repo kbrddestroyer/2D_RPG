@@ -88,6 +88,15 @@ namespace GameControllers
                 }
             }
 
+            List<IPickable> lPickables = new List<IPickable>(FindObjectsOfType<Pickable>());
+            lPickables.RemoveAll((a) => a == closest);
+            lPickables.RemoveAll((a) => !a.hint);
+
+            foreach (IPickable pickable in lPickables)
+            {
+                pickable.hint = false;
+            }
+
             return closest;
         }
 
@@ -104,10 +113,11 @@ namespace GameControllers
             {
                 Attack();
             }
-            if (Input.GetKeyDown(KeyCode.E))
+            IPickable closest;
+            if ((closest = GetClosestPickableItem()) != null)
             {
-                IPickable closest;
-                if ((closest = GetClosestPickableItem()) != null)
+                closest.hint = true;
+                if (Input.GetKeyDown(KeyCode.E))
                 {
                     closest.Pickup();
                 }

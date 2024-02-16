@@ -12,6 +12,9 @@ public class DialogueController : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float fTextSpeed;
     [SerializeField, Range(0f, 10f)] private float fTriggerDistance;
     [SerializeField] private AudioSource audioSource;
+    [Header("Hints")]
+    [SerializeField] private GameObject hintActivate;
+    [SerializeField] private GameObject hintSkip;
     [Header("Gizmos")]
     [SerializeField] private Color gizmoColor = new Color(0, 0, 0, 1);
 
@@ -38,8 +41,10 @@ public class DialogueController : MonoBehaviour
                     yield return new WaitForSeconds(fTextSpeed);
                 }
                 this.text.text = text;
+                hintSkip.SetActive(!skipCurrentText);
                 while (!skipCurrentText) yield return null;
                 skipCurrentText = false;
+                hintSkip.SetActive(skipCurrentText);
             }
             isPlaying = false;
             text.text = "";
@@ -50,6 +55,7 @@ public class DialogueController : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.transform.position) < fTriggerDistance)
         {
+            hintActivate.SetActive(!isPlaying);
             if (isPlaying)
             {
                 skipCurrentText = Input.GetKeyDown(KeyCode.Space);
@@ -60,6 +66,7 @@ public class DialogueController : MonoBehaviour
                 StartCoroutine(playText());
             }
         }
+        else if (hintActivate.activeInHierarchy) hintActivate.SetActive(false);
     }
 
 #if UNITY_EDITOR
