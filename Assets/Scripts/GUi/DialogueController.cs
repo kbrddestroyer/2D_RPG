@@ -28,14 +28,21 @@ public class DialogueController : MonoBehaviour
                 this.text.text = "";
                 foreach (char ch in text)
                 {
-                    if (skipCurrentText) break;
+                    if (skipCurrentText)
+                    {
+                        skipCurrentText = false;
+                        break;
+                    }
                     this.text.text += ch;
                     audioSource.Play();
                     yield return new WaitForSeconds(fTextSpeed);
                 }
                 this.text.text = text;
+                while (!skipCurrentText) yield return null;
+                skipCurrentText = false;
             }
             isPlaying = false;
+            text.text = "";
         }
     }
 

@@ -17,13 +17,7 @@ public class Pickable : MonoBehaviour, IPickable
     public void Pickup()
     {
         InventoryItem item = Instantiate(guiPrefab, LevelManagement.GameLevelManager.Instance.Root);
-        item.Icon = itemSettings.icon;
-        item.Label = itemSettings.label;
-        item.Usable = itemSettings.isUsable;
-        if (itemSettings.isUsable)
-        {
-            item.onClick = itemSettings.onClick;
-        }
+        item.ItemSettings = itemSettings;
         InventoryManager.Instance.Items.Add(itemSettings);
         Destroy(this.gameObject);
     }

@@ -16,16 +16,16 @@ public class InventoryItem : MonoBehaviour
     public string Label { set => label.text = value; }
     public bool Usable { set => button.enabled = value; }
 
-    public Button.ButtonClickedEvent onClick { set => button.onClick = value; }
-
     public Item ItemSettings
     {
         set {
             image.sprite = value.icon;
             label.text = value.label;
             button.enabled = value.isUsable;
-            if (value.isUsable)
-                button.onClick = value.onClick;
+            if (value.isUsable) {
+                button.onClick.AddListener(() => { value.onClick.Invoke(); });
+                button.onClick.AddListener(() => { Destroy(this.gameObject); });
+            }
         }
     }
 }
