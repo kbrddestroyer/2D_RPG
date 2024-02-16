@@ -1,18 +1,19 @@
+using LevelManagement;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using GameControllers;
 
+[RequireComponent(typeof(Collider2D))]
 public class LevelChangeTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private string level;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (other.GetComponent<Player>() != null)
+        {
+            GameLevelManager.Instance.CallGameManager(level);
+        }
     }
 }
