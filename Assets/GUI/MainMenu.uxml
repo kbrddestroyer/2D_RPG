@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/GUI/style.uss?fileID=7433441132597879392&amp;guid=f6b3b3eb4dd4cb745b6d5fc770030dba&amp;type=3#style" />
+    <ui:VisualElement style="flex-grow: 1; justify-content: space-around; width: 100%; height: 100%; align-items: flex-end;">
+        <ui:VisualElement style="flex-grow: 1; justify-content: center; align-items: center; width: 45%; position: relative; right: auto; left: auto;">
+            <ui:Button text="Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="play" class="btn" />
+            <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="exit" class="btn" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,6 +11,10 @@ public class InventoryManager : MonoBehaviour
     private static InventoryManager instance;
     public static InventoryManager Instance { get => instance; }
 
+    private List<Item> items = new List<Item>();
+
+    public List<Item> Items { get => items; }
+
     private void Awake()
     {
         if (instance == null)
@@ -21,5 +26,17 @@ public class InventoryManager : MonoBehaviour
         {
             Debug.LogWarning($"Warning on: {this.name}: instance is not null (2 or more singleton items are on scene)");
         }
+    }
+
+    [Obsolete]
+    public void Insert(Item item)
+    {
+        items.Add(item);
+    }
+
+    [Obsolete]
+    public void Remove(Item item)
+    {
+        items.Remove(item);
     }
 }
