@@ -14,7 +14,6 @@ public class EnemyBase : MonoBehaviour
     private class Waypoint {
         public Vector3Int point;
         public Waypoint parent;
-
         public Waypoint(Vector3Int point, Waypoint parent)
         {
             this.point = point;
@@ -35,6 +34,17 @@ public class EnemyBase : MonoBehaviour
         Queue<Waypoint> open = new Queue<Waypoint>();
         
         open.Enqueue(new Waypoint(sourceTile, null));
+
+        float[][] weights = new float[bounds.max.x - bounds.x][];
+
+        for (uint i = 0; i < bounds.max.x - bounds.x; i++)
+        {
+            weights[i] = new float[bounds.max.y - bounds.y];
+
+            for (uint j = 0; j < bounds.max.y - bounds.y; j++)
+                weights[i][j] = -1;
+        }
+
         while (open.Count > 0)
         {
             Waypoint p = open.Dequeue();
@@ -58,10 +68,28 @@ public class EnemyBase : MonoBehaviour
 
                     if (x < bounds.x || x > bounds.max.x || y < bounds.y || y > bounds.max.y)
                         continue;
-                    Vector3Int pos = new Vector3Int(x, y, p.point.z);
-                    if (wallsMap.GetTile(pos) == null)
+
+                    if (p.parent != null)
                     {
-                        open.Enqueue(new Waypoint(pos, p));
+                        float weight = weights[p.parent.point.x - bounds.x][p.parent.point.y - bounds.y] + 1 + Vector2.Distance(wallsMap.LocalToWorld(new Vector3Int(x, y, 0)), player.transform.position);
+
+                        if (weight > weights[x - bounds.x][y - bounds.y] || weights[x - bounds.x][y - bounds.y] == -1)
+                        {
+                            weights[x - bounds.x][y - bounds.y] = weight;
+                            Vector3Int pos = new Vector3Int(x, y, p.point.z);
+                            if (wallsMap.GetTile(pos) == null)
+                            {
+                                open.Enqueue(new Waypoint(pos, p));
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Vector3Int pos = new Vector3Int(x, y, p.point.z);
+                        if (wallsMap.GetTile(pos) == null)
+                        {
+                            open.Enqueue(new Waypoint(pos, p));
+                        }
                     }
                 }
             closed.Add(p.point);
