@@ -10,15 +10,18 @@ public class MovingEnemy : EnemyBase, IDamagable
     [SerializeField, Range(0f, 1f)] private float fRerouteDistance;
     [SerializeField, Range(0f, 10f)] private float fStopDistance;
     [SerializeField, Range(0f, 10f)] private float fSpeed;
+    [SerializeField] private AudioClip stepSFX;
+    [SerializeField] protected AudioSource source;
     [Header("Gizmo settings")]
     [SerializeField] private Color gizmoColor = new Color(0, 0, 0, 1);
 
     private Stack<Vector3> currentWaypoints = new Stack<Vector3>();
     private Vector3 currentPoint;
 
-    private void Awake()
+    protected override void Awake()
     {
         currentPoint = transform.position;
+        base.Awake();
     }
 
     protected virtual void Update()
@@ -41,6 +44,11 @@ public class MovingEnemy : EnemyBase, IDamagable
 
             Debug.DrawLine(transform.position, currentPoint, Color.green);
         }
+    }
+
+    public void PlayStepSound()
+    {
+        source.PlayOneShot(stepSFX);
     }
 
 #if UNITY_EDITOR

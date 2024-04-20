@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: skeletonAttack
-  serializedVersion: 6
+  serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -18,7 +18,8 @@ AnimationClip:
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
-  - curve:
+  - serializedVersion: 2
+    curve:
     - time: 0
       value: {fileID: 685362504, guid: 15e96341e75f0624c8cfc4710859a150, type: 3}
     - time: 0.083333336
@@ -63,6 +64,7 @@ AnimationClip:
     path: 
     classID: 212
     script: {fileID: 0}
+    flags: 2
   m_SampleRate: 12
   m_WrapMode: 0
   m_Bounds:
@@ -77,6 +79,8 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     pptrCurveMapping:
     - {fileID: 685362504, guid: 15e96341e75f0624c8cfc4710859a150, type: 3}
     - {fileID: -451115485, guid: 15e96341e75f0624c8cfc4710859a150, type: 3}
@@ -126,7 +130,7 @@ AnimationClip:
   - time: 0.6666667
     functionName: DamagePlayer
     data: 
-    objectReferenceParameter: {fileID: 11500000, guid: a1016ebdf46d5d343b257e8e88bf9d2c, type: 3}
+    objectReferenceParameter: {fileID: 11500000, guid: 2b5b5ed99c1f9034c930268ad466780d, type: 3}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0

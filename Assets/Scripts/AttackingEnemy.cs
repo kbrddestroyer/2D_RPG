@@ -7,6 +7,7 @@ public class AttackingEnemy : MovingEnemy, IDamagable
     [SerializeField, Range(0f, 10f)] private float fDamage;
     [SerializeField, Range(0f, 10f)] private float fAttackDelay;
     [SerializeField, Range(0f, 10f)] private float fAttackDistance;
+    [SerializeField] private AudioClip attackSFX;
     [Header("Gizmos")]
     [SerializeField] private Color cAttackGizmoColor = new Color(0f, 0f, 0f, 1f);
 
@@ -15,7 +16,8 @@ public class AttackingEnemy : MovingEnemy, IDamagable
     protected override void Update()
     {
         fPassedTime += Time.deltaTime;
-        if (Vector2.Distance(transform.position, player.transform.position) < fAttackDistance)
+
+        if (player != null && Vector2.Distance(transform.position, player.transform.position) < fAttackDistance)
         {
             Attack();
         }
@@ -37,9 +39,12 @@ public class AttackingEnemy : MovingEnemy, IDamagable
 
     private void DamagePlayer()
     {
-        player.HP -= fDamage;
+        if (Vector2.Distance(transform.position, player.transform.position) < fAttackDistance)
+        { 
+            player.HP -= fDamage;
+            source.PlayOneShot(attackSFX);
+        }
     }
-
 
 #if UNITY_EDITOR
     protected override void OnDrawGizmosSelected()
