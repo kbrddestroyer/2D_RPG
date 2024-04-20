@@ -58,6 +58,7 @@ public class DialogueController : MonoBehaviour
             hintActivate.SetActive(!isPlaying);
             if (isPlaying)
             {
+                if (!hintSkip.activeInHierarchy) hintSkip.SetActive(true);
                 skipCurrentText = Input.GetKeyDown(KeyCode.Space);
             }
             else if (Input.GetKeyDown(KeyCode.E))
@@ -66,7 +67,11 @@ public class DialogueController : MonoBehaviour
                 StartCoroutine(playText());
             }
         }
-        else if (hintActivate.activeInHierarchy) hintActivate.SetActive(false);
+        else
+        {
+            if (hintActivate.activeInHierarchy) hintActivate.SetActive(false);
+            if (hintSkip.activeInHierarchy) hintSkip.SetActive(false);
+        }
     }
 
 #if UNITY_EDITOR
