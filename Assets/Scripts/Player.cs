@@ -22,18 +22,29 @@ namespace GameControllers
 
         [Header("Required Components")]
         [SerializeField] private Animator animator;
+        [SerializeField] private AudioSource audio;
         [SerializeField] private SpriteRenderer spriteRenderer;
+
+        [Header("Audio")]
+        [SerializeField] private AudioClip stepSFX;
+        [SerializeField] private AudioClip damagedSFX;
 
         [Header("Gizmos")]
         [SerializeField] private Color gizmoColor = new Color(0f, 0f, 0f, 1f);
 
-        private float fHP;
+        private float fHP;    
 
         public float HP
         {
             get => fHP;
             set
             {
+                if (value < fHP)
+                {
+                    Debug.Log("Player's damaged");
+                    animator.SetTrigger("damage");
+                    audio.PlayOneShot(damagedSFX);
+                }
                 fHP = value;
                 if (value <= 0)
                 {
@@ -42,9 +53,24 @@ namespace GameControllers
             }
         }
 
+        private IEnumerator Blink()
+        {
+            while (enabled)
+            {
+                yield return new WaitForSeconds(5f);
+                animator.SetTrigger("blink");
+            }
+        }
+
+
+        private void Awake()
+        {
+            StartCoroutine(Blink());
+        }
+
         private void OnEnable()
         {
-            // Nothing here by now
+            fHP = fMaxHP;
         }
 
         private void OnDisable()

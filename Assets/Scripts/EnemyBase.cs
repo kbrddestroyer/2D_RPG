@@ -2,14 +2,44 @@ using GameControllers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static UnityEditor.PlayerSettings;
 
-public class EnemyBase : MonoBehaviour
+public class EnemyBase : MonoBehaviour, IDamagable
 {
     [SerializeField] private Tilemap wallsMap;
     [SerializeField] protected Player player;
+    [SerializeField] protected Animator animator;
+    [SerializeField, Range(0f, 10f)] private float fMaxHP;
+    [SerializeField, Range(0f, 10f)] private float fCorpseLifetime;
+    private float fHP;
+
+    public float HP { 
+        get => fHP; 
+        set
+        {
+            if (value < fHP)
+                Damage();
+            fHP = value;
+
+            if (fHP <= 0f)
+                enabled = false;
+        }
+    }
+
+    private void OnDisable()
+    {
+        animator.SetTrigger("death");
+        Destroy(this.gameObject, fCorpseLifetime);
+    }
+
+    private void Damage()
+    {
+        if (fHP > 0)
+            animator.SetTrigger("damage");
+    }
 
     private class Waypoint {
         public Vector3Int point;
@@ -128,6 +158,11 @@ public class EnemyBase : MonoBehaviour
 
         ReadOnlySpan<Vector3> waypointsSpan = new ReadOnlySpan<Vector3>(waypoints.ToArray());
         Gizmos.DrawLineStrip(waypointsSpan, false);
+    }
+
+    public void OnDeath()
+    {
+        throw new NotImplementedException();
     }
 #endif
 }

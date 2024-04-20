@@ -6,16 +6,9 @@ using UnityEngine.Tilemaps;
 
 public class MovingEnemy : EnemyBase, IDamagable
 {
-    public float HP { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
-
-    public void OnDeath()
-    {
-        throw new System.NotImplementedException();
-    }
-
     [SerializeField, Range(0f, 10f)] private float fReactionDistance;
-    [SerializeField, Range(0f, 10f)] private float fDamage;
-    [SerializeField, Range(0f, 1f)] private float fStopDistance;
+    [SerializeField, Range(0f, 1f)] private float fRerouteDistance;
+    [SerializeField, Range(0f, 10f)] private float fStopDistance;
     [SerializeField, Range(0f, 10f)] private float fSpeed;
     [Header("Gizmo settings")]
     [SerializeField] private Color gizmoColor = new Color(0, 0, 0, 1);
@@ -28,17 +21,26 @@ public class MovingEnemy : EnemyBase, IDamagable
         currentPoint = transform.position;
     }
 
-    public void Update()
+    protected virtual void Update()
     {
-        currentWaypoints = getPath(player.transform.position);
-
-        while (Vector3.Distance(transform.position, currentPoint) < fStopDistance)
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+        if (distance < fReactionDistance && distance > fStopDistance)
         {
-            currentPoint = currentWaypoints.Pop();
-        }
-        transform.position = Vector3.Lerp(transform.position, currentPoint, fSpeed * Time.deltaTime);
+            if (!animator.GetBool("walking"))
+            {
+                animator.SetBool("walking", true);
+            }
+            if (currentWaypoints.Count == 0)
+                currentWaypoints = getPath(player.transform.position);
 
-        Debug.DrawLine(transform.position, currentPoint, Color.green);        
+            if (Vector2.Distance(transform.position, currentPoint) < fRerouteDistance)
+            {
+                currentPoint = currentWaypoints.Pop();
+            }
+            transform.position = Vector3.Lerp(transform.position, currentPoint, fSpeed * Time.deltaTime);
+
+            Debug.DrawLine(transform.position, currentPoint, Color.green);
+        }
     }
 
 #if UNITY_EDITOR
@@ -48,7 +50,7 @@ public class MovingEnemy : EnemyBase, IDamagable
 
         Gizmos.DrawWireSphere(transform.position, fReactionDistance);
         Gizmos.DrawWireSphere(transform.position, fStopDistance);
-        
+        Gizmos.DrawWireSphere(transform.position, fRerouteDistance);
         base.OnDrawGizmosSelected();
     }
 #endif

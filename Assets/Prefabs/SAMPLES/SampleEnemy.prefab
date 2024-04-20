@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4969359033817388293}
   - component: {fileID: 7128443025265849926}
+  - component: {fileID: 6491640322084804449}
   - component: {fileID: 2539663673524253624}
   - component: {fileID: 5813287972340417285}
-  - component: {fileID: 5587865582488780565}
+  - component: {fileID: 7209962427983375212}
   m_Layer: 0
   m_Name: SampleEnemy
   m_TagString: Untagged
@@ -87,6 +88,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6491640322084804449
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3073033697727869632}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: e4fa7a1dfa9874b42be49c4fe18abac1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!70 &2539663673524253624
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -149,7 +171,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &5587865582488780565
+--- !u!114 &7209962427983375212
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -158,13 +180,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 3073033697727869632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e402d517e51576f4ba182fbdb45f6016, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b5b5ed99c1f9034c930268ad466780d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   wallsMap: {fileID: 0}
   player: {fileID: 0}
+  animator: {fileID: 6491640322084804449}
+  fMaxHP: 2
   fReactionDistance: 10
-  fDamage: 3.77
-  fStopDistance: 0.53
-  fSpeed: 0.69
+  fRerouteDistance: 0.5
+  fStopDistance: 2
+  fSpeed: 5
   gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  fDamage: 2
+  fAttackDelay: 1
+  fAttackDistance: 0.11
+  cAttackGizmoColor: {r: 1, g: 0, b: 0, a: 1}
