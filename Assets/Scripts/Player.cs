@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -24,7 +25,7 @@ namespace GameControllers
         [SerializeField] private Animator animator;
         [SerializeField] private AudioSource audio;
         [SerializeField] private SpriteRenderer spriteRenderer;
-
+        [SerializeField] private MasterDialogueController masterController;
         [Header("Audio")]
         [SerializeField] private AudioClip stepSFX;
         [SerializeField] private AudioClip damagedSFX;
@@ -32,7 +33,9 @@ namespace GameControllers
         [Header("Gizmos")]
         [SerializeField] private Color gizmoColor = new Color(0f, 0f, 0f, 1f);
 
-        private float fHP;    
+        private float fHP;
+
+        private List<DialogueController> lDialogueController;
 
         public float HP
         {
@@ -66,6 +69,10 @@ namespace GameControllers
         private void Awake()
         {
             StartCoroutine(Blink());
+            lDialogueController = FindObjectsOfType<DialogueController>().ToList<DialogueController>();
+
+            if (!masterController)
+                masterController = GameObject.FindObjectOfType<MasterDialogueController>();
         }
 
         private void OnEnable()
@@ -126,6 +133,23 @@ namespace GameControllers
             return closest;
         }
 
+        private DialogueController GetClosestDialogueController()
+        {
+            DialogueController closest = null;
+
+            foreach (DialogueController controller in lDialogueController)
+            {
+                float distance = Vector2.Distance(transform.position, controller.transform.position);
+
+                if (distance < controller.TriggerDistance)
+                {
+                    if (closest == null || distance < Vector2.Distance(transform.position, closest.transform.position))
+                        closest = controller;
+                }
+            }
+            return closest;
+        }
+
         private void Update()
         {
             Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed;  // Direction vector
@@ -139,6 +163,7 @@ namespace GameControllers
             {
                 Attack();
             }
+
             IPickable closest;
             if ((closest = GetClosestPickableItem()) != null)
             {
@@ -147,6 +172,18 @@ namespace GameControllers
                 {
                     closest.Pickup();
                 }
+            }
+            DialogueController controller;
+            if (controller = GetClosestDialogueController())
+            {
+                masterController.Enabled = true;
+                controller.Activate(true);
+            }
+            else if (!controller)
+            {
+                masterController.Enabled = false;
+                foreach (DialogueController c in lDialogueController)
+                    c.Activate(false);
             }
         }
 

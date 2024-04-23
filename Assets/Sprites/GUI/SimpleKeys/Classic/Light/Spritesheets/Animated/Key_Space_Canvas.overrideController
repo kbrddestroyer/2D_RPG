@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Key_Space_Canvas
+  m_Controller: {fileID: 9100000, guid: ad0217505bb6073408ca69c2624f1e5b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f23a71661b1d02b49b81fdfe2bd46ca8, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: dd07f26136a37f1419b2728b4ba518e3, type: 2}

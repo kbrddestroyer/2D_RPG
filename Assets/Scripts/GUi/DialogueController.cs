@@ -6,20 +6,27 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class DialogueController : MonoBehaviour
 {
-    [SerializeField] private Transform player;
-    [SerializeField] private TMP_Text text;
     [SerializeField] private string[] sDialogues;
     [SerializeField, Range(0f, 1f)] private float fTextSpeed;
     [SerializeField, Range(0f, 10f)] private float fTriggerDistance;
     [SerializeField] private AudioSource audioSource;
-    [Header("Hints")]
-    [SerializeField] private GameObject hintActivate;
-    [SerializeField] private GameObject hintSkip;
+    [SerializeField] private MasterDialogueController dialogueController;
     [Header("Gizmos")]
     [SerializeField] private Color gizmoColor = new Color(0, 0, 0, 1);
 
+    public float TriggerDistance
+    {
+        get => fTriggerDistance;
+    }
+
     private bool isPlaying = false;
     private bool skipCurrentText = false;
+
+    private void Awake()
+    {
+        if (!dialogueController)
+            dialogueController = GameObject.FindObjectOfType<MasterDialogueController>();
+    }
 
     private IEnumerator playText()
     {
@@ -28,7 +35,7 @@ public class DialogueController : MonoBehaviour
             isPlaying = true;
             foreach (string text in sDialogues)
             {
-                this.text.text = "";
+                dialogueController.Text.text = "";
                 foreach (char ch in text)
                 {
                     if (skipCurrentText)
@@ -36,42 +43,49 @@ public class DialogueController : MonoBehaviour
                         skipCurrentText = false;
                         break;
                     }
-                    this.text.text += ch;
+                    dialogueController.Text.text += ch;
                     audioSource.Play();
                     yield return new WaitForSeconds(fTextSpeed);
                 }
-                this.text.text = text;
-                hintSkip.SetActive(!skipCurrentText);
+                dialogueController.Text.text = text;
+                dialogueController.Skip.SetActive(!skipCurrentText);
                 while (!skipCurrentText) yield return null;
                 skipCurrentText = false;
-                hintSkip.SetActive(skipCurrentText);
+                dialogueController.Skip.SetActive(skipCurrentText);
             }
             isPlaying = false;
-            text.text = "";
+            dialogueController.Text.text = "";
         }
     }
 
-    private void Update()
+    public void Activate(bool state)
     {
-        if (Vector3.Distance(transform.position, player.transform.position) < fTriggerDistance)
+        if (state)
         {
-            hintActivate.SetActive(!isPlaying);
+            dialogueController.Activate.SetActive(!isPlaying);
             if (isPlaying)
             {
-                if (!hintSkip.activeInHierarchy) hintSkip.SetActive(true);
-                skipCurrentText = Input.GetKeyDown(KeyCode.Space);
+                if (!dialogueController.Skip.activeInHierarchy) dialogueController.Skip.SetActive(true);
             }
             else if (Input.GetKeyDown(KeyCode.E))
             {
-                // Activate
                 StartCoroutine(playText());
             }
         }
         else
         {
-            if (hintActivate.activeInHierarchy) hintActivate.SetActive(false);
-            if (hintSkip.activeInHierarchy) hintSkip.SetActive(false);
+            dialogueController.Text.text = "";
+            dialogueController.Skip.SetActive(false);
+            dialogueController.Activate.SetActive(false);
+            
+            StopAllCoroutines();
+            isPlaying = false;
         }
+    }
+
+    private void Update()
+    {
+        skipCurrentText = Input.GetKeyDown(KeyCode.Space) && isPlaying;
     }
 
 #if UNITY_EDITOR
