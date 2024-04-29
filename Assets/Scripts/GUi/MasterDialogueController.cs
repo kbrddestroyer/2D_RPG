@@ -21,17 +21,18 @@ public class MasterDialogueController : MonoBehaviour
 
     public bool Enabled
     {
+        get => Root.gameObject.activeInHierarchy;
         set
         {
             Root.gameObject.SetActive(value);
         }
     }
 
-    public Sprite SpImage
+    public bool SpImage
     {
         set
         {
-            iImage.sprite = value;
+            iImage.enabled = value;
         }
     }
 }

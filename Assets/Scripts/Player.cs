@@ -121,15 +121,6 @@ namespace GameControllers
                 }
             }
 
-            List<IPickable> lPickables = new List<IPickable>(FindObjectsOfType<Pickable>());
-            lPickables.RemoveAll((a) => a == closest);
-            lPickables.RemoveAll((a) => !a.hint);
-
-            foreach (IPickable pickable in lPickables)
-            {
-                pickable.hint = false;
-            }
-
             return closest;
         }
 
@@ -150,6 +141,11 @@ namespace GameControllers
             return closest;
         }
 
+        public void Step()
+        {
+            audio.PlayOneShot(stepSFX);
+        }
+
         private void Update()
         {
             Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed;  // Direction vector
@@ -167,6 +163,7 @@ namespace GameControllers
             IPickable closest;
             if ((closest = GetClosestPickableItem()) != null)
             {
+                masterController.Enabled = true;
                 closest.hint = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
@@ -181,10 +178,12 @@ namespace GameControllers
             }
             else if (!controller)
             {
-                masterController.Enabled = false;
                 foreach (DialogueController c in lDialogueController)
                     c.Activate(false);
             }
+
+            if (controller == null && closest == null)
+                masterController.Enabled = false;
         }
 
 #if UNITY_EDITOR || UNITY_EDITOR_64

@@ -33,6 +33,7 @@ public class DialogueController : MonoBehaviour
         if (!isPlaying)
         {
             isPlaying = true;
+            dialogueController.SpImage = true;
             foreach (string text in sDialogues)
             {
                 dialogueController.Text.text = "";
@@ -54,6 +55,7 @@ public class DialogueController : MonoBehaviour
                 dialogueController.Skip.SetActive(skipCurrentText);
             }
             isPlaying = false;
+            dialogueController.SpImage = false;
             dialogueController.Text.text = "";
         }
     }
@@ -74,10 +76,13 @@ public class DialogueController : MonoBehaviour
         }
         else
         {
-            dialogueController.Text.text = "";
-            dialogueController.Skip.SetActive(false);
-            dialogueController.Activate.SetActive(false);
-            
+            if (!dialogueController.Enabled)
+            {
+                dialogueController.Text.text = "";
+                dialogueController.Skip.SetActive(false);
+                dialogueController.Activate.SetActive(false);
+                dialogueController.SpImage = false;
+            }
             StopAllCoroutines();
             isPlaying = false;
         }

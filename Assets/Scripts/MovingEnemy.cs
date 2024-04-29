@@ -44,6 +44,10 @@ public class MovingEnemy : EnemyBase, IDamagable
 
             Debug.DrawLine(transform.position, currentPoint, Color.green);
         }
+        else if (animator.GetBool("walking"))
+        {
+            animator.SetBool("walking", false);
+        }
     }
 
     public void PlayStepSound()
