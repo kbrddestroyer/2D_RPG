@@ -130,6 +130,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: attack
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAlive
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1708549561367290161}
   m_Solo: 0
@@ -183,7 +186,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fd1264c8ec810a47894f26753e7f4b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 0
 --- !u!1102 &-1708549561367290161
 AnimatorState:
   serializedVersion: 6
@@ -221,6 +223,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: damage
+    m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: isAlive
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -2351307325489936124}
@@ -275,11 +280,11 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: New Bool
+  - m_Name: isAlive
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
