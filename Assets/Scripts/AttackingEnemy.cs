@@ -8,7 +8,7 @@ public class AttackingEnemy : MovingEnemy, IDamagable
     [SerializeField, Range(0f, 10f)] private float fAttackDelay;
     [SerializeField, Range(0f, 10f)] private float fAttackDistance;
     [SerializeField] private AudioClip attackSFX;
-    [SerializeField] private Collider collider;
+    [SerializeField] private Collider2D collider;
     [Header("Gizmos")]
     [SerializeField] private Color cAttackGizmoColor = new Color(0f, 0f, 0f, 1f);
 

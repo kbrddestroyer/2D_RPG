@@ -44,9 +44,11 @@ namespace GameControllers
             {
                 if (value < fHP)
                 {
-                    Debug.Log("Player's damaged");
-                    animator.SetTrigger("damage");
-                    audio.PlayOneShot(damagedSFX);
+                    if (fHP > 0)
+                    {
+                        animator.SetTrigger("damage");
+                        audio.PlayOneShot(damagedSFX);
+                    }
                 }
                 fHP = value;
                 if (value <= 0)
