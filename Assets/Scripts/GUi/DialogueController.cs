@@ -10,9 +10,10 @@ public class DialogueController : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float fTextSpeed;
     [SerializeField, Range(0f, 10f)] private float fTriggerDistance;
     [SerializeField] private AudioSource audioSource;
-    [SerializeField] private MasterDialogueController dialogueController;
     [Header("Gizmos")]
     [SerializeField] private Color gizmoColor = new Color(0, 0, 0, 1);
+
+    private MasterDialogueController dialogueController;
 
     public float TriggerDistance
     {

@@ -1,10 +1,11 @@
+using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class MovingEnemy : EnemyBase, IDamagable
+public abstract class MovingEnemy : EnemyBase, IDamagable
 {
     [SerializeField, Range(0f, 10f)] private float fReactionDistance;
     [SerializeField, Range(0f, 1f)] private float fRerouteDistance;
@@ -64,6 +65,15 @@ public class MovingEnemy : EnemyBase, IDamagable
         Gizmos.DrawWireSphere(transform.position, fStopDistance);
         Gizmos.DrawWireSphere(transform.position, fRerouteDistance);
         base.OnDrawGizmosSelected();
+    }
+
+    protected override void OnValidate()
+    {
+        if (!player)
+        {
+            player = FindObjectOfType<Player>();
+        }
+        base.OnValidate();
     }
 #endif
 }

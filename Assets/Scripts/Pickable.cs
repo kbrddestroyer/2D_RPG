@@ -14,7 +14,8 @@ public class Pickable : MonoBehaviour, IPickable
     [SerializeField] private Item itemSettings;
     [Header("Required")]
     [SerializeField] private InventoryItem guiPrefab;
-    [SerializeField] private MasterDialogueController dialogueController;
+    
+    private MasterDialogueController dialogueController;
 
     public bool hint
     {

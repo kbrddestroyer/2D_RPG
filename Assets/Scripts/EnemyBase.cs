@@ -6,9 +6,8 @@ using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using static UnityEditor.PlayerSettings;
 
-public class EnemyBase : MonoBehaviour, IDamagable
+public abstract class EnemyBase : MonoBehaviour, IDamagable
 {
     [SerializeField] private Tilemap wallsMap;
     [SerializeField] protected Player player;
@@ -37,6 +36,7 @@ public class EnemyBase : MonoBehaviour, IDamagable
     private void OnDisable()
     {
         animator.SetTrigger("death");
+        OnDeath();
         Destroy(this.gameObject, fCorpseLifetime);
     }
 
@@ -78,7 +78,7 @@ public class EnemyBase : MonoBehaviour, IDamagable
     }
 
 
-    private Waypoint _getPath(Vector3 destination)
+    private Waypoint getPathFromDestinationCoordinates(Vector3 destination)
     {
         BoundsInt bounds = wallsMap.cellBounds;
         TileBase[] allTiles = wallsMap.GetTilesBlock(bounds);
@@ -132,7 +132,7 @@ public class EnemyBase : MonoBehaviour, IDamagable
 
     protected Stack<Vector3> getPath(Vector3 destination)
     {
-        Waypoint arr = _getPath(player.transform.position);
+        Waypoint arr = getPathFromDestinationCoordinates(player.transform.position);
         if (arr == null) return null;
         Stack<Vector3> waypoints = new Stack<Vector3>();
 
@@ -145,12 +145,14 @@ public class EnemyBase : MonoBehaviour, IDamagable
         return waypoints;
     }
 
+    public abstract void OnDeath();
+
 #if UNITY_EDITOR
     protected virtual void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
 
-        Waypoint arr = _getPath(player.transform.position);
+        Waypoint arr = getPathFromDestinationCoordinates(player.transform.position);
         List<Vector3> waypoints = new List<Vector3>();
 
         while (arr != null) {
@@ -162,9 +164,16 @@ public class EnemyBase : MonoBehaviour, IDamagable
         Gizmos.DrawLineStrip(waypointsSpan, false);
     }
 
-    public void OnDeath()
+    protected virtual void OnValidate()
     {
-        throw new NotImplementedException();
+        if (!wallsMap)
+        {
+            wallsMap = GameObject.Find("Walls").GetComponent<Tilemap>();
+            if (!wallsMap)
+            {
+                Debug.LogError("Can't find tilemap on scene. Please, make sure you have walls tilemap");
+            }
+        }
     }
 #endif
 }
