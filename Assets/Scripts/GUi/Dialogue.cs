@@ -55,10 +55,13 @@ public abstract class Dialogue : MonoBehaviour
             isPlaying = false;
             dialogueController.SpImage = false;
             dialogueController.Text.text = "";
+
+            AfterTextDisplay();
         }
     }
 
     public abstract void Activate(bool state);
+    public virtual void AfterTextDisplay() { }
 
     private void Update()
     {
