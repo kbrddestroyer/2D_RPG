@@ -200,6 +200,8 @@ MonoBehaviour:
   fAttackDelay: 1
   fAttackDistance: 2
   attackSFX: {fileID: 8300000, guid: 58364bbf225139d48ab3f744dae7f710, type: 3}
+  collider: {fileID: 2539663673524253624}
+  drop: []
   cAttackGizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!82 &6632929887222377188
 AudioSource:

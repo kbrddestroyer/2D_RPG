@@ -1,14 +1,26 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
 
 public class AttackingEnemy : MovingEnemy, IDamagable
 {
+    [Serializable]
+    private struct ItemDrop
+    {
+        public Pickable item;
+        public float chance;
+    }
+
     [SerializeField, Range(0f, 10f)] private float fDamage;
     [SerializeField, Range(0f, 10f)] private float fAttackDelay;
     [SerializeField, Range(0f, 10f)] private float fAttackDistance;
     [SerializeField] private AudioClip attackSFX;
-    [SerializeField] private Collider2D collider;
+    [SerializeField] private new Collider2D collider;
+    [Header("Drop")]
+    [SerializeField] private ItemDrop[] drop;
+    
     [Header("Gizmos")]
     [SerializeField] private Color cAttackGizmoColor = new Color(0f, 0f, 0f, 1f);
 
@@ -49,8 +61,16 @@ public class AttackingEnemy : MovingEnemy, IDamagable
 
     public override void OnDeath()
     {
-        // Drop smth here
         collider.enabled = false;
+
+        foreach (ItemDrop item in drop)
+        {
+            float randomChance = UnityEngine.Random.Range(0, 100) / 100.0f;
+            if (randomChance < item.chance)
+            {
+                Instantiate(item.item.gameObject, transform.position, transform.rotation);
+            }
+        }
     }
 
 #if UNITY_EDITOR
