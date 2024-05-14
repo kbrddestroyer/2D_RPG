@@ -102,17 +102,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47c54e6a96c7fe4e96596c886da5f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  text: {fileID: 1194984040605037354}
   sDialogues:
   - Hello my friend
-  - Cock.
+  - Hehe
   - Want some jokes?
   fTextSpeed: 0.075
-  fTriggerDistance: 4.9
   audioSource: {fileID: 8495529252052286809}
-  hintActivate: {fileID: 5399561627942793386}
-  hintSkip: {fileID: 1456348084064124716}
+  fTriggerDistance: 4.9
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!82 &8495529252052286809
 AudioSource:
@@ -334,7 +330,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f06bfe477938e5a4383c8c75f4730d89, type: 2}
-  m_sharedMaterial: {fileID: 8768825209439146324, guid: f06bfe477938e5a4383c8c75f4730d89, type: 2}
+  m_sharedMaterial: {fileID: -3721813106744248949, guid: f06bfe477938e5a4383c8c75f4730d89, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
