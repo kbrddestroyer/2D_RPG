@@ -33,6 +33,8 @@ namespace GameControllers
         [Header("Gizmos")]
         [SerializeField] private Color gizmoColor = new Color(0f, 0f, 0f, 1f);
 
+        public Trigger trigger = null;
+
         private float fHP;
 
         private List<DialogueController> lDialogueController;
@@ -184,7 +186,7 @@ namespace GameControllers
                     c.Activate(false);
             }
 
-            if (controller == null && closest == null)
+            if (controller == null && closest == null && (!trigger || trigger is not DialogueTrigger))
                 masterController.Enabled = false;
         }
 
