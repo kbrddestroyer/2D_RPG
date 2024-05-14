@@ -173,6 +173,7 @@ MonoBehaviour:
   fAttackDistance: 1.5
   attackSFX: {fileID: 8300000, guid: 6058a5805beafec4e8dc562285ce8a14, type: 3}
   collider: {fileID: 7934003083533408394}
+  drop: []
   cAttackGizmoColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!82 &1816094141109144795
 AudioSource:
