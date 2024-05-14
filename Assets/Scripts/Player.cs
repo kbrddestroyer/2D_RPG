@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace GameControllers 
 {
@@ -93,6 +94,11 @@ namespace GameControllers
         public void OnDeath()
         {
             animator.SetTrigger("death");
+        }
+
+        private void OnDestroy()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         private void Attack()
