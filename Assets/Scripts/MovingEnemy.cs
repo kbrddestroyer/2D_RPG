@@ -13,6 +13,8 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
     [SerializeField, Range(0f, 10f)] private float fSpeed;
     [SerializeField] private AudioClip stepSFX;
     [SerializeField] protected AudioSource source;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private bool flip;
     [Header("Gizmo settings")]
     [SerializeField] private Color gizmoColor = new Color(0, 0, 0, 1);
 
@@ -34,6 +36,9 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
             {
                 animator.SetBool("walking", true);
             }
+
+            spriteRenderer.flipX = (transform.position.x - player.transform.position.x < 0) ^ flip;
+
             if (currentWaypoints.Count == 0)
                 currentWaypoints = getPath(player.transform.position);
 

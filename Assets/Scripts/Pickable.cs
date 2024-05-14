@@ -26,7 +26,7 @@ public class Pickable : MonoBehaviour, IPickable
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         if (!dialogueController)
             dialogueController = GameObject.FindObjectOfType<MasterDialogueController>();
