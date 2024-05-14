@@ -98,7 +98,8 @@ namespace GameControllers
 
         private void OnDestroy()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            if (HP <= 0)
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
         private void Attack()
