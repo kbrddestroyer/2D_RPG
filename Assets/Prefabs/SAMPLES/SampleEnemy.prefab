@@ -195,6 +195,8 @@ MonoBehaviour:
   fSpeed: 1
   stepSFX: {fileID: 8300000, guid: 48782102a1e22574dbe628c3424b46ae, type: 3}
   source: {fileID: 6632929887222377188}
+  spriteRenderer: {fileID: 7128443025265849926}
+  flip: 0
   gizmoColor: {r: 1, g: 0, b: 0, a: 1}
   fDamage: 2
   fAttackDelay: 1
