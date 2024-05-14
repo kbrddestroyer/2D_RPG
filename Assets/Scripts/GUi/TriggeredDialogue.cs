@@ -12,6 +12,7 @@ public class TriggeredDialogue : Dialogue
         {
             dialogueController.Text.text = "";
             isPlaying = false;
+            StopAllCoroutines();
         }
         if (dialogueController.Skip != state) dialogueController.Skip.SetActive(state);
     }

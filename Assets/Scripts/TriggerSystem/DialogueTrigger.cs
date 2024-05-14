@@ -6,6 +6,7 @@ using UnityEngine;
 public class DialogueTrigger : Trigger
 {
     [SerializeField] private TriggeredDialogue dialogue;
+    [SerializeField] private bool destroyAfterText;
 
     protected override void Action()
     {
@@ -16,5 +17,9 @@ public class DialogueTrigger : Trigger
     protected override void Deactivate()
     {
         dialogue.Activate(false);
+        if (destroyAfterText)
+        {
+            Destroy(gameObject);
+        }
     }
 }
