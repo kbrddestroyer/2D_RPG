@@ -19,12 +19,33 @@ public class MasterDialogueController : MonoBehaviour
     public GameObject Activate { get => hintActivate; }
     public GameObject Skip { get => hintSkip; }
 
+    private int refCount = 0;
     public bool Enabled
     {
         get => Root.gameObject.activeInHierarchy;
         set
         {
-            Root.gameObject.SetActive(value);
+            refCount += (value) ? 1 : -1;
+            
+            if (refCount <= 0)
+            {
+                refCount = 0;
+                setEnabled(false);
+            }
+            else setEnabled(true);
+        }
+    }
+
+    private void setEnabled(bool value)
+    {
+        Root.gameObject.SetActive(value);
+
+        if (!value)
+        {
+            Text.text = "";
+            Skip.SetActive(false);
+            Activate.SetActive(false);
+            SpImage = false;
         }
     }
 

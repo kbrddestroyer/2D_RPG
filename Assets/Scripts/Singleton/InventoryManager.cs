@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 [Singleton]
 public class InventoryManager : MonoBehaviour
@@ -12,6 +13,35 @@ public class InventoryManager : MonoBehaviour
     public static InventoryManager Instance { get => instance; }
 
     private List<Item> items = new List<Item>();
+    private List<QuestItem> quests = new List<QuestItem>();
+
+    public bool Contains(Item item)
+    {
+        foreach (Item _item in items)
+            if (item.id == _item.id)
+                return true; 
+        return false;
+    }
+
+    public void StartQuest(QuestItem quest)
+    {
+        quests.Add(quest);
+    }
+
+    public void DeactivateQuest(QuestItem quest)
+    {
+        items.Add(quest.Reward);
+        quests.Remove(quest);
+    }
+
+    public void DeactivateQuest(int index)
+    {
+        Assert.IsTrue(index >= 0 && index < quests.Count);
+        QuestItem quest = quests[index];
+
+        items.Add(quest.Reward);
+        quests.Remove(quest);
+    }
 
     public List<Item> Items { get => items; }
 

@@ -484,7 +484,7 @@ MonoBehaviour:
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Scenes/GameLevels/Level1
+            m_StringArgument: Scenes/GameLevels/Chapter1/Level1
             m_BoolArgument: 0
           m_CallState: 2
     hover:

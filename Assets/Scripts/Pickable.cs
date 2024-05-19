@@ -17,6 +17,8 @@ public class Pickable : MonoBehaviour, IPickable
     
     private MasterDialogueController dialogueController;
 
+    public Item ItemSetting { get => itemSettings; }
+
     public bool hint
     {
         get => dialogueController.Activate.activeInHierarchy; 

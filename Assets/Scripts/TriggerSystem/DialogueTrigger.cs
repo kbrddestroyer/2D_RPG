@@ -10,7 +10,7 @@ public class DialogueTrigger : Trigger
     protected override void Action()
     {
         dialogue.Activate(true);
-        dialogue.StartText();
+        dialogue.StartTextDisplay();
     }
 
     protected override void Deactivate()

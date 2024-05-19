@@ -18,6 +18,7 @@ namespace GameControllers
         [SerializeField, Range(0f, 10f)] private float fSpeed;
         [SerializeField, Range(0f, 10f)] private float fDamage;
         [SerializeField, Range(0f, 10f)] private float fDamageDistance;
+        [SerializeField, Range(0f, 10f)] private float fTriggerDistance;
         [SerializeField, Range(0f, 10f)] private float fMaxHP;
         [SerializeField] private LayerMask enemy;
         [SerializeField] private LayerMask pickables;
@@ -33,12 +34,13 @@ namespace GameControllers
 
         [Header("Gizmos")]
         [SerializeField] private Color gizmoColor = new Color(0f, 0f, 0f, 1f);
+        [SerializeField] private Color triggerGizmoColor = new Color(0f, 0f, 0f, 1f);
 
         public Trigger trigger = null;
 
         private float fHP;
 
-        private List<DialogueController> lDialogueController;
+        private List<TalkerBase> lDialogueController;
 
         public float HP
         {
@@ -74,7 +76,7 @@ namespace GameControllers
         private void Awake()
         {
             StartCoroutine(Blink());
-            lDialogueController = FindObjectsOfType<DialogueController>().ToList<DialogueController>();
+            lDialogueController = FindObjectsOfType<TalkerBase>().ToList<TalkerBase>();
 
             if (!masterController)
                 masterController = GameObject.FindObjectOfType<MasterDialogueController>();
@@ -135,15 +137,15 @@ namespace GameControllers
             return closest;
         }
 
-        private DialogueController GetClosestDialogueController()
+        private TalkerBase GetClosestDialogueController()
         {
-            DialogueController closest = null;
+            TalkerBase closest = null;
 
-            foreach (DialogueController controller in lDialogueController)
+            foreach (TalkerBase controller in lDialogueController)
             {
                 float distance = Vector2.Distance(transform.position, controller.transform.position);
 
-                if (distance < controller.TriggerDistance)
+                if (distance < fTriggerDistance)
                 {
                     if (closest == null || distance < Vector2.Distance(transform.position, closest.transform.position))
                         closest = controller;
@@ -181,7 +183,7 @@ namespace GameControllers
                     closest.Pickup();
                 }
             }
-            DialogueController controller;
+            TalkerBase controller;
             if (controller = GetClosestDialogueController())
             {
                 masterController.Enabled = true;
@@ -189,7 +191,7 @@ namespace GameControllers
             }
             else if (!controller)
             {
-                foreach (DialogueController c in lDialogueController)
+                foreach (TalkerBase c in lDialogueController)
                     c.Activate(false);
             }
 
@@ -202,6 +204,8 @@ namespace GameControllers
         {
             Gizmos.color = gizmoColor;
             Gizmos.DrawWireSphere(transform.position, fDamageDistance);
+            Gizmos.color = triggerGizmoColor;
+            Gizmos.DrawWireSphere(transform.position, fTriggerDistance);
         }
 #endif
     }

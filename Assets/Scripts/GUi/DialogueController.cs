@@ -15,9 +15,9 @@ public class DialogueController : Dialogue
         get => fTriggerDistance;
     }
 
-
     public override void Activate(bool state)
     {
+        dialogueController.Enabled = state;
         if (state)
         {
             dialogueController.Activate.SetActive(!isPlaying);
@@ -27,19 +27,13 @@ public class DialogueController : Dialogue
             }
             else if (Input.GetKeyDown(KeyCode.E))
             {
-                StartText();
+                StartTextDisplay();
             }
         }
         else
         {
-            if (!dialogueController.Enabled)
-            {
-                dialogueController.Text.text = "";
-                dialogueController.Skip.SetActive(false);
-                dialogueController.Activate.SetActive(false);
-                dialogueController.SpImage = false;
-            }
-            StopAllCoroutines();
+            if (textDisplayCoroutine != null)
+                StopCoroutine(textDisplayCoroutine);
             isPlaying = false;
         }
     }
