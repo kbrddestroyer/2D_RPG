@@ -20,4 +20,13 @@ public struct Item
     {
         return a.id != b.id;
     }
+
+    public override bool Equals(object obj)
+    {
+        if (obj is Item)
+        {
+            return ((Item)obj).id == id;
+        }
+        return false;
+    }
 }

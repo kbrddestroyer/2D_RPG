@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 namespace LevelManagement
 {
@@ -18,16 +19,52 @@ namespace LevelManagement
         [SerializeField] private GameManager gameManagerPrefab;
         [SerializeField] private InventoryManager inventoryManagerPrefab;
         [SerializeField] private InventoryItem itemPrefab;
+        [SerializeField] private QuestItemGUI questItemPrefab;
         [Header("Level settings")]
-        [SerializeField] private Transform tInventoryListRoot;
+        [SerializeField, AllowsNull] private Transform tInventoryListRoot;
+        [SerializeField, AllowsNull] private Transform tQuestListRoot;
         [SerializeField] private GameObject tInventoryGUI;
         public Transform Root { get => tInventoryListRoot; }
-
-        //[Header("GUI for inventory manager")]
+        public Transform QuestRoot { get => tQuestListRoot; }
 
         private void ToggleGUI(bool bState)
         {
             tInventoryGUI.SetActive(bState);
+
+            if (bState)
+                RebuildItems();
+        }
+
+        public void AddQuestToGUI(QuestItem quest)
+        {
+            QuestItemGUI questItem = Instantiate(questItemPrefab, QuestRoot);
+            questItem.QuestSettings = quest;
+        }
+
+        public void RebuildQuests()
+        {
+            foreach (QuestItemGUI questOld in FindObjectsOfType<QuestItemGUI>())
+            {
+                if (InventoryManager.Instance.Quests.Contains(questOld.QuestSettings) && !questOld.QuestSettings.questCompleted)
+                    continue;
+                Destroy(questOld.gameObject);
+            }
+        }
+
+        public void AddItem(Item item)
+        {
+            InventoryItem iItem = Instantiate(itemPrefab, Root);
+            iItem.ItemSettings = item;
+        }
+
+        public void RebuildItems()
+        {
+            foreach (InventoryItem itemOld in FindObjectsOfType<InventoryItem>())
+            {
+                if (InventoryManager.Instance.Items.Contains(itemOld.ItemSettings))
+                    continue;
+                Destroy(itemOld.gameObject);
+            }
         }
 
         private void Awake()
@@ -37,12 +74,16 @@ namespace LevelManagement
             if (InventoryManager.Instance == null)
                 Instantiate(inventoryManagerPrefab);
 
+            if (tInventoryListRoot == null)
+                tInventoryListRoot = GameObject.FindGameObjectWithTag("InventoryRoot").transform;
+            if (tQuestListRoot == null)
+                tQuestListRoot = GameObject.FindGameObjectWithTag("QuestsRoot").transform;
+
             foreach (Item item in InventoryManager.Instance.Items)
             {
-                InventoryItem iItem = Instantiate(itemPrefab, Root);
-                iItem.ItemSettings = item;
+                AddItem(item);
             }
-
+            RebuildQuests();
             instance = this;
         }
 

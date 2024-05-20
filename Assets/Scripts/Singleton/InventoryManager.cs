@@ -1,3 +1,4 @@
+using LevelManagement;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -5,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
+using static UnityEditor.Progress;
 
 [Singleton]
 public class InventoryManager : MonoBehaviour
@@ -19,19 +21,20 @@ public class InventoryManager : MonoBehaviour
     {
         foreach (Item _item in items)
             if (item.id == _item.id)
-                return true; 
+                return true;
         return false;
     }
 
     public void StartQuest(QuestItem quest)
     {
         quests.Add(quest);
+        GameLevelManager.Instance.AddQuestToGUI(quest);
     }
 
-    public void DeactivateQuest(QuestItem quest)
+    public virtual void DeactivateQuest(QuestItem quest)
     {
         items.Add(quest.Reward);
-        quests.Remove(quest);
+        GameLevelManager.Instance.RebuildQuests();
     }
 
     public void DeactivateQuest(int index)
@@ -40,10 +43,23 @@ public class InventoryManager : MonoBehaviour
         QuestItem quest = quests[index];
 
         items.Add(quest.Reward);
-        quests.Remove(quest);
+        GameLevelManager.Instance.RebuildQuests();
+    }
+
+    public void AddItem(Item item)
+    {
+        Items.Add(item);
+        GameLevelManager.Instance.AddItem(item);
+    }
+
+    public void RemoveItem(Item item)
+    {
+        Items.Remove(item);
+        GameLevelManager.Instance.RebuildItems();
     }
 
     public List<Item> Items { get => items; }
+    public List<QuestItem> Quests { get => quests; }
 
     private void Awake()
     {
@@ -56,17 +72,5 @@ public class InventoryManager : MonoBehaviour
         {
             Debug.LogWarning($"Warning on: {this.name}: instance is not null (2 or more singleton items are on scene)");
         }
-    }
-
-    [Obsolete]
-    public void Insert(Item item)
-    {
-        items.Add(item);
-    }
-
-    [Obsolete]
-    public void Remove(Item item)
-    {
-        items.Remove(item);
     }
 }

@@ -12,13 +12,20 @@ public class InventoryItem : MonoBehaviour
     [SerializeField] private TMP_Text label;
     [SerializeField] private Button button;
 
+    [HideInInspector] public int id;
+
+    private Item item;
+
     public Sprite Icon { set => image.sprite = value; }
     public string Label { set => label.text = value; }
     public bool Usable { set => button.enabled = value; }
 
     public Item ItemSettings
     {
+        get => item;
         set {
+            item = value;
+            id = value.id;
             image.sprite = value.icon;
             label.text = value.label;
             button.enabled = value.isUsable;

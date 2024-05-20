@@ -47,5 +47,7 @@ MonoBehaviour:
   gameManagerPrefab: {fileID: 4026800707403590681, guid: e9212101774372146ab5f7fbb02f48e4, type: 3}
   inventoryManagerPrefab: {fileID: 482522102886858378, guid: 9bf4440f7d78c2d4fbe111de28324659, type: 3}
   itemPrefab: {fileID: 8721910128331780994, guid: 8130f48b62d79304e87087bf00215823, type: 3}
+  questItemPrefab: {fileID: 2642849916603708907, guid: aae56a7d1454e0043aad784274edf36d, type: 3}
   tInventoryListRoot: {fileID: 0}
+  tQuestListRoot: {fileID: 0}
   tInventoryGUI: {fileID: 0}

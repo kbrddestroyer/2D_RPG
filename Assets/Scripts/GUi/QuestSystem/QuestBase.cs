@@ -57,8 +57,6 @@ public class QuestBase : TalkerBase
 
     public virtual void StartQuest()
     {
-        InventoryManager.Instance.StartQuest(item);
-
         StartText(startQuestDialogue);
         item.questStarted = true;
     }
@@ -70,9 +68,9 @@ public class QuestBase : TalkerBase
 
     public virtual void StopQuest()
     {
-        InventoryManager.Instance.DeactivateQuest(item);
         StartText(questCompletedText);
         item.questCompleted = true;
+        InventoryManager.Instance.AddItem(item.Reward);
     }
 
     public virtual void OnQuestInactive()
@@ -82,5 +80,15 @@ public class QuestBase : TalkerBase
 
     public override void AfterTextDisplay()
     {
+        if (item.questStarted)
+        {
+            if (item.questCompleted)
+            {
+                InventoryManager.Instance.DeactivateQuest(item);
+                InventoryManager.Instance.RemoveItem(item.ItemToObtain.ItemSetting);
+            }
+            else
+                InventoryManager.Instance.StartQuest(item);
+        }
     }
 }
