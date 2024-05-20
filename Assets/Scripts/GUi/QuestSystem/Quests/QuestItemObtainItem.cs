@@ -7,6 +7,8 @@ public class QuestItemObtainItem : QuestItem
 {
     [SerializeField] private Pickable itemToObtain;
 
+    public Pickable ItemToObtain { get => itemToObtain; }
+
     public override bool questValidationPredicate()
     {
         return InventoryManager.Instance.Contains(itemToObtain.ItemSetting);
