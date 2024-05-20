@@ -7,11 +7,31 @@ using UnityEngine.UI;
 public class MasterDialogueController : MonoBehaviour
 {
     [SerializeField] private TMP_Text tText;
+    [SerializeField] private string text;
     [SerializeField] private Transform root;
     [SerializeField] private Image iImage;
     [Header("Hints")]
     [SerializeField] private GameObject hintActivate;
     [SerializeField] private GameObject hintSkip;
+
+    public List<IMasterDialogue> subscribed = new List<IMasterDialogue>();
+    
+    public void Subscribe(IMasterDialogue ob)
+    {
+        Debug.Log($"Added {ob}");
+        subscribed.Add(ob);
+        Enabled = true;
+    }
+
+    public void Unsubscribe(IMasterDialogue ob)
+    {
+        Debug.Log($"Removed {ob}");
+        if (subscribed.Remove(ob))
+        {
+            if (subscribed.Count == 0)
+                setEnabled(false);
+        }
+    }
 
     public TMP_Text Text { get => tText; }
     public Transform Root { get => root; }
@@ -23,7 +43,7 @@ public class MasterDialogueController : MonoBehaviour
     public bool Enabled
     {
         get => Root.gameObject.activeInHierarchy;
-        set
+        private set
         {
             refCount += (value) ? 1 : -1;
             
