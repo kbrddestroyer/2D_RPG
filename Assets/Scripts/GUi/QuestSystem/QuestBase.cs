@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestBase : TalkerBase
+public class QuestBase : TalkerBase, IMasterDialogue
 {
     [SerializeField] private QuestItemObtainItem item;
     [SerializeField] private string[] startQuestDialogue;
@@ -13,11 +13,13 @@ public class QuestBase : TalkerBase
     [Header("Gizmos")]
     [SerializeField] protected Color gizmoColor = new Color(0, 0, 0, 1);
 
+    private bool subscribed = false;
+
     public override void Activate(bool state)
     {
-        dialogueController.Enabled = state;
         if (state)
         {
+            Subscribe();
             dialogueController.Activate.SetActive(!isPlaying);
             if (isPlaying)
             {
@@ -30,9 +32,13 @@ public class QuestBase : TalkerBase
         }
         else
         {
-            if (textDisplayCoroutine != null)
-                StopCoroutine(textDisplayCoroutine);
-            isPlaying = false;
+            Unsubscribe();
+            if (!dialogueController.Enabled)
+            {
+                if (textDisplayCoroutine != null)
+                    StopCoroutine(textDisplayCoroutine);
+                isPlaying = false;
+            }
         }
     }
 
@@ -89,6 +95,24 @@ public class QuestBase : TalkerBase
             }
             else
                 InventoryManager.Instance.StartQuest(item);
+        }
+    }
+
+    public void Subscribe()
+    {
+        if (!subscribed)
+        {
+            subscribed = true;
+            dialogueController.Subscribe(this);
+        }
+    }
+
+    public void Unsubscribe()
+    {
+        if (subscribed)
+        {
+            subscribed = false;
+            dialogueController.Unsubscribe(this);
         }
     }
 }

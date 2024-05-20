@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Pickable : MonoBehaviour, IPickable
+public class Pickable : MonoBehaviour, IPickable, IMasterDialogue
 {
     /*
      *  Parent class for every usable item 
@@ -16,6 +16,7 @@ public class Pickable : MonoBehaviour, IPickable
     [SerializeField] private InventoryItem guiPrefab;
     
     private MasterDialogueController dialogueController;
+    private bool subscribed = false;
 
     public Item ItemSetting { get => itemSettings; }
 
@@ -40,5 +41,25 @@ public class Pickable : MonoBehaviour, IPickable
         item.ItemSettings = itemSettings;
         InventoryManager.Instance.Items.Add(itemSettings);
         Destroy(this.gameObject);
+    }
+
+    public void Subscribe()
+    {
+        if (!subscribed)
+        {
+            subscribed = true;
+            dialogueController.Activate.SetActive(true);
+            dialogueController.Subscribe(this);
+        }
+    }
+
+    public void Unsubscribe()
+    {
+        if (subscribed)
+        {
+            subscribed = false;
+            dialogueController.Activate.SetActive(false);
+            dialogueController.Unsubscribe(this);
+        }
     }
 }
