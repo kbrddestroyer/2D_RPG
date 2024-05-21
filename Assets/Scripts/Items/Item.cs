@@ -4,7 +4,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 
 [Serializable]
-public struct Item
+public class Item
 {
     public Sprite icon;
     public string label;
@@ -25,8 +25,10 @@ public struct Item
     {
         if (obj is Item)
         {
-            return ((Item)obj).id == id;
+            return ((Item) obj).id == id;
         }
         return false;
     }
+
+    public virtual void OnClick() { }
 }

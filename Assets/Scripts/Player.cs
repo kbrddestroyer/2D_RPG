@@ -56,6 +56,7 @@ namespace GameControllers
                     }
                 }
                 fHP = value;
+                HPGUIController.Instance.HP = value / fMaxHP;
                 if (value <= 0)
                 {
                     this.enabled = false;

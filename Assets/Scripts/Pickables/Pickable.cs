@@ -5,20 +5,21 @@ using System.Diagnostics.CodeAnalysis;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
-public class Pickable : MonoBehaviour, IPickable, IMasterDialogue
+public class Pickable<T> : MonoBehaviour, IPickable, IMasterDialogue where T : Item
 {
     /*
      *  Parent class for every usable item 
      */
-    [SerializeField] private Item itemSettings;
+    [SerializeField] protected T itemSettings;
     [Header("Required")]
-    [SerializeField] private InventoryItem guiPrefab;
+    [SerializeField] protected InventoryItem guiPrefab;
     
     private MasterDialogueController dialogueController;
     private bool subscribed = false;
 
-    public Item ItemSetting { get => itemSettings; }
+    public T ItemSetting { get => itemSettings; }
 
     public bool hint
     {
