@@ -14,12 +14,14 @@
 
 ### git cli
 
-- SSH `$ git clone `
-- HTTPS `$ git clone `
+- SSH `$ git clone git@github.com:kbrddestroyer/2D_RPG.git`
+- HTTPS `$ git clone https://github.com/kbrddestroyer/2D_RPG.git`
 
 > Если вы делали fork то помните, что в `$ git clone` стоит указать ссылку на свой fork, либо использовать команду `$ git remote set-url origin <fork-link>` после скачивания репозитория для изменения ссылки на **origin**
 
 ### git gui
+
+`gh repo clone kbrddestroyer/2D_RPG`
 
 Задайте **Source Location** (ссылка на репозиторий) и **Target Directory** (место на локальном диске, куда сохранятся файлы проекта)
 
