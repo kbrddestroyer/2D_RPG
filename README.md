@@ -1,10 +1,13 @@
 # Основная информация 
+
+> Проект все еще в разработке, документы могут быть изменены 
+
 ## О проекте 
 
-**Engine**: Unity 2D SRP
-**Status**: INDEV
-**Build branch**: main
-**Testing branch**: test
+- **Engine**: Unity 2D SRP
+- **Status**: INDEV
+- **Build branch**: main
+- **Testing branch**: test
 
 ## Contributors:
 
