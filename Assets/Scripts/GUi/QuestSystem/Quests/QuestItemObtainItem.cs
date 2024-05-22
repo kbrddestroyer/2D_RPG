@@ -5,7 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class QuestItemObtainItem : QuestItem
 {
-    [SerializeField] private Pickable itemToObtain;
+    [SerializeField] private HealingPickable itemToObtain;
+
+    public HealingPickable ItemToObtain { get => itemToObtain; }
 
     public override bool questValidationPredicate()
     {

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestBase : TalkerBase
+public class QuestBase : TalkerBase, IMasterDialogue
 {
     [SerializeField] private QuestItemObtainItem item;
     [SerializeField] private string[] startQuestDialogue;
@@ -13,11 +13,13 @@ public class QuestBase : TalkerBase
     [Header("Gizmos")]
     [SerializeField] protected Color gizmoColor = new Color(0, 0, 0, 1);
 
+    private bool subscribed = false;
+
     public override void Activate(bool state)
     {
-        dialogueController.Enabled = state;
         if (state)
         {
+            Subscribe();
             dialogueController.Activate.SetActive(!isPlaying);
             if (isPlaying)
             {
@@ -30,9 +32,13 @@ public class QuestBase : TalkerBase
         }
         else
         {
-            if (textDisplayCoroutine != null)
-                StopCoroutine(textDisplayCoroutine);
-            isPlaying = false;
+            Unsubscribe();
+            if (!dialogueController.Enabled)
+            {
+                if (textDisplayCoroutine != null)
+                    StopCoroutine(textDisplayCoroutine);
+                isPlaying = false;
+            }
         }
     }
 
@@ -57,8 +63,6 @@ public class QuestBase : TalkerBase
 
     public virtual void StartQuest()
     {
-        InventoryManager.Instance.StartQuest(item);
-
         StartText(startQuestDialogue);
         item.questStarted = true;
     }
@@ -70,9 +74,9 @@ public class QuestBase : TalkerBase
 
     public virtual void StopQuest()
     {
-        InventoryManager.Instance.DeactivateQuest(item);
         StartText(questCompletedText);
         item.questCompleted = true;
+        InventoryManager.Instance.AddItem(item.Reward);
     }
 
     public virtual void OnQuestInactive()
@@ -82,5 +86,33 @@ public class QuestBase : TalkerBase
 
     public override void AfterTextDisplay()
     {
+        if (item.questStarted)
+        {
+            if (item.questCompleted)
+            {
+                InventoryManager.Instance.DeactivateQuest(item);
+                InventoryManager.Instance.RemoveItem(item.ItemToObtain.ItemSetting);
+            }
+            else
+                InventoryManager.Instance.StartQuest(item);
+        }
+    }
+
+    public void Subscribe()
+    {
+        if (!subscribed)
+        {
+            subscribed = true;
+            dialogueController.Subscribe(this);
+        }
+    }
+
+    public void Unsubscribe()
+    {
+        if (subscribed)
+        {
+            subscribed = false;
+            dialogueController.Unsubscribe(this);
+        }
     }
 }

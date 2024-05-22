@@ -56,6 +56,7 @@ namespace GameControllers
                     }
                 }
                 fHP = value;
+                HPGUIController.Instance.HP = value / fMaxHP;
                 if (value <= 0)
                 {
                     this.enabled = false;
@@ -121,7 +122,7 @@ namespace GameControllers
 
         private IPickable GetClosestPickableItem() 
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fDamageDistance, pickables);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fTriggerDistance, pickables);
 
             IPickable closest = null;
 
@@ -133,7 +134,6 @@ namespace GameControllers
                     closest = pickable;
                 }
             }
-
             return closest;
         }
 
@@ -159,6 +159,22 @@ namespace GameControllers
             audio.PlayOneShot(stepSFX);
         }
 
+        public void OnTriggerEnter2D(Collider2D collision)
+        {
+            IMasterDialogue controller = collision.GetComponent<IMasterDialogue>();
+
+            if (controller != null)
+                controller.Subscribe();
+        }
+
+        public void OnTriggerExit2D(Collider2D collision)
+        {
+            IMasterDialogue controller = collision.GetComponent<IMasterDialogue>();
+
+            if (controller != null)
+                controller.Unsubscribe();
+        }
+
         private void Update()
         {
             Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed;  // Direction vector
@@ -176,27 +192,17 @@ namespace GameControllers
             IPickable closest;
             if ((closest = GetClosestPickableItem()) != null)
             {
-                masterController.Enabled = true;
-                closest.hint = true;
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     closest.Pickup();
                 }
             }
+
             TalkerBase controller;
             if (controller = GetClosestDialogueController())
             {
-                masterController.Enabled = true;
                 controller.Activate(true);
             }
-            else if (!controller)
-            {
-                foreach (TalkerBase c in lDialogueController)
-                    c.Activate(false);
-            }
-
-            if (controller == null && closest == null && (!trigger || trigger is not DialogueTrigger))
-                masterController.Enabled = false;
         }
 
 #if UNITY_EDITOR || UNITY_EDITOR_64
