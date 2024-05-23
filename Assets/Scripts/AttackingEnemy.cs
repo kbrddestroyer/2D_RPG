@@ -9,7 +9,7 @@ public class AttackingEnemy : MovingEnemy, IDamagable
     [Serializable]
     private struct ItemDrop
     {
-        public HealingPickable item;
+        public Pickable item;
         public float chance;
     }
 

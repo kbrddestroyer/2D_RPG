@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2506717148276532430}
   - component: {fileID: 8931932909254065063}
   - component: {fileID: 5419443187974756511}
-  - component: {fileID: 3995001905181484119}
+  - component: {fileID: 5982850704761769735}
   m_Layer: 6
   m_Name: SampleUsableItem
   m_TagString: Untagged
@@ -122,7 +122,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
---- !u!114 &3995001905181484119
+--- !u!114 &5982850704761769735
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,30 +131,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2628150320953219635}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce049e4fea54e374f87189009c8ad390, type: 3}
+  m_Script: {fileID: 11500000, guid: 660801cacd5b6cc4e82bc23f51e88e4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemSettings:
-    icon: {fileID: -1114297191, guid: 9ff95c8899360034489a351bee69572e, type: 3}
-    label: Brain
-    isUsable: 1
-    onClick:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 3995001905181484119}
-          m_TargetAssemblyTypeName: 
-          m_MethodName: 
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: 
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    id: 0
-    healingAmount: 1
+  itemSettings: {fileID: 11400000, guid: 57c96fb6f4f241b4fbd446eef0b76764, type: 2}
   guiPrefab: {fileID: 8721910128331780994, guid: 8130f48b62d79304e87087bf00215823, type: 3}
 --- !u!1001 &7334077805177232585
 PrefabInstance:

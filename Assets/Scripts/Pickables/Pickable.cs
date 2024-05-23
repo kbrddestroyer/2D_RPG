@@ -7,19 +7,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class Pickable<T> : MonoBehaviour, IPickable, IMasterDialogue where T : Item
+public class Pickable : MonoBehaviour, IPickable, IMasterDialogue
 {
     /*
      *  Parent class for every usable item 
      */
-    [SerializeField] protected T itemSettings;
+    [SerializeField] protected Item itemSettings;
     [Header("Required")]
     [SerializeField] protected InventoryItem guiPrefab;
     
     private MasterDialogueController dialogueController;
     private bool subscribed = false;
 
-    public T ItemSetting { get => itemSettings; }
+    public Item ItemSetting { get => itemSettings; }
 
     public bool hint
     {
