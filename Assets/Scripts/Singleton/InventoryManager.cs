@@ -28,12 +28,14 @@ public class InventoryManager : MonoBehaviour
     public void StartQuest(QuestItem quest)
     {
         quests.Add(quest);
+        quest.StartQuest();
         GameLevelManager.Instance.AddQuestToGUI(quest);
     }
 
     public virtual void DeactivateQuest(QuestItem quest)
     {
         items.Add(quest.Reward);
+        quest.FinalizeQuest();
         GameLevelManager.Instance.RebuildQuests();
     }
 
