@@ -30,7 +30,7 @@ public class InventoryItem : MonoBehaviour
             label.text = value.label;
             button.enabled = value.isUsable;
             if (value.isUsable) {
-                button.onClick.AddListener(() => { value.onClick.Invoke(); });
+                button.onClick.AddListener(() => { value.OnClick(); });
                 button.onClick.AddListener(() => { Destroy(this.gameObject); });
             }
         }
