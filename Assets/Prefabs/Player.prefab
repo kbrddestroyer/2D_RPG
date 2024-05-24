@@ -125,6 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fSpeed: 7
   fDamage: 1
+  fDamageDelay: 1
   fDamageDistance: 2.23
   fTriggerDistance: 2.9
   fMaxHP: 10
