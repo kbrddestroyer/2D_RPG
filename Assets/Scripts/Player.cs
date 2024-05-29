@@ -17,6 +17,7 @@ namespace GameControllers
         [Header("Base settings")]
         [SerializeField, Range(0f, 10f)] private float fSpeed;
         [SerializeField, Range(0f, 10f)] private float fDamage;
+        [SerializeField, Range(0f, 1f)]  private float fDamageDelay;
         [SerializeField, Range(0f, 10f)] private float fDamageDistance;
         [SerializeField, Range(0f, 10f)] private float fTriggerDistance;
         [SerializeField, Range(0f, 10f)] private float fMaxHP;
@@ -25,7 +26,7 @@ namespace GameControllers
 
         [Header("Required Components")]
         [SerializeField] private Animator animator;
-        [SerializeField] private AudioSource audio;
+        [SerializeField] private new AudioSource audio;
         [SerializeField] private SpriteRenderer spriteRenderer;
         [SerializeField] private MasterDialogueController masterController;
         [Header("Audio")]
@@ -39,7 +40,7 @@ namespace GameControllers
         public Trigger trigger = null;
 
         private float fHP;
-
+        private float fPassedDelayTime = 0.0f;
         private List<TalkerBase> lDialogueController;
 
         public float HP
@@ -107,6 +108,9 @@ namespace GameControllers
 
         private void Attack()
         {
+            if (fPassedDelayTime < fDamageDelay)
+                return;
+            fPassedDelayTime = 0.0f;
             animator.SetTrigger("attack");
 
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fDamageDistance, enemy);
@@ -180,6 +184,12 @@ namespace GameControllers
             Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed;  // Direction vector
             spriteRenderer.flipX = (inputSpeed.x == 0) ? spriteRenderer.flipX : inputSpeed.x < 0;
 
+            if (fPassedDelayTime < fDamageDelay)
+            {
+                fPassedDelayTime += Time.deltaTime;
+
+                HPGUIController.Instance.AttackProgression = fPassedDelayTime / fDamageDelay;
+            }
             animator.SetBool("walking", inputSpeed.magnitude > 0);
 
             transform.Translate(inputSpeed * Time.deltaTime);

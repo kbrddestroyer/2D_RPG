@@ -6,6 +6,7 @@ using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public abstract class EnemyBase : MonoBehaviour, IDamagable
 {
@@ -14,6 +15,9 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     [SerializeField] protected Animator animator;
     [SerializeField, Range(0f, 10f)] private float fMaxHP;
     [SerializeField, Range(0f, 10f)] private float fCorpseLifetime;
+    [Header("GUI")]
+    [SerializeField] private Slider hpSlider;
+
     private float fHP;
 
     public float HP { 
@@ -23,6 +27,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
             if (value < fHP && value > 0)
                 Damage();
             fHP = value;
+            hpSlider.value = Mathf.Clamp(value / fMaxHP, 0f, 1f);
             if (fHP <= 0f)
                 enabled = false;
         }
@@ -36,6 +41,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     private void OnDisable()
     {
         animator.SetTrigger("death");
+        hpSlider.gameObject.SetActive(false);
         OnDeath();
         Destroy(this.gameObject, fCorpseLifetime);
     }
