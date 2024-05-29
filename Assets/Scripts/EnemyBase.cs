@@ -42,7 +42,8 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     {
         animator.SetTrigger("death");
         hpSlider.gameObject.SetActive(false);
-        OnDeath();
+        if (HP <= 0)
+            OnDeath();
         Destroy(this.gameObject, fCorpseLifetime);
     }
 
