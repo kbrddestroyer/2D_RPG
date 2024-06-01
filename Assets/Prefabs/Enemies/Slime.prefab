@@ -155,7 +155,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -859333433, guid: 5c352495a173ccf4b93059dbf2025dec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.32, y: 0.25}
@@ -240,6 +240,7 @@ MonoBehaviour:
   fReactionDistance: 5
   needToBeSummoned: 1
   hpSlider: {fileID: 5297777477523755398}
+  summoned: 0
   fRerouteDistance: 0.5
   fStopDistance: 1.5
   fSpeed: 2
@@ -248,9 +249,13 @@ MonoBehaviour:
   spriteRenderer: {fileID: 5678320495894069740}
   flip: 0
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
-  fDamage: 1
+  attacks:
+  - fDamage: 1
+    fDamageDistance: 2
+    fYDispersion: 3
+    type: 1
+    sfx: {fileID: 8300000, guid: 6058a5805beafec4e8dc562285ce8a14, type: 3}
   fAttackDelay: 1
-  fAttackDistance: 1.5
   attackSFX: {fileID: 8300000, guid: 6058a5805beafec4e8dc562285ce8a14, type: 3}
   collider: {fileID: 7934003083533408394}
   drop: []

@@ -19,26 +19,16 @@ namespace GameControllers
         private static Player instance;
         public static Player Instance { get => instance; }
 
-        [System.Serializable]
-        protected class PlayerAttack
-        {
-            [SerializeField, Range(0f, 10f)] private float fDamage;
-            [SerializeField, Range(0f, 10f)] private float fDamageDistance;
-
-            public float Damage { get => fDamage; }
-            public float Distance { get => fDamageDistance; }
-        }
-
         [Header("Base settings")]
         [SerializeField, Range(0f, 25f)] private float fSpeed;
-        [SerializeField] protected PlayerAttack[] attacks;
+        [SerializeField] protected Attack[] attacks;
         [SerializeField, Range(0f, 1f)]  protected float fDamageDelay;
-        
         [SerializeField, Range(0f, 10f)] private float fTriggerDistance;
         [SerializeField, Range(0f, 10f)] private float fMaxHP;
         [SerializeField] private LayerMask enemy;
         [SerializeField] private LayerMask pickables;
-
+        [Header("Combat logic")]
+        [SerializeField, Range(0f, 5f)] private float comboFallback;
         [Header("Required Components")]
         [SerializeField] protected Animator animator;
         [SerializeField] protected new AudioSource audio;
@@ -46,7 +36,6 @@ namespace GameControllers
         [Header("Audio")]
         [SerializeField] private AudioClip stepSFX;
         [SerializeField] private AudioClip damagedSFX;
-        [SerializeField] protected AudioClip[] combat;
 
         [Header("Gizmos")]
         [SerializeField] private Color gizmoColor = new Color(0f, 0f, 0f, 1f);
@@ -59,6 +48,9 @@ namespace GameControllers
         private List<TalkerBase> lDialogueController;
         protected MasterDialogueController masterController;
         private bool summoned = false;
+
+        private float comboPassTime;
+        private uint attackCount;
 
         public List<Item> itemsPickedUpInLevel = new List<Item>();
 
@@ -163,18 +155,16 @@ namespace GameControllers
             }
         }
 
-        protected virtual AudioClip PickAttackSound()
-        {
-            return combat[Random.Range(0, combat.Length)];
-        }
-
         protected virtual void Attack()
         {
             if (fPassedDelayTime < fDamageDelay)
                 return;
             fPassedDelayTime = 0.0f;
+            animator.SetInteger("attackType", (int) attackCount % attacks.Length);
             animator.SetTrigger("attack");
-            audio.PlayOneShot(PickAttackSound());
+            audio.PlayOneShot(attacks[attackCount % attacks.Length].SFX);
+            attackCount++;
+            comboPassTime = 0;
         }
 
         protected IPickable GetClosestPickableItem() 
@@ -274,16 +264,29 @@ namespace GameControllers
             {
                 controller.Activate(true);
             }
+
+            if (fPassedDelayTime < fDamageDelay)
+            {
+                fPassedDelayTime += Time.deltaTime;
+            }
+
+            if (comboPassTime < comboFallback)
+            {
+                comboPassTime += Time.deltaTime;
+                HPGUIController.Instance.AttackProgression = 1 - comboPassTime / comboFallback;
+                if (comboPassTime >= comboFallback)
+                    attackCount = 0;
+            }
         }
 
 #if UNITY_EDITOR || UNITY_EDITOR_64
         protected virtual void OnDrawGizmosSelected()
         {
             Gizmos.color = gizmoColor;
-            
-            foreach (PlayerAttack attack in attacks)
+
+            foreach (Attack attack in attacks)
             {
-                Gizmos.DrawWireSphere(transform.position, attack.Distance);
+                attack.DrawGizmo(transform.position);
             }
 
             Gizmos.color = triggerGizmoColor;

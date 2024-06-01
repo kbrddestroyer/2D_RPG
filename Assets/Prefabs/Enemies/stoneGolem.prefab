@@ -414,26 +414,33 @@ MonoBehaviour:
   fReactionDistance: 6
   needToBeSummoned: 1
   hpSlider: {fileID: 3912583260240071856}
+  summoned: 0
   fRerouteDistance: 1
   fStopDistance: 2
   fSpeed: 2
-  stepSFX: {fileID: 0}
+  stepSFX: {fileID: 8300000, guid: 26e08dda85b53f74b9dbaaa0c20f1955, type: 3}
   source: {fileID: 1547240322186294094}
   spriteRenderer: {fileID: 5949298284100189119}
   flip: 1
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
-  fDamage: 2
+  attacks:
+  - fDamage: 1
+    fDamageDistance: 5
+    fYDispersion: 5
+    type: 1
+    sfx: {fileID: 8300000, guid: 26e08dda85b53f74b9dbaaa0c20f1955, type: 3}
+  - fDamage: 3
+    fDamageDistance: 3.5
+    fYDispersion: 0
+    type: 0
+    sfx: {fileID: 8300000, guid: 58364bbf225139d48ab3f744dae7f710, type: 3}
   fAttackDelay: 3
-  fAttackDistance: 3.25
-  attackSFX: {fileID: 0}
+  attackSFX: {fileID: 8300000, guid: 757d50f398a97434280c1e721782b83e, type: 3}
   collider: {fileID: 2776164083286487842}
   drop:
   - item: {fileID: 5982850704761769735, guid: d0c90614827edcf478de42b23969245c, type: 3}
     chance: 50
   cAttackGizmoColor: {r: 0, g: 0, b: 0, a: 1}
-  attack2_Damage: 5
-  attack2_Distance: 5
-  attack2_Y_Dispersion: 6
 --- !u!82 &1547240322186294094
 AudioSource:
   m_ObjectHideFlags: 0

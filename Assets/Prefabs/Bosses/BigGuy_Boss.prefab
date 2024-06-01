@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 1993549703, guid: 619bec0b954ee624387b6361dbfb6200, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.35, y: 0.7}
@@ -289,6 +289,7 @@ MonoBehaviour:
   fReactionDistance: 15
   needToBeSummoned: 0
   hpSlider: {fileID: 0}
+  summoned: 0
   fRerouteDistance: 1
   fStopDistance: 5
   fSpeed: 2
@@ -297,21 +298,25 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6504330168229286652}
   flip: 1
   gizmoColor: {r: 1, g: 0, b: 0, a: 1}
+  attacks:
+  - fDamage: 7
+    fDamageDistance: 10
+    fYDispersion: 10
+    type: 1
+    sfx: {fileID: 8300000, guid: 58364bbf225139d48ab3f744dae7f710, type: 3}
+  - fDamage: 3
+    fDamageDistance: 7
+    fYDispersion: 0
+    type: 0
+    sfx: {fileID: 8300000, guid: 58364bbf225139d48ab3f744dae7f710, type: 3}
+  fAttackDelay: 3
+  collider: {fileID: 4131055149479096097}
+  drop: []
+  cAttackGizmoColor: {r: 0, g: 0, b: 0, a: 1}
   bossname: "\u041A\u0430\u043C\u0435\u043D\u043D\u0430\u044F \u0433\u043D\u0438\u0434\u0430"
-  combat:
-  - {fileID: 8300000, guid: ea5af97529018f64d839889b548a866c, type: 3}
-  - {fileID: 8300000, guid: 58364bbf225139d48ab3f744dae7f710, type: 3}
-  combatAnims: 2
-  attackRange: 7
-  damage: 5
-  damageDelay: 2
-  postAttackDelay: 1
+  postAttackDelay: 2
   col: {fileID: 4131055149479096097}
-  postMortemDrop: []
-  attackRangeColor: {r: 0, g: 0.6809266, b: 0.06065279, a: 1}
-  attack2_Range: 10
-  attack2_Y_Dispersion: 5
-  attack2_Damage: 7
+  inAttack: 0
 --- !u!114 &3395057595360367417
 MonoBehaviour:
   m_ObjectHideFlags: 0

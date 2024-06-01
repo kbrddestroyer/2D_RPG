@@ -22,7 +22,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
 
     protected float fHP;
 
-    protected bool summoned;
+    public bool summoned;
 
     protected virtual void UpdateGUIElement(float value)
     {
@@ -33,6 +33,9 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
         get => fHP; 
         set
         {
+            if (!summoned && value < fHP)
+                return;
+
             if (value < fHP && value > 0)
                 Damage();
             fHP = value;

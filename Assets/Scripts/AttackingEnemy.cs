@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -6,57 +5,58 @@ using UnityEngine;
 
 public class AttackingEnemy : MovingEnemy, IDamagable
 {
-    [Serializable]
+    [System.Serializable]
     private struct ItemDrop
     {
         public Pickable item;
         public float chance;
     }
 
-    [SerializeField, Range(0f, 10f)] private float fDamage;
+    [SerializeField] protected Attack[] attacks;
     [SerializeField, Range(0f, 10f)] private float fAttackDelay;
-    [SerializeField, Range(0f, 10f)] private float fAttackDistance;
-    [SerializeField] protected AudioClip attackSFX;
     [SerializeField] private new Collider2D collider;
     [Header("Drop")]
     [SerializeField] private ItemDrop[] drop;
-    
     [Header("Gizmos")]
     [SerializeField] private Color cAttackGizmoColor = new Color(0f, 0f, 0f, 1f);
 
     private float fPassedTime = 0f;
+    private int pickedAttackID = 0;
 
     protected override void Update()
     {
         fPassedTime += Time.deltaTime;
-
-        if (player != null && Vector2.Distance(transform.position, player.transform.position) < fAttackDistance)
+        if (summoned && fPassedTime > fAttackDelay && player != null && attacks[pickedAttackID].validatePredicate(transform.position, player.transform.position, spriteRenderer.flipX))
         {
             Attack();
         }
         else base.Update();
     }
 
-    private void Attack()
+    protected virtual void Attack()
     {
         if (animator.GetBool("walking"))
         {
             animator.SetBool("walking", false);
         }
-        if (fPassedTime >= fAttackDelay)
-        {
-            fPassedTime = 0;
-            animator.SetTrigger("attack");
-        }
+
+        fPassedTime = 0;
+        animator.SetInteger("attackType", Random.Range(0, attacks.Length));
+        animator.SetTrigger("attack");
     }
 
-    public virtual void DamagePlayer()
+    public virtual void DamagePlayer(int animID)
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < fAttackDistance)
+        if (animID >= attacks.Length)
+            return;
+
+        if (attacks[animID].validatePredicate(transform.position, player.transform.position, spriteRenderer.flipX))
         { 
-            player.HP -= fDamage;
+            player.HP -= attacks[animID].Damage;
         }
-        source.PlayOneShot(attackSFX);
+        source.PlayOneShot(attacks[animID].SFX);
+
+        pickedAttackID = Random.Range(0, attacks.Length);
     }
 
     public override void OnDeath()
@@ -77,7 +77,10 @@ public class AttackingEnemy : MovingEnemy, IDamagable
     protected override void OnDrawGizmosSelected()
     {
         Gizmos.color = cAttackGizmoColor;
-        Gizmos.DrawWireSphere(transform.position, fAttackDistance);
+        foreach (Attack attack in attacks)
+        {
+            attack.DrawGizmo(transform.position);
+        }
     
         base.OnDrawGizmosSelected();
     }

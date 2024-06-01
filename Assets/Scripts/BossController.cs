@@ -5,24 +5,16 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Collider2D))]
-public class BossController : MovingEnemy
+public class BossController : AttackingEnemy
 {
     [Header("Boss Settings")]
     [SerializeField] private string bossname;
-    [SerializeField] protected AudioClip[] combat;
-    [SerializeField] protected int combatAnims;
-    [SerializeField, Range(0f, 10f)] private float attackRange;
-    [SerializeField, Range(0f, 10f)] private float damage;
-    [SerializeField, Range(0f, 10f)] private float damageDelay;
     [SerializeField, Range(0f, 10f)] private float postAttackDelay;
     [Header("Boss Requirements")]
     [SerializeField] private Collider2D col;
-    [SerializeField] private Pickable[] postMortemDrop;
-    [Header("Boss Gizmo")]
-    [SerializeField] private Color attackRangeColor = new Color(0, 0, 0, 1);
 
     protected float passedTime = 0f;
-    protected bool inAttack = false;
+    public bool inAttack = false;
 
     public override float HP 
     { 
@@ -35,8 +27,16 @@ public class BossController : MovingEnemy
 
     private IEnumerator AttackDropState()
     {
-        inAttack = true; 
-        yield return new WaitForSeconds(postAttackDelay);
+        inAttack = true;
+        float passed = 0f;
+        while (passed < postAttackDelay)
+        {
+            yield return new WaitForEndOfFrame();
+            passed += Time.deltaTime;
+
+            BossmodeGUI.Instance.Immunity = passed / postAttackDelay;
+        }
+
         inAttack = false;
     }
 
@@ -57,73 +57,16 @@ public class BossController : MovingEnemy
         BossmodeGUI.Instance.Name = bossname;
     }
 
-    protected virtual void OnPostMortemDrop()
+    protected override void Attack()
     {
-        foreach (Pickable pickable in postMortemDrop)
-        {
-            Instantiate(pickable, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0), Quaternion.identity);
-        }
-        Destroy(gameObject, postAttackDelay);
-    }
-
-    public void PlayerDamageFromAnimator(int damageType)
-    {
-        DamagePlayer(damageType);
-        source.PlayOneShot(combat[Random.Range(0, combat.Length)]);
-    }
-
-    public virtual void DamagePlayer(int damageType)
-    {
-        if (Vector2.Distance(transform.position, player.transform.position) <= attackRange)
-        {
-            player.HP -= damage;
-        }
-    }
-
-
-    public override void OnDeath()
-    {
-        col.enabled = false;
-        OnPostMortemDrop();
-        BossmodeGUI.Instance.Toggle(false);
-    }
-
-    private int pickAttackType()
-    {
-        return Random.Range(0, combatAnims);
-    }
-
-    protected virtual void Attack()
-    {
+        if (inAttack) return;
+        StopAllCoroutines();
         StartCoroutine(AttackDropState());
-        int id = pickAttackType();
-        passedTime = 0;
-
-        animator.SetInteger("attackType", id);
-        animator.SetTrigger("attack");
+        base.Attack();
     }
 
     protected override void Update()
     {
-        if (passedTime < damageDelay)
-            passedTime += Time.deltaTime;
-        else if (Vector2.Distance(transform.position, player.transform.position) <= attackRange)
-        {
-            Attack();
-        }
-
-        if (!inAttack)
-            base.Update();
+        base.Update();
     }
-
-#if UNITY_EDITOR
-
-    protected override void OnDrawGizmosSelected()
-    {
-        Gizmos.color = attackRangeColor;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-        base.OnDrawGizmosSelected();
-    }
-
-#endif
 }
