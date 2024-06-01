@@ -17,6 +17,6 @@ MonoBehaviour:
     \u0421\u0430\u043D\u0441\u0430"
   reward: {fileID: 11400000, guid: 432477e2742e17b4888dae1990c5959a, type: 2}
   id: 1
-  questStarted: 1
-  questCompleted: 1
+  questStarted: 0
+  questCompleted: 0
   itemToObtain: {fileID: 11400000, guid: 57c96fb6f4f241b4fbd446eef0b76764, type: 2}

@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 
 public abstract class MovingEnemy : EnemyBase, IDamagable
 {
-    [SerializeField, Range(0f, 1f)] private float fRerouteDistance;
+    [SerializeField, Range(0f, 10f)] private float fRerouteDistance;
     [SerializeField, Range(0f, 10f)] private float fStopDistance;
     [SerializeField, Range(0f, 10f)] private float fSpeed;
     [SerializeField] private AudioClip stepSFX;

@@ -16,12 +16,13 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     [SerializeField, Range(0f, 100f)] protected float fMaxHP;
     [SerializeField, Range(0f, 10f)] private float fCorpseLifetime;
     [SerializeField, Range(0f, 100f)] protected float fReactionDistance;
+    [SerializeField] private bool needToBeSummoned = true;
     [Header("GUI")]
     [SerializeField, AllowsNull] protected Slider hpSlider;
 
     protected float fHP;
 
-    protected bool summoned = false;
+    protected bool summoned;
 
     protected virtual void UpdateGUIElement(float value)
     {
@@ -44,6 +45,20 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     protected virtual void Start()
     {
         HP = fMaxHP;
+
+        if (!wallsMap)
+        {
+            wallsMap = GameObject.Find("Walls").GetComponent<Tilemap>();
+            if (!wallsMap)
+            {
+                Debug.LogError("Can't find tilemap on scene. Please, make sure you have walls tilemap");
+            }
+        }
+
+        if (!player)
+            player = FindObjectOfType<Player>();
+
+        summoned = !needToBeSummoned;
     }
 
     private void OnDisable()

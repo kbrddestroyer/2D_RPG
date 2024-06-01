@@ -199,7 +199,7 @@ MonoBehaviour:
   animator: {fileID: 4330167303659954023}
   audio: {fileID: 8379146535877863889}
   spriteRenderer: {fileID: 3649705422704176744}
-  stepSFX: {fileID: 8300000, guid: 1beb556b15a20b447a9c0265c4cb8d7e, type: 3}
+  stepSFX: {fileID: 8300000, guid: 757d50f398a97434280c1e721782b83e, type: 3}
   damagedSFX: {fileID: 8300000, guid: 26e08dda85b53f74b9dbaaa0c20f1955, type: 3}
   combat:
   - {fileID: 8300000, guid: eb975b89e78e3d74eb67ff0cb943af59, type: 3}
@@ -208,7 +208,7 @@ MonoBehaviour:
   triggerGizmoColor: {r: 0, g: 0, b: 0, a: 1}
   trigger: {fileID: 0}
   attackAnimsCount: 2
-  comboFallback: 2
+  comboFallback: 1
 --- !u!82 &8379146535877863889
 AudioSource:
   m_ObjectHideFlags: 0

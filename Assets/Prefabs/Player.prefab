@@ -124,9 +124,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fSpeed: 7
-  fDamage: 1
+  attacks:
+  - fDamage: 5
+    fDamageDistance: 2
   fDamageDelay: 1
-  fDamageDistance: 2.23
   fTriggerDistance: 2.9
   fMaxHP: 10
   enemy:
@@ -150,6 +151,7 @@ MonoBehaviour:
   gizmoColor: {r: 1, g: 0, b: 0, a: 1}
   triggerGizmoColor: {r: 0, g: 0, b: 0, a: 1}
   trigger: {fileID: 0}
+  itemsPickedUpInLevel: []
 --- !u!70 &7990503561656130842
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

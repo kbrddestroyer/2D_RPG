@@ -16,7 +16,7 @@ public class AttackingEnemy : MovingEnemy, IDamagable
     [SerializeField, Range(0f, 10f)] private float fDamage;
     [SerializeField, Range(0f, 10f)] private float fAttackDelay;
     [SerializeField, Range(0f, 10f)] private float fAttackDistance;
-    [SerializeField] private AudioClip attackSFX;
+    [SerializeField] protected AudioClip attackSFX;
     [SerializeField] private new Collider2D collider;
     [Header("Drop")]
     [SerializeField] private ItemDrop[] drop;
@@ -50,13 +50,13 @@ public class AttackingEnemy : MovingEnemy, IDamagable
         }
     }
 
-    private void DamagePlayer()
+    public virtual void DamagePlayer()
     {
         if (Vector2.Distance(transform.position, player.transform.position) < fAttackDistance)
         { 
             player.HP -= fDamage;
-            source.PlayOneShot(attackSFX);
         }
+        source.PlayOneShot(attackSFX);
     }
 
     public override void OnDeath()

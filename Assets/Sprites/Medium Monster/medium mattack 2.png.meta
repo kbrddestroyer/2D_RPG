@@ -121,7 +121,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: medium mattack 2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 434
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b765b9d294493f94e9e7e36085e7d455
+      internalID: -708164552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: medium mattack 2_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 372
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c87b8135ad8597841a716d6dde89b3db
+      internalID: -1173532786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: medium mattack 2_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 310
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dada091e21b45a4fb4c8f327c546f39
+      internalID: 1507783368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: medium mattack 2_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 248
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c9b49694d2026d4b97048e1087cd054
+      internalID: -795228929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: medium mattack 2_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 186
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ee0dc8b278b6cb45a0c073f1d9ab050
+      internalID: 1130301825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: medium mattack 2_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 124
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4266b03f23a62d9489720d4c88bc1da3
+      internalID: -1464592330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: medium mattack 2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 62
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aee7a58f0cd696409c5f97bfa209108
+      internalID: 2096401144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: medium mattack 2_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae83090ac6e93de40a71a5217b73d464
+      internalID: 469683241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +300,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      medium mattack 2_0: -708164552
+      medium mattack 2_1: -1173532786
+      medium mattack 2_2: 1507783368
+      medium mattack 2_3: -795228929
+      medium mattack 2_4: 1130301825
+      medium mattack 2_5: -1464592330
+      medium mattack 2_6: 2096401144
+      medium mattack 2_7: 469683241
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

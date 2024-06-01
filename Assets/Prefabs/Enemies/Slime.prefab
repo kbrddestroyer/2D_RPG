@@ -236,9 +236,10 @@ MonoBehaviour:
   player: {fileID: 0}
   animator: {fileID: 5256690752081109141}
   fMaxHP: 2
-  fCorpseLifetime: 10
-  hpSlider: {fileID: 5297777477523755398}
+  fCorpseLifetime: 2
   fReactionDistance: 5
+  needToBeSummoned: 1
+  hpSlider: {fileID: 5297777477523755398}
   fRerouteDistance: 0.5
   fStopDistance: 1.5
   fSpeed: 2

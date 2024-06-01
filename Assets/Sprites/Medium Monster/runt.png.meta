@@ -121,7 +121,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: runt_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 310
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3027301290c6d8469200d1a3001a1a3
+      internalID: -2051152387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runt_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 248
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0e0105e880856d4e93274917887fd85
+      internalID: 487914069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runt_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 186
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f018616d1a56684885b99834c935bbc
+      internalID: 950333062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runt_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 124
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4eee45ef04411d5459c2a862cb7dd5b6
+      internalID: 1718506273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runt_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 62
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f55472eb06bc0ec4dab39194e674bd07
+      internalID: 1868374556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: runt_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77390a005fdc2154b9cdea5c9e63d767
+      internalID: 1655882672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +258,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      runt_0: -2051152387
+      runt_1: 487914069
+      runt_2: 950333062
+      runt_3: 1718506273
+      runt_4: 1868374556
+      runt_5: 1655882672
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

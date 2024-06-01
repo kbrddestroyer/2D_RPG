@@ -1,3 +1,4 @@
+using GameControllers;
 using LevelManagement;
 using System;
 using System.Collections;
@@ -51,13 +52,21 @@ public class InventoryManager : MonoBehaviour
     public void AddItem(Item item)
     {
         Items.Add(item);
+        Player.Instance.itemsPickedUpInLevel.Add(item);
         GameLevelManager.Instance.AddItem(item);
     }
 
     public void RemoveItem(Item item)
     {
         Items.Remove(item);
+        Player.Instance.itemsPickedUpInLevel.Remove(item);
         GameLevelManager.Instance.RebuildItems();
+    }
+
+    public void NotifyOnPlayerDeath()
+    {
+        foreach (Item item in Player.Instance.itemsPickedUpInLevel)
+            Items.Remove(item);
     }
 
     public List<Item> Items { get => items; }

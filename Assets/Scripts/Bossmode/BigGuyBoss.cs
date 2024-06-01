@@ -18,8 +18,8 @@ public class BigGuyBoss : BossController
     private bool ValidatePlayerPositionForAttack2()
     {
         return
-            Mathf.Abs(player.transform.position.x - transform.position.x) <= attack2_Range &&
-            Mathf.Abs(player.transform.position.y - transform.position.y) <= attack2_Y_Dispersion;
+            Mathf.Abs(transform.position.x + GetDirection().x * attack2_Range / 2 - transform.position.x) <= attack2_Range &&
+            Mathf.Abs(player.transform.position.y - transform.position.y) <= attack2_Y_Dispersion / 2;
     }
 
     public override void DamagePlayer(int damageType)

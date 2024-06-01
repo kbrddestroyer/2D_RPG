@@ -20,10 +20,10 @@ public class QuestBase : TalkerBase, IMasterDialogue
         if (state)
         {
             Subscribe();
-            dialogueController.Activate.SetActive(!isPlaying);
+            MasterDialogueController.Instance.Activate.SetActive(!isPlaying);
             if (isPlaying)
             {
-                if (!dialogueController.Skip.activeInHierarchy) dialogueController.Skip.SetActive(true);
+                if (!MasterDialogueController.Instance.Skip.activeInHierarchy) MasterDialogueController.Instance.Skip.SetActive(true);
             }
             else if (Input.GetKeyDown(KeyCode.E))
             {
@@ -33,7 +33,7 @@ public class QuestBase : TalkerBase, IMasterDialogue
         else
         {
             Unsubscribe();
-            if (!dialogueController.Enabled)
+            if (!MasterDialogueController.Instance.Enabled)
             {
                 if (textDisplayCoroutine != null)
                     StopCoroutine(textDisplayCoroutine);
@@ -100,7 +100,7 @@ public class QuestBase : TalkerBase, IMasterDialogue
         if (!subscribed)
         {
             subscribed = true;
-            dialogueController.Subscribe(this);
+            MasterDialogueController.Instance.Subscribe(this);
         }
     }
 
@@ -109,7 +109,7 @@ public class QuestBase : TalkerBase, IMasterDialogue
         if (subscribed)
         {
             subscribed = false;
-            dialogueController.Unsubscribe(this);
+            MasterDialogueController.Instance.Unsubscribe(this);
         }
     }
 }

@@ -121,7 +121,133 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: idlet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 310
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d4819fc92c7ca94d842dd1461474c68
+      internalID: -2086867477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idlet_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 248
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c6fa818b23f25148a48529538218e76
+      internalID: -729941419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idlet_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 186
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 974600925003934448beddb614e0588c
+      internalID: 1008955413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idlet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 124
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b45e7b6b7ab2e124c8cbcc3955323634
+      internalID: -382352095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idlet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 62
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf5a5dbfb154edc40b5b695e39e67429
+      internalID: -649186548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: idlet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 135
+        height: 62
+      alignment: 9
+      pivot: {x: 0.435, y: 0.4}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd1750abbcf897f42844c35213d8578b
+      internalID: -2056951143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +258,13 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      idlet_0: -2086867477
+      idlet_1: -729941419
+      idlet_2: 1008955413
+      idlet_3: -382352095
+      idlet_4: -649186548
+      idlet_5: -2056951143
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

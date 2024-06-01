@@ -15,6 +15,7 @@ namespace GameControllers
         [Header("Samurai logic")]
         [SerializeField] private uint attackAnimsCount = 1;
         [SerializeField, Range(0f, 5f)] private float comboFallback;
+        [SerializeField, Range(0f, 10f)] private float attack2_Damage;
         private float comboPassTime;
         private uint attackCount;
 

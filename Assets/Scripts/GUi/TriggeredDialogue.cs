@@ -13,12 +13,12 @@ public class TriggeredDialogue : Dialogue, IMasterDialogue
         if (!state)
         {
             Unsubscribe();
-            dialogueController.Text.text = "";
+            MasterDialogueController.Instance.Text.text = "";
             isPlaying = false;
             StopAllCoroutines();
         }
         else Subscribe();
-        if (dialogueController.Skip != state) dialogueController.Skip.SetActive(state);
+        if (MasterDialogueController.Instance.Skip != state) MasterDialogueController.Instance.Skip.SetActive(state);
     }
 
     public override void AfterTextDisplay()
@@ -34,7 +34,7 @@ public class TriggeredDialogue : Dialogue, IMasterDialogue
         if (!subscribed)
         {
             subscribed = true;
-            dialogueController.Subscribe(this);
+            MasterDialogueController.Instance.Subscribe(this);
         }
     }
 
@@ -43,7 +43,7 @@ public class TriggeredDialogue : Dialogue, IMasterDialogue
         if (subscribed)
         {
             subscribed = false;
-            dialogueController.Unsubscribe(this);
+            MasterDialogueController.Instance.Unsubscribe(this);
         }
     }
 }

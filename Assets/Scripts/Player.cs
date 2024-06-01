@@ -16,11 +16,24 @@ namespace GameControllers
     [RequireComponent(typeof(Rigidbody2D))]
     public class Player : MonoBehaviour, IDamagable
     {
+        private static Player instance;
+        public static Player Instance { get => instance; }
+
+        [System.Serializable]
+        protected class PlayerAttack
+        {
+            [SerializeField, Range(0f, 10f)] private float fDamage;
+            [SerializeField, Range(0f, 10f)] private float fDamageDistance;
+
+            public float Damage { get => fDamage; }
+            public float Distance { get => fDamageDistance; }
+        }
+
         [Header("Base settings")]
         [SerializeField, Range(0f, 25f)] private float fSpeed;
-        [SerializeField, Range(0f, 10f)] private float fDamage;
+        [SerializeField] protected PlayerAttack[] attacks;
         [SerializeField, Range(0f, 1f)]  protected float fDamageDelay;
-        [SerializeField, Range(0f, 10f)] private float fDamageDistance;
+        
         [SerializeField, Range(0f, 10f)] private float fTriggerDistance;
         [SerializeField, Range(0f, 10f)] private float fMaxHP;
         [SerializeField] private LayerMask enemy;
@@ -46,6 +59,8 @@ namespace GameControllers
         private List<TalkerBase> lDialogueController;
         protected MasterDialogueController masterController;
         private bool summoned = false;
+
+        public List<Item> itemsPickedUpInLevel = new List<Item>();
 
         public float HP
         {
@@ -82,6 +97,8 @@ namespace GameControllers
 
         protected virtual void Awake()
         {
+            instance = this;
+
             StartCoroutine(Blink());
             lDialogueController = FindObjectsOfType<TalkerBase>().ToList<TalkerBase>();
 
@@ -113,6 +130,8 @@ namespace GameControllers
         public virtual void OnDeath()
         {
             animator.SetTrigger("death");
+
+            InventoryManager.Instance.NotifyOnPlayerDeath();
         }
 
         protected virtual void OnDestroy()
@@ -121,17 +140,25 @@ namespace GameControllers
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        public void DealDamage()
+        protected virtual void ApplyDamageToEnemy(IDamagable entity, int attackID)
         {
+            entity.HP -= attacks[attackID].Damage;
+        }
+
+        public void DealDamage(int attackID)
+        {
+            if (attackID >= attacks.Length)
+                return;
+
             animator.ResetTrigger("attack");
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fDamageDistance, enemy);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, attacks[attackID].Damage, enemy);
 
             foreach (Collider2D collider in colliders)
             {
                 IDamagable damagable;
                 if ((damagable = collider.GetComponent<IDamagable>()) != null)
                 {
-                    damagable.HP -= fDamage;
+                    ApplyDamageToEnemy(damagable, attackID);
                 }
             }
         }
@@ -253,7 +280,12 @@ namespace GameControllers
         protected virtual void OnDrawGizmosSelected()
         {
             Gizmos.color = gizmoColor;
-            Gizmos.DrawWireSphere(transform.position, fDamageDistance);
+            
+            foreach (PlayerAttack attack in attacks)
+            {
+                Gizmos.DrawWireSphere(transform.position, attack.Distance);
+            }
+
             Gizmos.color = triggerGizmoColor;
             Gizmos.DrawWireSphere(transform.position, fTriggerDistance);
         }

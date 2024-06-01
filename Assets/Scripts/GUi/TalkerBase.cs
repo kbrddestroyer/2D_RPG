@@ -11,15 +11,6 @@ public abstract class TalkerBase : MonoBehaviour
     protected bool skipCurrentText = false;
     protected Coroutine textDisplayCoroutine = null;
 
-    protected MasterDialogueController dialogueController;
-    public MasterDialogueController Controller { get => dialogueController; }
-
-    protected virtual void Awake()
-    {
-        if (!dialogueController)
-            dialogueController = GameObject.FindObjectOfType<MasterDialogueController>();
-    }
-
     public void StartText(string[] sDialogues)
     {
         textDisplayCoroutine = StartCoroutine(playText(sDialogues));
@@ -30,10 +21,10 @@ public abstract class TalkerBase : MonoBehaviour
         if (!isPlaying)
         {
             isPlaying = true;
-            dialogueController.SpImage = true;
+            MasterDialogueController.Instance.SpImage = true;
             foreach (string text in sDialogues)
             {
-                dialogueController.Text.text = "";
+                MasterDialogueController.Instance.Text.text = "";
                 foreach (char ch in text)
                 {
                     if (skipCurrentText)
@@ -41,19 +32,19 @@ public abstract class TalkerBase : MonoBehaviour
                         skipCurrentText = false;
                         break;
                     }
-                    dialogueController.Text.text += ch;
+                    MasterDialogueController.Instance.Text.text += ch;
                     audioSource.Play();
                     yield return new WaitForSeconds(fTextSpeed);
                 }
-                dialogueController.Text.text = text;
-                dialogueController.Skip.SetActive(!skipCurrentText);
+                MasterDialogueController.Instance.Text.text = text;
+                MasterDialogueController.Instance.Skip.SetActive(!skipCurrentText);
                 while (!skipCurrentText) yield return null;
                 skipCurrentText = false;
-                dialogueController.Skip.SetActive(skipCurrentText);
+                MasterDialogueController.Instance.Skip.SetActive(skipCurrentText);
             }
             isPlaying = false;
-            dialogueController.SpImage = false;
-            dialogueController.Text.text = "";
+            MasterDialogueController.Instance.SpImage = false;
+            MasterDialogueController.Instance.Text.text = "";
 
             AfterTextDisplay();
         }
