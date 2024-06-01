@@ -203,7 +203,7 @@ MonoBehaviour:
   damagedSFX: {fileID: 8300000, guid: 26e08dda85b53f74b9dbaaa0c20f1955, type: 3}
   combat:
   - {fileID: 8300000, guid: eb975b89e78e3d74eb67ff0cb943af59, type: 3}
-  - {fileID: 8300000, guid: 1406c6ecf6b5113478c525a67fb33f4b, type: 3}
+  - {fileID: 8300000, guid: e7520f0472f886443b14434fd4742b0f, type: 3}
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
   triggerGizmoColor: {r: 0, g: 0, b: 0, a: 1}
   trigger: {fileID: 0}

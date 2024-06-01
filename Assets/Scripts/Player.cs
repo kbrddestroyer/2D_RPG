@@ -45,6 +45,7 @@ namespace GameControllers
         protected float fPassedDelayTime = 0.0f;
         private List<TalkerBase> lDialogueController;
         protected MasterDialogueController masterController;
+        private bool summoned = false;
 
         public float HP
         {
@@ -86,6 +87,16 @@ namespace GameControllers
 
             if (!masterController)
                 masterController = GameObject.FindObjectOfType<MasterDialogueController>();
+        }
+
+        protected virtual void Start()
+        {
+            animator.SetTrigger("summon");
+        }
+
+        public virtual void OnSummoned()
+        {
+            summoned = true;
         }
 
         protected virtual void OnEnable()
@@ -206,13 +217,15 @@ namespace GameControllers
 
         protected virtual void Update()
         {
+            if (!summoned)
+                return;
+
             Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed;  // Direction vector
             spriteRenderer.flipX = (inputSpeed.x == 0) ? spriteRenderer.flipX : inputSpeed.x < 0;
 
             UpdatePassedTimeGUI();
 
             animator.SetBool("walking", inputSpeed.magnitude > 0);
-
             transform.Translate(inputSpeed * Time.deltaTime);
 
             if (Input.GetKeyDown(KeyCode.Mouse0))

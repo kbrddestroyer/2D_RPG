@@ -15,17 +15,20 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     [SerializeField] protected Animator animator;
     [SerializeField, Range(0f, 100f)] protected float fMaxHP;
     [SerializeField, Range(0f, 10f)] private float fCorpseLifetime;
+    [SerializeField, Range(0f, 100f)] protected float fReactionDistance;
     [Header("GUI")]
     [SerializeField, AllowsNull] protected Slider hpSlider;
 
     protected float fHP;
+
+    protected bool summoned = false;
 
     protected virtual void UpdateGUIElement(float value)
     {
         hpSlider.value = value;
     }
 
-    public float HP { 
+    public virtual float HP { 
         get => fHP; 
         set
         {
@@ -50,6 +53,11 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
         if (HP <= 0)
             OnDeath();
         Destroy(this.gameObject, fCorpseLifetime);
+    }
+
+    public void OnSummoned()
+    {
+        summoned = true;
     }
 
     private void Damage()
@@ -159,6 +167,12 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
 
     public abstract void OnDeath();
 
+    protected virtual void Update()
+    {
+        if (Vector2.Distance(player.transform.position, transform.position) <= fReactionDistance && !summoned)
+            animator.SetTrigger("summon");
+    }
+
 #if UNITY_EDITOR
     protected virtual void OnDrawGizmosSelected()
     {
@@ -174,6 +188,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
 
         ReadOnlySpan<Vector3> waypointsSpan = new ReadOnlySpan<Vector3>(waypoints.ToArray());
         Gizmos.DrawLineStrip(waypointsSpan, false);
+        Gizmos.DrawWireSphere(transform.position, fReactionDistance);
     }
 
     protected virtual void OnValidate()
