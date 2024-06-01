@@ -13,12 +13,17 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     [SerializeField] private Tilemap wallsMap;
     [SerializeField] protected Player player;
     [SerializeField] protected Animator animator;
-    [SerializeField, Range(0f, 10f)] private float fMaxHP;
+    [SerializeField, Range(0f, 100f)] protected float fMaxHP;
     [SerializeField, Range(0f, 10f)] private float fCorpseLifetime;
     [Header("GUI")]
-    [SerializeField] private Slider hpSlider;
+    [SerializeField, AllowsNull] protected Slider hpSlider;
 
-    private float fHP;
+    protected float fHP;
+
+    protected virtual void UpdateGUIElement(float value)
+    {
+        hpSlider.value = value;
+    }
 
     public float HP { 
         get => fHP; 
@@ -27,13 +32,13 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
             if (value < fHP && value > 0)
                 Damage();
             fHP = value;
-            hpSlider.value = Mathf.Clamp(value / fMaxHP, 0f, 1f);
+            UpdateGUIElement(Mathf.Clamp(value / fMaxHP, 0f, 1f));
             if (fHP <= 0f)
                 enabled = false;
         }
     }
 
-    protected virtual void Awake()
+    protected virtual void Start()
     {
         HP = fMaxHP;
     }
@@ -41,7 +46,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     private void OnDisable()
     {
         animator.SetTrigger("death");
-        hpSlider.gameObject.SetActive(false);
+        if (hpSlider) hpSlider.gameObject.SetActive(false);
         if (HP <= 0)
             OnDeath();
         Destroy(this.gameObject, fCorpseLifetime);

@@ -21,10 +21,10 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
     private Stack<Vector3> currentWaypoints = new Stack<Vector3>();
     private Vector3 currentPoint;
 
-    protected override void Awake()
+    protected override void Start()
     {
         currentPoint = transform.position;
-        base.Awake();
+        base.Start();
     }
 
     protected virtual void Update()

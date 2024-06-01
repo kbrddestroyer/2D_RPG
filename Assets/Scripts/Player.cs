@@ -1,9 +1,11 @@
+using GUIControllers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
 namespace GameControllers 
@@ -15,9 +17,9 @@ namespace GameControllers
     public class Player : MonoBehaviour, IDamagable
     {
         [Header("Base settings")]
-        [SerializeField, Range(0f, 10f)] private float fSpeed;
+        [SerializeField, Range(0f, 25f)] private float fSpeed;
         [SerializeField, Range(0f, 10f)] private float fDamage;
-        [SerializeField, Range(0f, 1f)]  private float fDamageDelay;
+        [SerializeField, Range(0f, 1f)]  protected float fDamageDelay;
         [SerializeField, Range(0f, 10f)] private float fDamageDistance;
         [SerializeField, Range(0f, 10f)] private float fTriggerDistance;
         [SerializeField, Range(0f, 10f)] private float fMaxHP;
@@ -25,13 +27,13 @@ namespace GameControllers
         [SerializeField] private LayerMask pickables;
 
         [Header("Required Components")]
-        [SerializeField] private Animator animator;
-        [SerializeField] private new AudioSource audio;
-        [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private MasterDialogueController masterController;
+        [SerializeField] protected Animator animator;
+        [SerializeField] protected new AudioSource audio;
+        [SerializeField] protected SpriteRenderer spriteRenderer;
         [Header("Audio")]
         [SerializeField] private AudioClip stepSFX;
         [SerializeField] private AudioClip damagedSFX;
+        [SerializeField] protected AudioClip[] combat;
 
         [Header("Gizmos")]
         [SerializeField] private Color gizmoColor = new Color(0f, 0f, 0f, 1f);
@@ -40,8 +42,9 @@ namespace GameControllers
         public Trigger trigger = null;
 
         private float fHP;
-        private float fPassedDelayTime = 0.0f;
+        protected float fPassedDelayTime = 0.0f;
         private List<TalkerBase> lDialogueController;
+        protected MasterDialogueController masterController;
 
         public float HP
         {
@@ -53,6 +56,7 @@ namespace GameControllers
                     if (fHP > 0)
                     {
                         animator.SetTrigger("damage");
+                        CameraController.Instance.Damage();
                         audio.PlayOneShot(damagedSFX);
                     }
                 }
@@ -65,7 +69,7 @@ namespace GameControllers
             }
         }
 
-        private IEnumerator Blink()
+        protected virtual IEnumerator Blink()
         {
             while (enabled)
             {
@@ -75,7 +79,7 @@ namespace GameControllers
         }
 
 
-        private void Awake()
+        protected virtual void Awake()
         {
             StartCoroutine(Blink());
             lDialogueController = FindObjectsOfType<TalkerBase>().ToList<TalkerBase>();
@@ -84,47 +88,58 @@ namespace GameControllers
                 masterController = GameObject.FindObjectOfType<MasterDialogueController>();
         }
 
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             fHP = fMaxHP;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             OnDeath();
             Destroy(this.gameObject, 1f);
         }
 
-        public void OnDeath()
+        public virtual void OnDeath()
         {
             animator.SetTrigger("death");
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             if (HP <= 0)
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        private void Attack()
+        public void DealDamage()
         {
-            if (fPassedDelayTime < fDamageDelay)
-                return;
-            fPassedDelayTime = 0.0f;
-            animator.SetTrigger("attack");
-
+            animator.ResetTrigger("attack");
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fDamageDistance, enemy);
 
             foreach (Collider2D collider in colliders)
             {
                 IDamagable damagable;
-                if ((damagable = collider.GetComponent<IDamagable>()) != null) {
+                if ((damagable = collider.GetComponent<IDamagable>()) != null)
+                {
                     damagable.HP -= fDamage;
                 }
             }
         }
 
-        private IPickable GetClosestPickableItem() 
+        protected virtual AudioClip PickAttackSound()
+        {
+            return combat[Random.Range(0, combat.Length)];
+        }
+
+        protected virtual void Attack()
+        {
+            if (fPassedDelayTime < fDamageDelay)
+                return;
+            fPassedDelayTime = 0.0f;
+            animator.SetTrigger("attack");
+            audio.PlayOneShot(PickAttackSound());
+        }
+
+        protected IPickable GetClosestPickableItem() 
         {
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fTriggerDistance, pickables);
 
@@ -141,7 +156,7 @@ namespace GameControllers
             return closest;
         }
 
-        private TalkerBase GetClosestDialogueController()
+        protected TalkerBase GetClosestDialogueController()
         {
             TalkerBase closest = null;
 
@@ -163,7 +178,7 @@ namespace GameControllers
             audio.PlayOneShot(stepSFX);
         }
 
-        public void OnTriggerEnter2D(Collider2D collision)
+        protected virtual void OnTriggerEnter2D(Collider2D collision)
         {
             IMasterDialogue controller = collision.GetComponent<IMasterDialogue>();
 
@@ -171,7 +186,7 @@ namespace GameControllers
                 controller.Subscribe();
         }
 
-        public void OnTriggerExit2D(Collider2D collision)
+        protected virtual void OnTriggerExit2D(Collider2D collision)
         {
             IMasterDialogue controller = collision.GetComponent<IMasterDialogue>();
 
@@ -179,17 +194,23 @@ namespace GameControllers
                 controller.Unsubscribe();
         }
 
-        private void Update()
+        protected virtual void UpdatePassedTimeGUI()
         {
-            Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed;  // Direction vector
-            spriteRenderer.flipX = (inputSpeed.x == 0) ? spriteRenderer.flipX : inputSpeed.x < 0;
-
             if (fPassedDelayTime < fDamageDelay)
             {
                 fPassedDelayTime += Time.deltaTime;
 
                 HPGUIController.Instance.AttackProgression = fPassedDelayTime / fDamageDelay;
             }
+        }
+
+        protected virtual void Update()
+        {
+            Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed;  // Direction vector
+            spriteRenderer.flipX = (inputSpeed.x == 0) ? spriteRenderer.flipX : inputSpeed.x < 0;
+
+            UpdatePassedTimeGUI();
+
             animator.SetBool("walking", inputSpeed.magnitude > 0);
 
             transform.Translate(inputSpeed * Time.deltaTime);
@@ -216,7 +237,7 @@ namespace GameControllers
         }
 
 #if UNITY_EDITOR || UNITY_EDITOR_64
-        private void OnDrawGizmosSelected()
+        protected virtual void OnDrawGizmosSelected()
         {
             Gizmos.color = gizmoColor;
             Gizmos.DrawWireSphere(transform.position, fDamageDistance);
