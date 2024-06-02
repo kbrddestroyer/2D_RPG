@@ -25,29 +25,23 @@ public abstract class Trigger : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            Player player = collision.GetComponent<Player>();
+        Player player = collision.GetComponent<Player>();
 
-            if (player)
-            {
-                if(!player.trigger) player.trigger = this;
-                Action();
-            }
+        if (player)
+        {
+            if(!player.trigger) player.trigger = this;
+            Action();
         }
     }
 
     protected void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
-        {
-            Player player = collision.GetComponent<Player>();
+        Player player = collision.GetComponent<Player>();
 
-            if (player)
-            {
-                if (player.trigger == this) player.trigger = null;
-                Deactivate();
-            }
+        if (player)
+        {
+            if (player.trigger == this) player.trigger = null;
+            Deactivate();
         }
     }
 }

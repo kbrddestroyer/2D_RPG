@@ -1,10 +1,13 @@
+using GUIControllers;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 namespace GameControllers 
 {
@@ -14,21 +17,23 @@ namespace GameControllers
     [RequireComponent(typeof(Rigidbody2D))]
     public class Player : MonoBehaviour, IDamagable
     {
+        private static Player instance;
+        public static Player Instance { get => instance; }
+
         [Header("Base settings")]
-        [SerializeField, Range(0f, 10f)] private float fSpeed;
-        [SerializeField, Range(0f, 10f)] private float fDamage;
-        [SerializeField, Range(0f, 1f)]  private float fDamageDelay;
-        [SerializeField, Range(0f, 10f)] private float fDamageDistance;
+        [SerializeField, Range(0f, 25f)] private float fSpeed;
+        [SerializeField] protected Attack[] attacks;
+        [SerializeField, Range(0f, 1f)]  protected float fDamageDelay;
         [SerializeField, Range(0f, 10f)] private float fTriggerDistance;
         [SerializeField, Range(0f, 10f)] private float fMaxHP;
         [SerializeField] private LayerMask enemy;
         [SerializeField] private LayerMask pickables;
-
+        [Header("Combat logic")]
+        [SerializeField, Range(0f, 5f)] private float comboFallback;
         [Header("Required Components")]
-        [SerializeField] private Animator animator;
-        [SerializeField] private new AudioSource audio;
-        [SerializeField] private SpriteRenderer spriteRenderer;
-        [SerializeField] private MasterDialogueController masterController;
+        [SerializeField] protected Animator animator;
+        [SerializeField] protected new AudioSource audio;
+        [SerializeField] protected SpriteRenderer spriteRenderer;
         [Header("Audio")]
         [SerializeField] private AudioClip stepSFX;
         [SerializeField] private AudioClip damagedSFX;
@@ -40,8 +45,13 @@ namespace GameControllers
         public Trigger trigger = null;
 
         private float fHP;
-        private float fPassedDelayTime = 0.0f;
-        private List<TalkerBase> lDialogueController;
+        protected float fPassedDelayTime = 0.0f;
+        private bool summoned = false;
+
+        private float comboPassTime;
+        private uint attackCount;
+
+        public List<Item> itemsPickedUpInLevel = new List<Item>();
 
         public float HP
         {
@@ -53,6 +63,7 @@ namespace GameControllers
                     if (fHP > 0)
                     {
                         animator.SetTrigger("damage");
+                        CameraController.Instance.Damage();
                         audio.PlayOneShot(damagedSFX);
                     }
                 }
@@ -65,7 +76,7 @@ namespace GameControllers
             }
         }
 
-        private IEnumerator Blink()
+        protected virtual IEnumerator Blink()
         {
             while (enabled)
             {
@@ -74,85 +85,99 @@ namespace GameControllers
             }
         }
 
-
-        private void Awake()
+        public bool ValidateInteractDistance(Vector3 position)
         {
-            StartCoroutine(Blink());
-            lDialogueController = FindObjectsOfType<TalkerBase>().ToList<TalkerBase>();
-
-            if (!masterController)
-                masterController = GameObject.FindObjectOfType<MasterDialogueController>();
+            return Vector3.Distance(transform.position, position) < fTriggerDistance;
         }
 
-        private void OnEnable()
+        protected virtual void Awake()
+        {
+            instance = this;
+
+            StartCoroutine(Blink());
+        }
+
+        protected virtual void Start()
+        {
+            animator.SetTrigger("summon");
+        }
+
+        public virtual void OnSummoned()
+        {
+            summoned = true;
+        }
+
+        protected virtual void OnEnable()
         {
             fHP = fMaxHP;
         }
 
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             OnDeath();
             Destroy(this.gameObject, 1f);
         }
 
-        public void OnDeath()
+        public virtual void OnDeath()
         {
             animator.SetTrigger("death");
+
+            InventoryManager.Instance.NotifyOnPlayerDeath();
         }
 
-        private void OnDestroy()
+        protected virtual void OnDestroy()
         {
             if (HP <= 0)
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
 
-        private void Attack()
+        protected virtual void ApplyDamageToEnemy(IDamagable entity, int attackID)
         {
-            if (fPassedDelayTime < fDamageDelay)
-                return;
-            fPassedDelayTime = 0.0f;
-            animator.SetTrigger("attack");
+            entity.HP -= attacks[attackID].Damage;
+        }
 
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fDamageDistance, enemy);
+        public void DealDamage(int attackID)
+        {
+            if (attackID >= attacks.Length)
+                return;
+
+            animator.ResetTrigger("attack");
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, attacks[attackID].Damage, enemy);
 
             foreach (Collider2D collider in colliders)
             {
                 IDamagable damagable;
-                if ((damagable = collider.GetComponent<IDamagable>()) != null) {
-                    damagable.HP -= fDamage;
+                if ((damagable = collider.GetComponent<IDamagable>()) != null)
+                {
+                    ApplyDamageToEnemy(damagable, attackID);
                 }
             }
         }
 
-        private IPickable GetClosestPickableItem() 
+        protected virtual void Attack()
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fTriggerDistance, pickables);
+            if (fPassedDelayTime < fDamageDelay)
+                return;
+            fPassedDelayTime = 0.0f;
+            animator.SetInteger("attackType", (int) attackCount % attacks.Length);
+            animator.SetTrigger("attack");
+            audio.PlayOneShot(attacks[attackCount % attacks.Length].SFX);
+            attackCount++;
+            comboPassTime = 0;
+        }
 
-            IPickable closest = null;
+        protected IMasterDialogue GetClosestMasterDialogue() 
+        {
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fTriggerDistance);
+
+            IMasterDialogue closest = null;
 
             foreach (Collider2D collider in colliders)
             {
-                IPickable pickable;
-                if ((pickable = collider.GetComponent<IPickable>()) != null)
+                IMasterDialogue pickable;
+                if ((pickable = collider.GetComponent<IMasterDialogue>()) != null)
                 {
                     closest = pickable;
-                }
-            }
-            return closest;
-        }
-
-        private TalkerBase GetClosestDialogueController()
-        {
-            TalkerBase closest = null;
-
-            foreach (TalkerBase controller in lDialogueController)
-            {
-                float distance = Vector2.Distance(transform.position, controller.transform.position);
-
-                if (distance < fTriggerDistance)
-                {
-                    if (closest == null || distance < Vector2.Distance(transform.position, closest.transform.position))
-                        closest = controller;
                 }
             }
             return closest;
@@ -163,35 +188,27 @@ namespace GameControllers
             audio.PlayOneShot(stepSFX);
         }
 
-        public void OnTriggerEnter2D(Collider2D collision)
+        protected virtual void UpdatePassedTimeGUI()
         {
-            IMasterDialogue controller = collision.GetComponent<IMasterDialogue>();
-
-            if (controller != null)
-                controller.Subscribe();
-        }
-
-        public void OnTriggerExit2D(Collider2D collision)
-        {
-            IMasterDialogue controller = collision.GetComponent<IMasterDialogue>();
-
-            if (controller != null)
-                controller.Unsubscribe();
-        }
-
-        private void Update()
-        {
-            Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed;  // Direction vector
-            spriteRenderer.flipX = (inputSpeed.x == 0) ? spriteRenderer.flipX : inputSpeed.x < 0;
-
             if (fPassedDelayTime < fDamageDelay)
             {
                 fPassedDelayTime += Time.deltaTime;
 
                 HPGUIController.Instance.AttackProgression = fPassedDelayTime / fDamageDelay;
             }
-            animator.SetBool("walking", inputSpeed.magnitude > 0);
+        }
 
+        protected virtual void Update()
+        {
+            if (!summoned)
+                return;
+
+            Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed;  // Direction vector
+            spriteRenderer.flipX = (inputSpeed.x == 0) ? spriteRenderer.flipX : inputSpeed.x < 0;
+
+            UpdatePassedTimeGUI();
+
+            animator.SetBool("walking", inputSpeed.magnitude > 0);
             transform.Translate(inputSpeed * Time.deltaTime);
 
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -199,27 +216,39 @@ namespace GameControllers
                 Attack();
             }
 
-            IPickable closest;
-            if ((closest = GetClosestPickableItem()) != null)
+            IMasterDialogue closest;
+            if ((closest = GetClosestMasterDialogue()) != null)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    closest.Pickup();
+                    closest.Interact();
                 }
             }
 
-            TalkerBase controller;
-            if (controller = GetClosestDialogueController())
+            if (fPassedDelayTime < fDamageDelay)
             {
-                controller.Activate(true);
+                fPassedDelayTime += Time.deltaTime;
+            }
+
+            if (comboPassTime < comboFallback)
+            {
+                comboPassTime += Time.deltaTime;
+                HPGUIController.Instance.AttackProgression = 1 - comboPassTime / comboFallback;
+                if (comboPassTime >= comboFallback)
+                    attackCount = 0;
             }
         }
 
 #if UNITY_EDITOR || UNITY_EDITOR_64
-        private void OnDrawGizmosSelected()
+        protected virtual void OnDrawGizmosSelected()
         {
             Gizmos.color = gizmoColor;
-            Gizmos.DrawWireSphere(transform.position, fDamageDistance);
+
+            foreach (Attack attack in attacks)
+            {
+                attack.DrawGizmo(transform.position);
+            }
+
             Gizmos.color = triggerGizmoColor;
             Gizmos.DrawWireSphere(transform.position, fTriggerDistance);
         }

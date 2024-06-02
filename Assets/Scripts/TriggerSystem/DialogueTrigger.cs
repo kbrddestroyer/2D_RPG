@@ -9,12 +9,12 @@ public class DialogueTrigger : Trigger
 
     protected override void Action()
     {
-        dialogue.Activate(true);
-        dialogue.StartTextDisplay();
+        dialogue.Subscribe();
+        dialogue.Interact();
     }
 
     protected override void Deactivate()
     {
-        dialogue.Activate(false);
+        dialogue.Unsubscribe();
     }
 }
