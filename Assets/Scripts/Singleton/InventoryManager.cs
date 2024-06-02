@@ -7,7 +7,6 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
-using static UnityEditor.Progress;
 
 [Singleton]
 public class InventoryManager : MonoBehaviour

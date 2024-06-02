@@ -67,7 +67,7 @@ namespace GameControllers
                         audio.PlayOneShot(damagedSFX);
                     }
                 }
-                fHP = value;
+                fHP = Mathf.Clamp(value, 0, fMaxHP);
                 HPGUIController.Instance.HP = value / fMaxHP;
                 if (value <= 0)
                 {
@@ -246,7 +246,7 @@ namespace GameControllers
 
             foreach (Attack attack in attacks)
             {
-                attack.DrawGizmo(transform.position);
+                attack.DrawGizmo(transform.position, spriteRenderer.flipX);
             }
 
             Gizmos.color = triggerGizmoColor;

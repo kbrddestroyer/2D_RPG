@@ -22,6 +22,7 @@ public class AttackingEnemy : MovingEnemy, IDamagable
 
     private float fPassedTime = 0f;
     private int pickedAttackID = 0;
+    private bool inAttack = false;
 
     protected override void Update()
     {
@@ -30,11 +31,12 @@ public class AttackingEnemy : MovingEnemy, IDamagable
         {
             Attack();
         }
-        else base.Update();
+        else if (!inAttack) base.Update();
     }
 
     protected virtual void Attack()
     {
+        inAttack = true;
         if (animator.GetBool("walking"))
         {
             animator.SetBool("walking", false);
@@ -47,6 +49,7 @@ public class AttackingEnemy : MovingEnemy, IDamagable
 
     public virtual void DamagePlayer(int animID)
     {
+        inAttack = false;
         if (animID >= attacks.Length)
             return;
 
@@ -79,7 +82,7 @@ public class AttackingEnemy : MovingEnemy, IDamagable
         Gizmos.color = cAttackGizmoColor;
         foreach (Attack attack in attacks)
         {
-            attack.DrawGizmo(transform.position);
+            attack.DrawGizmo(transform.position, spriteRenderer.flipX);
         }
     
         base.OnDrawGizmosSelected();

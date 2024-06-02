@@ -33,7 +33,7 @@ RectTransform:
   m_Father: {fileID: 1112927803928066160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -268,6 +268,7 @@ MonoBehaviour:
   fReactionDistance: 10
   needToBeSummoned: 1
   hpSlider: {fileID: 8965176617897071196}
+  summoned: 0
   fRerouteDistance: 0.5
   fStopDistance: 2
   fSpeed: 1
@@ -283,7 +284,6 @@ MonoBehaviour:
     type: 1
     sfx: {fileID: 8300000, guid: 7edd7ffc6c1bf444cb5b872c29d2d631, type: 3}
   fAttackDelay: 3
-  attackSFX: {fileID: 8300000, guid: 58364bbf225139d48ab3f744dae7f710, type: 3}
   collider: {fileID: 2539663673524253624}
   drop:
   - item: {fileID: 5982850704761769735, guid: d0c90614827edcf478de42b23969245c, type: 3}
@@ -437,7 +437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3613527505878154382
 RectTransform:
   m_ObjectHideFlags: 0
@@ -542,8 +542,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5859027605939313280}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

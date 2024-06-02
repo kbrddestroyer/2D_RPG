@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
@@ -47,7 +46,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
 
     protected virtual void Start()
     {
-        HP = fMaxHP;
+        fHP = fMaxHP;
 
         if (!wallsMap)
         {
@@ -76,6 +75,8 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     public void OnSummoned()
     {
         summoned = true;
+        if (hpSlider)
+            hpSlider.gameObject.SetActive(true);
     }
 
     private void Damage()

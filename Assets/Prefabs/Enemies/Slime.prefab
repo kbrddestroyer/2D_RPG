@@ -256,7 +256,6 @@ MonoBehaviour:
     type: 1
     sfx: {fileID: 8300000, guid: 6058a5805beafec4e8dc562285ce8a14, type: 3}
   fAttackDelay: 1
-  attackSFX: {fileID: 8300000, guid: 6058a5805beafec4e8dc562285ce8a14, type: 3}
   collider: {fileID: 7934003083533408394}
   drop: []
   cAttackGizmoColor: {r: 0, g: 0, b: 0, a: 1}
@@ -527,7 +526,7 @@ RectTransform:
   m_Father: {fileID: 7708163129563903890}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 6}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -600,8 +599,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 9064556079413272814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -665,7 +664,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4239774048339987133
 RectTransform:
   m_ObjectHideFlags: 0

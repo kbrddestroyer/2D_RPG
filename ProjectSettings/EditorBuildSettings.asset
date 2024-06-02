@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameLevels/Chapter1/Level3.unity
     guid: 6a9faaa188de4a546a66a2f0a370db2d
+  - enabled: 1
+    path: Assets/Scenes/GameLevels/DEVELOPMENT/INDEV-BOSSMODE.unity
+    guid: 900303f0eaef57b43b93fb33c4b97592
   m_configObjects: {}
