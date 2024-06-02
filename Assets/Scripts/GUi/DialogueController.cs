@@ -1,47 +1,76 @@
+using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
-public class DialogueController : Dialogue
+public class DialogueController : Dialogue, IMasterDialogue
 {
     [SerializeField, Range(0f, 10f)] protected float fTriggerDistance;
     [Header("Gizmos")]
     [SerializeField] protected Color gizmoColor = new Color(0, 0, 0, 1);
+
+    private bool subscribed = false;
 
     public float TriggerDistance
     {
         get => fTriggerDistance;
     }
 
-
-    public override void Activate(bool state)
+    public override void StartText(string[] sDialogues)
     {
-        if (state)
+        MasterDialogueController.Instance.Activate.SetActive(false);
+        base.StartText(sDialogues);
+    }
+
+    public override void AfterTextDisplay()
+    {
+        base.AfterTextDisplay();
+        MasterDialogueController.Instance.Activate.SetActive(true);
+    }
+
+    public void Subscribe()
+    {
+        if (!subscribed)
         {
-            dialogueController.Activate.SetActive(!isPlaying);
+            subscribed = true;
+            MasterDialogueController.Instance.Activate.SetActive(!isPlaying);
             if (isPlaying)
             {
-                if (!dialogueController.Skip.activeInHierarchy) dialogueController.Skip.SetActive(true);
+                if (!MasterDialogueController.Instance.Skip.activeInHierarchy) MasterDialogueController.Instance.Skip.SetActive(true);
             }
-            else if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartText();
-            }
+            MasterDialogueController.Instance.Subscribe(this);
         }
-        else
+    }
+
+    public void Unsubscribe()
+    {
+        if (subscribed)
         {
-            if (!dialogueController.Enabled)
-            {
-                dialogueController.Text.text = "";
-                dialogueController.Skip.SetActive(false);
-                dialogueController.Activate.SetActive(false);
-                dialogueController.SpImage = false;
-            }
-            StopAllCoroutines();
+            subscribed = false;
+            if (textDisplayCoroutine != null)
+                StopCoroutine(textDisplayCoroutine);
             isPlaying = false;
+            MasterDialogueController.Instance.Text.text = "";
+            MasterDialogueController.Instance.Unsubscribe(this);
         }
+    }
+
+    public void Interact()
+    {
+        if (!isPlaying)
+            StartTextDisplay();
+    }
+
+
+    private void FixedUpdate()
+    {
+        if (Player.Instance.ValidateInteractDistance(transform.position))
+        { 
+            Subscribe();
+        }
+        else Unsubscribe();
     }
 
 #if UNITY_EDITOR

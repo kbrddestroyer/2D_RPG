@@ -2,22 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggeredDialogue : Dialogue
+public class TriggeredDialogue : Dialogue, IMasterDialogue
 {
     [SerializeField] private bool destroyAfter;
-
-    public override void Activate(bool state)
-    {
-        Debug.Log($"{name} {state}");
-        dialogueController.Enabled = state;
-        if (!state)
-        {
-            dialogueController.Text.text = "";
-            isPlaying = false;
-            StopAllCoroutines();
-        }
-        if (dialogueController.Skip != state) dialogueController.Skip.SetActive(state);
-    }
+    private bool subscribed = false;
 
     public override void AfterTextDisplay()
     {
@@ -25,5 +13,41 @@ public class TriggeredDialogue : Dialogue
         {
             Destroy(gameObject);
         }
+    }
+
+    public void Subscribe()
+    {
+        if (!subscribed)
+        {
+            subscribed = true;
+            if (isPlaying)
+            {
+                if (!MasterDialogueController.Instance.Skip.activeInHierarchy) MasterDialogueController.Instance.Skip.SetActive(true);
+            }
+            MasterDialogueController.Instance.Subscribe(this);
+        }
+    }
+
+    public void Unsubscribe()
+    {
+        if (subscribed)
+        {
+            subscribed = false;
+            if (textDisplayCoroutine != null)
+                StopAllCoroutines();
+            isPlaying = false;
+            MasterDialogueController.Instance.Text.text = "";
+            MasterDialogueController.Instance.Unsubscribe(this);
+        }
+    }
+
+    public void Interact()
+    {
+        StartTextDisplay();
+    }
+
+    private void OnDestroy()
+    {
+        Unsubscribe();
     }
 }

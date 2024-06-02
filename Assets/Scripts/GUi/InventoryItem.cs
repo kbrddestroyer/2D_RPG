@@ -12,18 +12,25 @@ public class InventoryItem : MonoBehaviour
     [SerializeField] private TMP_Text label;
     [SerializeField] private Button button;
 
+    [HideInInspector] public int id;
+
+    private Item item;
+
     public Sprite Icon { set => image.sprite = value; }
     public string Label { set => label.text = value; }
     public bool Usable { set => button.enabled = value; }
 
     public Item ItemSettings
     {
+        get => item;
         set {
+            item = value;
+            id = value.id;
             image.sprite = value.icon;
             label.text = value.label;
-            button.enabled = value.isUsable;
+            button.gameObject.SetActive(value.isUsable);
             if (value.isUsable) {
-                button.onClick.AddListener(() => { value.onClick.Invoke(); });
+                button.onClick.AddListener(() => { value.OnClick(); });
                 button.onClick.AddListener(() => { Destroy(this.gameObject); });
             }
         }

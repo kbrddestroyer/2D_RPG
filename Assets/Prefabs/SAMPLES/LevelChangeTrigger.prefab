@@ -92,3 +92,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider: {fileID: 174760448747676098}
   levelName: Scenes/MainMenu
+  itemsToUnlock:
+  - {fileID: 0}
