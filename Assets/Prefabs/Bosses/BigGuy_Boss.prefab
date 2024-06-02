@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 7
-  delay: 5
-  creepCount: 2
+  delay: 10
+  creepCount: 1
   creep: {fileID: 4050130868591390267, guid: 1a518917bc3de5b44a6b785d4929709f, type: 3}
   gizmoColor: {r: 0, g: 0.03425026, b: 1, a: 1}

@@ -1,3 +1,4 @@
+using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,31 +18,16 @@ public class DialogueController : Dialogue, IMasterDialogue
         get => fTriggerDistance;
     }
 
-    public override void Activate(bool state)
+    public override void StartText(string[] sDialogues)
     {
-        if (state)
-        {
-            Subscribe();
-            MasterDialogueController.Instance.Activate.SetActive(!isPlaying);
-            if (isPlaying)
-            {
-                if (!MasterDialogueController.Instance.Skip.activeInHierarchy) MasterDialogueController.Instance.Skip.SetActive(true);
-            }
-            else if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartTextDisplay();
-            }
-        }
-        else
-        {
-            Unsubscribe();
-            if (!MasterDialogueController.Instance.Enabled)
-            {
-                if (textDisplayCoroutine != null)
-                    StopCoroutine(textDisplayCoroutine);
-                isPlaying = false;
-            }
-        }
+        MasterDialogueController.Instance.Activate.SetActive(false);
+        base.StartText(sDialogues);
+    }
+
+    public override void AfterTextDisplay()
+    {
+        base.AfterTextDisplay();
+        MasterDialogueController.Instance.Activate.SetActive(true);
     }
 
     public void Subscribe()
@@ -49,6 +35,11 @@ public class DialogueController : Dialogue, IMasterDialogue
         if (!subscribed)
         {
             subscribed = true;
+            MasterDialogueController.Instance.Activate.SetActive(!isPlaying);
+            if (isPlaying)
+            {
+                if (!MasterDialogueController.Instance.Skip.activeInHierarchy) MasterDialogueController.Instance.Skip.SetActive(true);
+            }
             MasterDialogueController.Instance.Subscribe(this);
         }
     }
@@ -58,8 +49,28 @@ public class DialogueController : Dialogue, IMasterDialogue
         if (subscribed)
         {
             subscribed = false;
+            if (textDisplayCoroutine != null)
+                StopCoroutine(textDisplayCoroutine);
+            isPlaying = false;
+            MasterDialogueController.Instance.Text.text = "";
             MasterDialogueController.Instance.Unsubscribe(this);
         }
+    }
+
+    public void Interact()
+    {
+        if (!isPlaying)
+            StartTextDisplay();
+    }
+
+
+    private void FixedUpdate()
+    {
+        if (Player.Instance.ValidateInteractDistance(transform.position))
+        { 
+            Subscribe();
+        }
+        else Unsubscribe();
     }
 
 #if UNITY_EDITOR

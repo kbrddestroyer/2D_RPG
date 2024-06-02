@@ -1,3 +1,4 @@
+using GameControllers;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,6 +33,7 @@ public class Pickable : MonoBehaviour, IPickable, IMasterDialogue
     public void Pickup()
     {
         InventoryManager.Instance.AddItem(itemSettings);
+        Unsubscribe();
         Destroy(this.gameObject);
     }
 
@@ -53,5 +55,19 @@ public class Pickable : MonoBehaviour, IPickable, IMasterDialogue
             MasterDialogueController.Instance.Activate.SetActive(false);
             MasterDialogueController.Instance.Unsubscribe(this);
         }
+    }
+
+    public void Interact()
+    {
+        Pickup();
+    }
+
+    private void FixedUpdate()
+    {
+        if (Player.Instance.ValidateInteractDistance(transform.position))
+        {
+            Subscribe();
+        }
+        else Unsubscribe();
     }
 }

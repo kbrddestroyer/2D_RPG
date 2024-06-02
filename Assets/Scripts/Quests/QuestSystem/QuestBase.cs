@@ -1,3 +1,4 @@
+using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,35 +16,9 @@ public class QuestBase : TalkerBase, IMasterDialogue
 
     private bool subscribed = false;
 
-    public override void Activate(bool state)
-    {
-        if (state)
-        {
-            Subscribe();
-            MasterDialogueController.Instance.Activate.SetActive(!isPlaying);
-            if (isPlaying)
-            {
-                if (!MasterDialogueController.Instance.Skip.activeInHierarchy) MasterDialogueController.Instance.Skip.SetActive(true);
-            }
-            else if (Input.GetKeyDown(KeyCode.E))
-            {
-                StartTextDisplay();
-            }
-        }
-        else
-        {
-            Unsubscribe();
-            if (!MasterDialogueController.Instance.Enabled)
-            {
-                if (textDisplayCoroutine != null)
-                    StopCoroutine(textDisplayCoroutine);
-                isPlaying = false;
-            }
-        }
-    }
-
     private void StartTextDisplay()
     {
+        MasterDialogueController.Instance.Activate.SetActive(false);
         if (item.questStarted)
         {
             if (item.questCompleted)
@@ -86,6 +61,7 @@ public class QuestBase : TalkerBase, IMasterDialogue
 
     public override void AfterTextDisplay()
     {
+        MasterDialogueController.Instance.Activate.SetActive(true);
         if (item.questStarted)
         {
             if (item.questCompleted)
@@ -100,6 +76,11 @@ public class QuestBase : TalkerBase, IMasterDialogue
         if (!subscribed)
         {
             subscribed = true;
+            MasterDialogueController.Instance.Activate.SetActive(!isPlaying);
+            if (isPlaying)
+            {
+                if (!MasterDialogueController.Instance.Skip.activeInHierarchy) MasterDialogueController.Instance.Skip.SetActive(true);
+            }
             MasterDialogueController.Instance.Subscribe(this);
         }
     }
@@ -109,7 +90,26 @@ public class QuestBase : TalkerBase, IMasterDialogue
         if (subscribed)
         {
             subscribed = false;
+            if (textDisplayCoroutine != null)
+                StopCoroutine(textDisplayCoroutine);
+            isPlaying = false;
+            MasterDialogueController.Instance.Text.text = "";
             MasterDialogueController.Instance.Unsubscribe(this);
         }
+    }
+
+    public void Interact()
+    {
+        if (!isPlaying)
+            StartTextDisplay();
+    }
+
+    private void FixedUpdate()
+    {
+        if (Player.Instance.ValidateInteractDistance(transform.position))
+        {
+            Subscribe();
+        }
+        else Unsubscribe();
     }
 }

@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 namespace GameControllers 
 {
@@ -45,8 +46,6 @@ namespace GameControllers
 
         private float fHP;
         protected float fPassedDelayTime = 0.0f;
-        private List<TalkerBase> lDialogueController;
-        protected MasterDialogueController masterController;
         private bool summoned = false;
 
         private float comboPassTime;
@@ -86,16 +85,16 @@ namespace GameControllers
             }
         }
 
+        public bool ValidateInteractDistance(Vector3 position)
+        {
+            return Vector3.Distance(transform.position, position) < fTriggerDistance;
+        }
 
         protected virtual void Awake()
         {
             instance = this;
 
             StartCoroutine(Blink());
-            lDialogueController = FindObjectsOfType<TalkerBase>().ToList<TalkerBase>();
-
-            if (!masterController)
-                masterController = GameObject.FindObjectOfType<MasterDialogueController>();
         }
 
         protected virtual void Start()
@@ -167,35 +166,18 @@ namespace GameControllers
             comboPassTime = 0;
         }
 
-        protected IPickable GetClosestPickableItem() 
+        protected IMasterDialogue GetClosestMasterDialogue() 
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fTriggerDistance, pickables);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fTriggerDistance);
 
-            IPickable closest = null;
+            IMasterDialogue closest = null;
 
             foreach (Collider2D collider in colliders)
             {
-                IPickable pickable;
-                if ((pickable = collider.GetComponent<IPickable>()) != null)
+                IMasterDialogue pickable;
+                if ((pickable = collider.GetComponent<IMasterDialogue>()) != null)
                 {
                     closest = pickable;
-                }
-            }
-            return closest;
-        }
-
-        protected TalkerBase GetClosestDialogueController()
-        {
-            TalkerBase closest = null;
-
-            foreach (TalkerBase controller in lDialogueController)
-            {
-                float distance = Vector2.Distance(transform.position, controller.transform.position);
-
-                if (distance < fTriggerDistance)
-                {
-                    if (closest == null || distance < Vector2.Distance(transform.position, closest.transform.position))
-                        closest = controller;
                 }
             }
             return closest;
@@ -204,22 +186,6 @@ namespace GameControllers
         public void Step()
         {
             audio.PlayOneShot(stepSFX);
-        }
-
-        protected virtual void OnTriggerEnter2D(Collider2D collision)
-        {
-            IMasterDialogue controller = collision.GetComponent<IMasterDialogue>();
-
-            if (controller != null)
-                controller.Subscribe();
-        }
-
-        protected virtual void OnTriggerExit2D(Collider2D collision)
-        {
-            IMasterDialogue controller = collision.GetComponent<IMasterDialogue>();
-
-            if (controller != null)
-                controller.Unsubscribe();
         }
 
         protected virtual void UpdatePassedTimeGUI()
@@ -250,19 +216,13 @@ namespace GameControllers
                 Attack();
             }
 
-            IPickable closest;
-            if ((closest = GetClosestPickableItem()) != null)
+            IMasterDialogue closest;
+            if ((closest = GetClosestMasterDialogue()) != null)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    closest.Pickup();
+                    closest.Interact();
                 }
-            }
-
-            TalkerBase controller;
-            if (controller = GetClosestDialogueController())
-            {
-                controller.Activate(true);
             }
 
             if (fPassedDelayTime < fDamageDelay)

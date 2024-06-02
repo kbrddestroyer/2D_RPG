@@ -7,20 +7,6 @@ public class TriggeredDialogue : Dialogue, IMasterDialogue
     [SerializeField] private bool destroyAfter;
     private bool subscribed = false;
 
-    public override void Activate(bool state)
-    {
-        Debug.Log($"{name} {state}");
-        if (!state)
-        {
-            Unsubscribe();
-            MasterDialogueController.Instance.Text.text = "";
-            isPlaying = false;
-            StopAllCoroutines();
-        }
-        else Subscribe();
-        if (MasterDialogueController.Instance.Skip != state) MasterDialogueController.Instance.Skip.SetActive(state);
-    }
-
     public override void AfterTextDisplay()
     {
         if (destroyAfter)
@@ -34,6 +20,10 @@ public class TriggeredDialogue : Dialogue, IMasterDialogue
         if (!subscribed)
         {
             subscribed = true;
+            if (isPlaying)
+            {
+                if (!MasterDialogueController.Instance.Skip.activeInHierarchy) MasterDialogueController.Instance.Skip.SetActive(true);
+            }
             MasterDialogueController.Instance.Subscribe(this);
         }
     }
@@ -43,7 +33,21 @@ public class TriggeredDialogue : Dialogue, IMasterDialogue
         if (subscribed)
         {
             subscribed = false;
+            if (textDisplayCoroutine != null)
+                StopAllCoroutines();
+            isPlaying = false;
+            MasterDialogueController.Instance.Text.text = "";
             MasterDialogueController.Instance.Unsubscribe(this);
         }
+    }
+
+    public void Interact()
+    {
+        StartTextDisplay();
+    }
+
+    private void OnDestroy()
+    {
+        Unsubscribe();
     }
 }

@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public abstract class TalkerBase : MonoBehaviour
 {
+    public static TalkerBase[] lTalkers;
+
     [SerializeField, Range(0f, 1f)] protected float fTextSpeed;
     [SerializeField] protected AudioSource audioSource;
 
@@ -11,7 +14,7 @@ public abstract class TalkerBase : MonoBehaviour
     protected bool skipCurrentText = false;
     protected Coroutine textDisplayCoroutine = null;
 
-    public void StartText(string[] sDialogues)
+    public virtual void StartText(string[] sDialogues)
     {
         textDisplayCoroutine = StartCoroutine(playText(sDialogues));
     }
@@ -45,14 +48,11 @@ public abstract class TalkerBase : MonoBehaviour
             isPlaying = false;
             MasterDialogueController.Instance.SpImage = false;
             MasterDialogueController.Instance.Text.text = "";
-
             AfterTextDisplay();
         }
     }
 
     public abstract void AfterTextDisplay();
-
-    public abstract void Activate(bool state);
 
     protected virtual void Update()
     {

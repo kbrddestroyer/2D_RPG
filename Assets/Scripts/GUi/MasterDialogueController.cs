@@ -18,7 +18,7 @@ public class MasterDialogueController : MonoBehaviour
     [SerializeField] private GameObject hintSkip;
 
     public List<IMasterDialogue> subscribed = new List<IMasterDialogue>();
-    
+
     public void Subscribe(IMasterDialogue ob)
     {
         Debug.Log($"Added {ob}");
