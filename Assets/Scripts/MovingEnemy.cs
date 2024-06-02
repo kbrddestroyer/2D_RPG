@@ -31,7 +31,7 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
         if (!summoned)
             return;
 
-        float distance = Vector2.Distance(transform.position, player.transform.position);
+        float distance = Vector2.Distance(transform.position, Player.Instance.transform.position);
         if (distance < fReactionDistance && distance > fStopDistance)
         {
             if (!animator.GetBool("walking"))
@@ -39,10 +39,10 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
                 animator.SetBool("walking", true);
             }
 
-            spriteRenderer.flipX = (transform.position.x - player.transform.position.x < 0) ^ flip;
+            spriteRenderer.flipX = (transform.position.x - Player.Instance.transform.position.x < 0) ^ flip;
 
             if (currentWaypoints.Count == 0)
-                currentWaypoints = getPath(player.transform.position);
+                currentWaypoints = getPath(Player.Instance.transform.position);
 
             if (Vector2.Distance(transform.position, currentPoint) < fRerouteDistance)
             {
@@ -75,10 +75,6 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
 
     protected override void OnValidate()
     {
-        if (!player)
-        {
-            player = FindObjectOfType<Player>();
-        }
         base.OnValidate();
     }
 #endif
