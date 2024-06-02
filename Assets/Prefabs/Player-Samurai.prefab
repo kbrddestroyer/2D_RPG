@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1049554783100084369}
   - component: {fileID: 8379146535877863889}
   - component: {fileID: 8338221180324090772}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player-Samurai
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -292,6 +292,7 @@ MonoBehaviour:
     fYDispersion: 5
     type: 1
     sfx: {fileID: 8300000, guid: e7520f0472f886443b14434fd4742b0f, type: 3}
+  autoAttack: 0
   fDamageDelay: 0.1
   fTriggerDistance: 3
   fMaxHP: 10

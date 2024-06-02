@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7990503561656130842}
   - component: {fileID: 7990503561656130845}
   - component: {fileID: 8445440911418999712}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -128,7 +128,8 @@ MonoBehaviour:
     fDamageDistance: 2
     fYDispersion: 0
     type: 0
-    sfx: {fileID: 0}
+    sfx: {fileID: 8300000, guid: 9b28724614bb6474ab784e818fbfaff8, type: 3}
+  autoAttack: 0
   fDamageDelay: 1
   fTriggerDistance: 2.9
   fMaxHP: 10

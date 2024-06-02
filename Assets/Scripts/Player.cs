@@ -23,10 +23,11 @@ namespace GameControllers
         [Header("Base settings")]
         [SerializeField, Range(0f, 25f)] private float fSpeed;
         [SerializeField] protected Attack[] attacks;
-        [SerializeField, Range(0f, 1f)]  protected float fDamageDelay;
+        [SerializeField] private bool autoAttack;
+        [SerializeField, Range(0f, 5f)]  protected float fDamageDelay;
         [SerializeField, Range(0f, 10f)] private float fTriggerDistance;
         [SerializeField, Range(0f, 10f)] private float fMaxHP;
-        [SerializeField] private LayerMask enemy;
+        [SerializeField] protected LayerMask enemy;
         [SerializeField] private LayerMask pickables;
         [Header("Combat logic")]
         [SerializeField, Range(0f, 5f)] private float comboFallback;
@@ -50,10 +51,11 @@ namespace GameControllers
 
         private float comboPassTime;
         private uint attackCount;
+        protected float speedMultiplier = 1;
 
         public List<Item> itemsPickedUpInLevel = new List<Item>();
 
-        public float HP
+        public virtual float HP
         {
             get => fHP;
             set
@@ -136,7 +138,7 @@ namespace GameControllers
             entity.HP -= attacks[attackID].Damage;
         }
 
-        public void DealDamage(int attackID)
+        public virtual void DealDamage(int attackID)
         {
             if (attackID >= attacks.Length)
                 return;
@@ -203,7 +205,7 @@ namespace GameControllers
             if (!summoned)
                 return;
 
-            Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed;  // Direction vector
+            Vector2 inputSpeed = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")) * fSpeed * speedMultiplier;  // Direction vector
             spriteRenderer.flipX = (inputSpeed.x == 0) ? spriteRenderer.flipX : inputSpeed.x < 0;
 
             UpdatePassedTimeGUI();
@@ -211,7 +213,7 @@ namespace GameControllers
             animator.SetBool("walking", inputSpeed.magnitude > 0);
             transform.Translate(inputSpeed * Time.deltaTime);
 
-            if (Input.GetKeyDown(KeyCode.Mouse0))
+            if (Input.GetKeyDown(KeyCode.Mouse0) || (autoAttack && Input.GetKey(KeyCode.Mouse0)))
             {
                 Attack();
             }
