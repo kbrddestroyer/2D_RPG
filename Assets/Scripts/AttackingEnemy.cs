@@ -24,6 +24,20 @@ public class AttackingEnemy : MovingEnemy, IDamagable
     private int pickedAttackID = 0;
     private bool inAttack = false;
 
+    public override void OnSummoned()
+    {
+        base.OnSummoned();
+
+        collider.enabled = true;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        collider.enabled = summoned;
+    }
+
     protected override void Update()
     {
         fPassedTime += Time.deltaTime;

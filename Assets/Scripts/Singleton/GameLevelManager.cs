@@ -1,3 +1,4 @@
+using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -23,6 +24,7 @@ namespace LevelManagement
         [SerializeField, AllowsNull] private Transform tInventoryListRoot;
         [SerializeField, AllowsNull] private Transform tQuestListRoot;
         [SerializeField] private GameObject tInventoryGUI;
+        [SerializeField] private Player[] playerPrefabs;
         public Transform Root { get => tInventoryListRoot; }
         public Transform QuestRoot { get => tQuestListRoot; }
 
@@ -72,6 +74,9 @@ namespace LevelManagement
                 Instantiate(gameManagerPrefab);
             if (InventoryManager.Instance == null)
                 Instantiate(inventoryManagerPrefab);
+
+            if (!Player.Instance && playerPrefabs.Length > 0) 
+                Instantiate(playerPrefabs[Random.Range(0, playerPrefabs.Length)]);
 
             if (tInventoryListRoot == null)
                 tInventoryListRoot = GameObject.FindGameObjectWithTag("InventoryRoot").transform;

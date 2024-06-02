@@ -12,7 +12,7 @@ public class Attack
     [SerializeField, Range(0f, 10f)] private float fYDispersion;
     [SerializeField] private AttackType type;
     [SerializeField] private AudioClip sfx;
-
+    
     public float Damage { get => fDamage; }
     public float Dispersion { get => fYDispersion; }
     public float Distance { get => fDamageDistance; }

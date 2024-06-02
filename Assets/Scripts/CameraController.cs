@@ -1,3 +1,4 @@
+using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -16,7 +17,6 @@ namespace GUIControllers
         [SerializeField, Range(0f, 10f)] private float fMinRange;
         [SerializeField, Range(0f, 1f)] private float fStopRange;
         [Header("Required")]
-        [SerializeField] private Transform player;
         [SerializeField] private Animator animator;
         [Header("Gizmos")]
         [SerializeField] private Color gizmoColor = new Color(0f, 0f, 0f, 1f);
@@ -35,6 +35,7 @@ namespace GUIControllers
 
         private void Update()
         {
+            Transform player = Player.Instance.transform;
             if (Vector2.Distance(player.position, transform.position) >= fMinRange || isMoving)
             {
                 // Change camera position

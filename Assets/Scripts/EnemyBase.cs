@@ -72,7 +72,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
         Destroy(this.gameObject, fCorpseLifetime);
     }
 
-    public void OnSummoned()
+    public virtual void OnSummoned()
     {
         summoned = true;
         if (hpSlider)

@@ -51,3 +51,7 @@ MonoBehaviour:
   tInventoryListRoot: {fileID: 0}
   tQuestListRoot: {fileID: 0}
   tInventoryGUI: {fileID: 0}
+  playerPrefabs:
+  - {fileID: 7990503561656130843, guid: c1ddc23a53c9c6c4a9f2e82652b3e75f, type: 3}
+  - {fileID: 8338221180324090772, guid: be07cd475f9bb684b86b93f69d8cdacb, type: 3}
+  - {fileID: 7573410599674472105, guid: 4b107a89b203d004bb63a4e9eb9f24c0, type: 3}
