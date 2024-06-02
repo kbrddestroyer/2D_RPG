@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8495529252052286809}
   - component: {fileID: 8134022454429549813}
   - component: {fileID: 5442339969234866562}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SampleTalker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,12 +100,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e47c54e6a96c7fe4e96596c886da5f3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fTextSpeed: 0.075
+  audioSource: {fileID: 8495529252052286809}
   sDialogues:
   - Hello my friend
   - Hehe
   - Want some jokes?
-  fTextSpeed: 0.075
-  audioSource: {fileID: 8495529252052286809}
   fTriggerDistance: 4.9
   gizmoColor: {r: 0, g: 0, b: 0, a: 1}
 --- !u!82 &8495529252052286809

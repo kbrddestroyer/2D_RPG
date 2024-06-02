@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bf65113ca54594ea64e3631a594e0e, type: 3}
   m_Name: QuestReward
   m_EditorClassIdentifier: 
-  icon: {fileID: 51754214, guid: f5e587529dcab2d4f8df6344d13bd7b8, type: 3}
-  label: Booster
+  icon: {fileID: 1343987592, guid: f5e587529dcab2d4f8df6344d13bd7b8, type: 3}
+  label: '#devtest'
   isUsable: 0
   id: 1

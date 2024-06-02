@@ -14,5 +14,7 @@ public class HealingItem : Item
     {
         Player player = FindObjectOfType<Player>();
         player.HP += healingAmount;
+
+        base.OnClick();
     }
 }

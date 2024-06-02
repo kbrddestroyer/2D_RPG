@@ -26,7 +26,8 @@ namespace GameControllers
         [SerializeField] private bool autoAttack;
         [SerializeField, Range(0f, 5f)]  protected float fDamageDelay;
         [SerializeField, Range(0f, 10f)] private float fTriggerDistance;
-        [SerializeField, Range(0f, 10f)] private float fMaxHP;
+        [SerializeField, Range(0f, 50f)] private float fMaxHP;
+        [SerializeField, Range(0f, 50f)] private float fCorrection;
         [SerializeField] protected LayerMask enemy;
         [SerializeField] private LayerMask pickables;
         [Header("Combat logic")]
@@ -53,8 +54,6 @@ namespace GameControllers
         private uint attackCount;
         protected float speedMultiplier = 1;
 
-        public List<Item> itemsPickedUpInLevel = new List<Item>();
-
         public virtual float HP
         {
             get => fHP;
@@ -78,6 +77,11 @@ namespace GameControllers
             }
         }
 
+        public float Correction
+        {
+            get => fCorrection;
+        }
+
         protected virtual IEnumerator Blink()
         {
             while (enabled)
@@ -95,7 +99,7 @@ namespace GameControllers
         protected virtual void Awake()
         {
             instance = this;
-
+            InventoryManager.Instance.NotifyOnSpawn();
             StartCoroutine(Blink());
         }
 
@@ -116,7 +120,8 @@ namespace GameControllers
 
         protected virtual void OnDisable()
         {
-            OnDeath();
+            if (HP <= 0)
+                OnDeath();
             Destroy(this.gameObject, 1f);
         }
 
@@ -144,14 +149,15 @@ namespace GameControllers
                 return;
 
             animator.ResetTrigger("attack");
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, attacks[attackID].Damage, enemy);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, attacks[attackID].Distance + attacks[attackID].Dispersion, enemy);
 
             foreach (Collider2D collider in colliders)
             {
                 IDamagable damagable;
                 if ((damagable = collider.GetComponent<IDamagable>()) != null)
                 {
-                    ApplyDamageToEnemy(damagable, attackID);
+                    if (attacks[attackID].validatePredicate(transform.position, damagable.Correction, collider.transform.position, spriteRenderer.flipX))
+                        ApplyDamageToEnemy(damagable, attackID);
                 }
             }
         }
@@ -170,16 +176,23 @@ namespace GameControllers
 
         protected IMasterDialogue GetClosestMasterDialogue() 
         {
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fTriggerDistance);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, fTriggerDistance, pickables);
 
-            IMasterDialogue closest = null;
+            if (colliders.Length == 0) return null;
 
+            IMasterDialogue closest = colliders[0].GetComponent<IMasterDialogue>();
+            float distance = Vector3.Distance(colliders[0].transform.position, transform.position);
             foreach (Collider2D collider in colliders)
             {
                 IMasterDialogue pickable;
                 if ((pickable = collider.GetComponent<IMasterDialogue>()) != null)
                 {
-                    closest = pickable;
+                    float curDistance = Vector2.Distance(transform.position, collider.transform.position);
+                    if (curDistance < distance)
+                    {
+                        closest = pickable;
+                        distance = curDistance;
+                    }
                 }
             }
             return closest;

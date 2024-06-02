@@ -24,7 +24,9 @@ namespace LevelManagement
         [SerializeField, AllowsNull] private Transform tInventoryListRoot;
         [SerializeField, AllowsNull] private Transform tQuestListRoot;
         [SerializeField] private GameObject tInventoryGUI;
-        [SerializeField] private Player[] playerPrefabs;
+        [Header("Player Spawn")]
+        [SerializeField] private bool shouldSpawn = true;
+        [SerializeField] private PlayableList playables;
         public Transform Root { get => tInventoryListRoot; }
         public Transform QuestRoot { get => tQuestListRoot; }
 
@@ -75,8 +77,12 @@ namespace LevelManagement
             if (InventoryManager.Instance == null)
                 Instantiate(inventoryManagerPrefab);
 
-            if (!Player.Instance && playerPrefabs.Length > 0) 
-                Instantiate(playerPrefabs[Random.Range(0, playerPrefabs.Length)]);
+            if (shouldSpawn)
+            {
+                int id = PlayerPrefs.GetInt("playable", 0);
+                Instantiate(playables.playable[id], transform.position, Quaternion.identity);
+            }
+                
 
             if (tInventoryListRoot == null)
                 tInventoryListRoot = GameObject.FindGameObjectWithTag("InventoryRoot").transform;

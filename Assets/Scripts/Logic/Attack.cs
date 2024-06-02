@@ -1,6 +1,7 @@
 using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using static UnityEngine.RuleTile.TilingRuleOutput;
 
@@ -16,20 +17,21 @@ public class Attack
     public float Damage { get => fDamage; }
     public float Dispersion { get => fYDispersion; }
     public float Distance { get => fDamageDistance; }
-
     public AudioClip SFX { get => sfx; }
 
-    public bool validatePredicate(Vector3 position, Vector3 playerPosition, bool flipped)
+    public bool validatePredicate(Vector3 position, float correction, Vector3 playerPosition, bool flipped)
     {
         switch (type)
         {
             case AttackType.ATTACK_FORWARD:
                 return (
-                    Mathf.Abs(playerPosition.x - position.x) <= fDamageDistance &&
-                    Mathf.Abs(playerPosition.y - position.y) <= fYDispersion / 2
+                    Mathf.Abs(playerPosition.x - position.x) - correction / 2 <= fDamageDistance &&
+                    Mathf.Abs(playerPosition.y - position.y) - correction / 2 <= fYDispersion / 2
                 );
             case AttackType.ATTACK_RANGE:
-                return Vector3.Distance(position, playerPosition) <= fDamageDistance;
+                return Vector3.Distance(position, playerPosition) <= fDamageDistance + correction;
+            case AttackType.ATTACK_PROJECTILE:
+                return false;
             default:
                 Debug.LogWarning($"Not implemented {type} in getRootPosition");
                 return false;

@@ -12,9 +12,8 @@ GameObject:
   - component: {fileID: 2873127580449121666}
   - component: {fileID: 2495268984670970353}
   - component: {fileID: 1615960948142972049}
-  - component: {fileID: 701936218870639850}
   - component: {fileID: 6525603481410602398}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SampleQuestGiver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,27 +218,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.64, y: 0.64}
   m_Direction: 0
---- !u!95 &701936218870639850
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4839023317055543390}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: eb5827094c1ce11458cb64a510b316b6, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &6525603481410602398
 MonoBehaviour:
   m_ObjectHideFlags: 0
