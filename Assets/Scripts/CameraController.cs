@@ -8,16 +8,30 @@ namespace GUIControllers
     [RequireComponent(typeof(Camera))]
     public class CameraController : MonoBehaviour
     {
+        private static CameraController instance;
+        public static CameraController Instance { get => instance; }
+
         [Header("Base Settings")]
         [SerializeField, Range(0f, 10f)] private float fSpeed;
         [SerializeField, Range(0f, 10f)] private float fMinRange;
         [SerializeField, Range(0f, 1f)] private float fStopRange;
         [Header("Required")]
         [SerializeField] private Transform player;
+        [SerializeField] private Animator animator;
         [Header("Gizmos")]
         [SerializeField] private Color gizmoColor = new Color(0f, 0f, 0f, 1f);
 
         private bool isMoving = false;
+
+        public void Damage()
+        {
+            animator.SetTrigger("damage");
+        }
+
+        private void Awake()
+        {
+            instance = this;
+        }
 
         private void Update()
         {

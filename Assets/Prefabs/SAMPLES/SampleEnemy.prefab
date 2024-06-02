@@ -265,8 +265,9 @@ MonoBehaviour:
   animator: {fileID: 6491640322084804449}
   fMaxHP: 2
   fCorpseLifetime: 4
-  hpSlider: {fileID: 8965176617897071196}
   fReactionDistance: 10
+  needToBeSummoned: 1
+  hpSlider: {fileID: 8965176617897071196}
   fRerouteDistance: 0.5
   fStopDistance: 2
   fSpeed: 1
@@ -275,13 +276,17 @@ MonoBehaviour:
   spriteRenderer: {fileID: 7128443025265849926}
   flip: 1
   gizmoColor: {r: 1, g: 0, b: 0, a: 1}
-  fDamage: 2
-  fAttackDelay: 1
-  fAttackDistance: 2
+  attacks:
+  - fDamage: 3
+    fDamageDistance: 1
+    fYDispersion: 3.88
+    type: 1
+    sfx: {fileID: 8300000, guid: 7edd7ffc6c1bf444cb5b872c29d2d631, type: 3}
+  fAttackDelay: 3
   attackSFX: {fileID: 8300000, guid: 58364bbf225139d48ab3f744dae7f710, type: 3}
   collider: {fileID: 2539663673524253624}
   drop:
-  - item: {fileID: 7081215374946882170, guid: d0c90614827edcf478de42b23969245c, type: 3}
+  - item: {fileID: 5982850704761769735, guid: d0c90614827edcf478de42b23969245c, type: 3}
     chance: 100
   cAttackGizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!82 &6632929887222377188

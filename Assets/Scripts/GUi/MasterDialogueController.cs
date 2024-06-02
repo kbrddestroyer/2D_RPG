@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class MasterDialogueController : MonoBehaviour
 {
+    private static MasterDialogueController instance;
+    public static MasterDialogueController Instance { get => instance; }
+
     [SerializeField] private TMP_Text tText;
     [SerializeField] private string text;
     [SerializeField] private Transform root;
@@ -15,7 +18,7 @@ public class MasterDialogueController : MonoBehaviour
     [SerializeField] private GameObject hintSkip;
 
     public List<IMasterDialogue> subscribed = new List<IMasterDialogue>();
-    
+
     public void Subscribe(IMasterDialogue ob)
     {
         Debug.Log($"Added {ob}");
@@ -75,5 +78,10 @@ public class MasterDialogueController : MonoBehaviour
         {
             iImage.enabled = value;
         }
+    }
+
+    private void Awake()
+    {
+        instance = this;
     }
 }

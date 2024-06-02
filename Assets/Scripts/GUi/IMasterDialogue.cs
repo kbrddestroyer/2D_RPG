@@ -6,4 +6,6 @@ public interface IMasterDialogue
 {
     public void Subscribe();
     public void Unsubscribe();
+
+    public void Interact();
 }
