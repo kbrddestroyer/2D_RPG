@@ -1,3 +1,4 @@
+using GameControllers;
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,31 +17,23 @@ public class Pickable : MonoBehaviour, IPickable, IMasterDialogue
     [Header("Required")]
     [SerializeField] protected InventoryItem guiPrefab;
     
-    private MasterDialogueController dialogueController;
     private bool subscribed = false;
 
     public Item ItemSetting { get => itemSettings; }
 
     public bool hint
     {
-        get => dialogueController.Activate.activeInHierarchy; 
+        get => MasterDialogueController.Instance.Activate.activeInHierarchy; 
         set
         {
-            dialogueController.Activate.SetActive(value);
+            MasterDialogueController.Instance.Activate.SetActive(value);
         }
-    }
-
-    private void Start()
-    {
-        if (!dialogueController)
-            dialogueController = GameObject.FindObjectOfType<MasterDialogueController>();
     }
 
     public void Pickup()
     {
-        InventoryItem item = Instantiate(guiPrefab, LevelManagement.GameLevelManager.Instance.Root);
-        item.ItemSettings = itemSettings;
-        InventoryManager.Instance.Items.Add(itemSettings);
+        InventoryManager.Instance.AddItem(itemSettings);
+        Unsubscribe();
         Destroy(this.gameObject);
     }
 
@@ -49,8 +42,8 @@ public class Pickable : MonoBehaviour, IPickable, IMasterDialogue
         if (!subscribed)
         {
             subscribed = true;
-            dialogueController.Activate.SetActive(true);
-            dialogueController.Subscribe(this);
+            MasterDialogueController.Instance.Activate.SetActive(true);
+            MasterDialogueController.Instance.Subscribe(this);
         }
     }
 
@@ -59,8 +52,22 @@ public class Pickable : MonoBehaviour, IPickable, IMasterDialogue
         if (subscribed)
         {
             subscribed = false;
-            dialogueController.Activate.SetActive(false);
-            dialogueController.Unsubscribe(this);
+            MasterDialogueController.Instance.Activate.SetActive(false);
+            MasterDialogueController.Instance.Unsubscribe(this);
         }
+    }
+
+    public void Interact()
+    {
+        Pickup();
+    }
+
+    private void FixedUpdate()
+    {
+        if (Player.Instance.ValidateInteractDistance(transform.position))
+        {
+            Subscribe();
+        }
+        else Unsubscribe();
     }
 }

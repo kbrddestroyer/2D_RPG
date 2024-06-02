@@ -13,37 +13,69 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     [SerializeField] private Tilemap wallsMap;
     [SerializeField] protected Player player;
     [SerializeField] protected Animator animator;
-    [SerializeField, Range(0f, 10f)] private float fMaxHP;
+    [SerializeField, Range(0f, 100f)] protected float fMaxHP;
     [SerializeField, Range(0f, 10f)] private float fCorpseLifetime;
+    [SerializeField, Range(0f, 100f)] protected float fReactionDistance;
+    [SerializeField] private bool needToBeSummoned = true;
     [Header("GUI")]
-    [SerializeField] private Slider hpSlider;
+    [SerializeField, AllowsNull] protected Slider hpSlider;
 
-    private float fHP;
+    protected float fHP;
 
-    public float HP { 
+    public bool summoned;
+
+    protected virtual void UpdateGUIElement(float value)
+    {
+        hpSlider.value = value;
+    }
+
+    public virtual float HP { 
         get => fHP; 
         set
         {
+            if (!summoned && value < fHP)
+                return;
+
             if (value < fHP && value > 0)
                 Damage();
             fHP = value;
-            hpSlider.value = Mathf.Clamp(value / fMaxHP, 0f, 1f);
+            UpdateGUIElement(Mathf.Clamp(value / fMaxHP, 0f, 1f));
             if (fHP <= 0f)
                 enabled = false;
         }
     }
 
-    protected virtual void Awake()
+    protected virtual void Start()
     {
         HP = fMaxHP;
+
+        if (!wallsMap)
+        {
+            wallsMap = GameObject.Find("Walls").GetComponent<Tilemap>();
+            if (!wallsMap)
+            {
+                Debug.LogError("Can't find tilemap on scene. Please, make sure you have walls tilemap");
+            }
+        }
+
+        if (!player)
+            player = FindObjectOfType<Player>();
+
+        summoned = !needToBeSummoned;
     }
 
     private void OnDisable()
     {
         animator.SetTrigger("death");
-        hpSlider.gameObject.SetActive(false);
-        OnDeath();
+        if (hpSlider) hpSlider.gameObject.SetActive(false);
+        if (HP <= 0)
+            OnDeath();
         Destroy(this.gameObject, fCorpseLifetime);
+    }
+
+    public void OnSummoned()
+    {
+        summoned = true;
     }
 
     private void Damage()
@@ -153,6 +185,12 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
 
     public abstract void OnDeath();
 
+    protected virtual void Update()
+    {
+        if (Vector2.Distance(player.transform.position, transform.position) <= fReactionDistance && !summoned)
+            animator.SetTrigger("summon");
+    }
+
 #if UNITY_EDITOR
     protected virtual void OnDrawGizmosSelected()
     {
@@ -168,6 +206,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
 
         ReadOnlySpan<Vector3> waypointsSpan = new ReadOnlySpan<Vector3>(waypoints.ToArray());
         Gizmos.DrawLineStrip(waypointsSpan, false);
+        Gizmos.DrawWireSphere(transform.position, fReactionDistance);
     }
 
     protected virtual void OnValidate()

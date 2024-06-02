@@ -15,7 +15,7 @@ MonoBehaviour:
   questLabel: "\u041D\u0430\u0439\u0442\u0438 \u043C\u043E\u0437\u0433\u0438"
   questDescription: "\u041D\u0430\u0439\u0434\u0438 \u043C\u043E\u0437\u0433\u0438
     \u0421\u0430\u043D\u0441\u0430"
-  reward: {fileID: 11400000, guid: 6e2fec2c6a8e9bd4f82753b879cfc97f, type: 2}
+  reward: {fileID: 11400000, guid: 432477e2742e17b4888dae1990c5959a, type: 2}
   id: 1
   questStarted: 0
   questCompleted: 0

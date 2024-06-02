@@ -28,7 +28,7 @@ public class InventoryItem : MonoBehaviour
             id = value.id;
             image.sprite = value.icon;
             label.text = value.label;
-            button.enabled = value.isUsable;
+            button.gameObject.SetActive(value.isUsable);
             if (value.isUsable) {
                 button.onClick.AddListener(() => { value.OnClick(); });
                 button.onClick.AddListener(() => { Destroy(this.gameObject); });

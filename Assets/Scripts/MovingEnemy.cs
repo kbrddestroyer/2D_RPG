@@ -7,13 +7,12 @@ using UnityEngine.Tilemaps;
 
 public abstract class MovingEnemy : EnemyBase, IDamagable
 {
-    [SerializeField, Range(0f, 10f)] private float fReactionDistance;
-    [SerializeField, Range(0f, 1f)] private float fRerouteDistance;
+    [SerializeField, Range(0f, 10f)] private float fRerouteDistance;
     [SerializeField, Range(0f, 10f)] private float fStopDistance;
     [SerializeField, Range(0f, 10f)] private float fSpeed;
     [SerializeField] private AudioClip stepSFX;
     [SerializeField] protected AudioSource source;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] private bool flip;
     [Header("Gizmo settings")]
     [SerializeField] private Color gizmoColor = new Color(0, 0, 0, 1);
@@ -21,13 +20,13 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
     private Stack<Vector3> currentWaypoints = new Stack<Vector3>();
     private Vector3 currentPoint;
 
-    protected override void Awake()
+    protected override void Start()
     {
         currentPoint = transform.position;
-        base.Awake();
+        base.Start();
     }
 
-    protected virtual void Update()
+    protected override void Update()
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
         if (distance < fReactionDistance && distance > fStopDistance)
@@ -54,6 +53,8 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
         {
             animator.SetBool("walking", false);
         }
+
+        base.Update();
     }
 
     public void PlayStepSound()
@@ -66,7 +67,6 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
     {
         Gizmos.color = gizmoColor;
 
-        Gizmos.DrawWireSphere(transform.position, fReactionDistance);
         Gizmos.DrawWireSphere(transform.position, fStopDistance);
         Gizmos.DrawWireSphere(transform.position, fRerouteDistance);
         base.OnDrawGizmosSelected();
