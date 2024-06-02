@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_Sprite: {fileID: 1993549703, guid: 619bec0b954ee624387b6361dbfb6200, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1.35, y: 0.7}
@@ -172,7 +172,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!82 &74158615045523256
 AudioSource:
   m_ObjectHideFlags: 0
@@ -290,9 +290,9 @@ MonoBehaviour:
   needToBeSummoned: 0
   hpSlider: {fileID: 0}
   summoned: 0
-  fRerouteDistance: 1
+  fRerouteDistance: 3.6
   fStopDistance: 5
-  fSpeed: 2
+  fSpeed: 1
   stepSFX: {fileID: 8300000, guid: 533a690cb8089954eb4e0fb64307853c, type: 3}
   source: {fileID: 74158615045523256}
   spriteRenderer: {fileID: 6504330168229286652}
@@ -309,14 +309,13 @@ MonoBehaviour:
     fYDispersion: 0
     type: 0
     sfx: {fileID: 8300000, guid: 58364bbf225139d48ab3f744dae7f710, type: 3}
-  fAttackDelay: 3
+  fAttackDelay: 4
   collider: {fileID: 4131055149479096097}
   drop: []
   cAttackGizmoColor: {r: 0, g: 0, b: 0, a: 1}
   bossname: "\u041A\u0430\u043C\u0435\u043D\u043D\u0430\u044F \u0433\u043D\u0438\u0434\u0430"
-  postAttackDelay: 2
   col: {fileID: 4131055149479096097}
-  inAttack: 0
+  postAttackImmunity: 1.5
 --- !u!114 &3395057595360367417
 MonoBehaviour:
   m_ObjectHideFlags: 0

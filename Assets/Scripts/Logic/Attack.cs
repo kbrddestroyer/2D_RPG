@@ -19,7 +19,7 @@ public class Attack
 
     public AudioClip SFX { get => sfx; }
 
-    public bool validatePredicate(Vector3 position, Vector3 playerPosition, bool flipped = false)
+    public bool validatePredicate(Vector3 position, Vector3 playerPosition, bool flipped)
     {
         switch (type)
         {
@@ -37,7 +37,7 @@ public class Attack
     }
 
 #if UNITY_EDITOR
-    private Vector3 getRootPosition(bool flipped = false)
+    private Vector3 getRootPosition(bool flipped)
     {
         switch (type)
         {
@@ -55,12 +55,12 @@ public class Attack
         }
     }
 
-    public void DrawGizmo(Vector3 position)
+    public void DrawGizmo(Vector3 position, bool flipped)
     {
         switch (type)
         {
             case AttackType.ATTACK_FORWARD:
-                Gizmos.DrawWireCube(position + getRootPosition(), new Vector3(fDamageDistance, fYDispersion / 2, 0));
+                Gizmos.DrawWireCube(position + getRootPosition(flipped), new Vector3(fDamageDistance, fYDispersion / 2, 0));
                 break;
             case AttackType.ATTACK_RANGE:
                 Gizmos.DrawWireSphere(position, fDamageDistance);

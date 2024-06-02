@@ -1,7 +1,6 @@
 using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -28,6 +27,10 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
 
     protected override void Update()
     {
+        base.Update();
+        if (!summoned)
+            return;
+
         float distance = Vector2.Distance(transform.position, player.transform.position);
         if (distance < fReactionDistance && distance > fStopDistance)
         {
@@ -53,8 +56,6 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
         {
             animator.SetBool("walking", false);
         }
-
-        base.Update();
     }
 
     public void PlayStepSound()
