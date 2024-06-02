@@ -63,7 +63,6 @@ public class DialogueController : Dialogue, IMasterDialogue
             StartTextDisplay();
     }
 
-
     private void FixedUpdate()
     {
         if (Player.Instance.ValidateInteractDistance(transform.position))

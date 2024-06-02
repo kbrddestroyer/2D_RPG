@@ -297,7 +297,7 @@ MonoBehaviour:
     m_Bits: 256
   pickables:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   comboFallback: 0
   animator: {fileID: 1928777491151482515}
   audio: {fileID: 497467407793543524}

@@ -42,7 +42,7 @@ public class AttackingEnemy : MovingEnemy, IDamagable
     protected override void Update()
     {
         fPassedTime += Time.deltaTime;
-        if (summoned && fPassedTime > fAttackDelay && attacks[pickedAttackID].validatePredicate(transform.position, Player.Instance.transform.position, spriteRenderer.flipX))
+        if (summoned && fPassedTime > fAttackDelay && attacks[pickedAttackID].validatePredicate(transform.position, 0, Player.Instance.transform.position, spriteRenderer.flipX))
         {
             Attack();
         }
@@ -68,7 +68,7 @@ public class AttackingEnemy : MovingEnemy, IDamagable
         if (animID >= attacks.Length)
             return;
 
-        if (attacks[animID].validatePredicate(transform.position, Player.Instance.transform.position, spriteRenderer.flipX))
+        if (attacks[animID].validatePredicate(transform.position, 0, Player.Instance.transform.position, spriteRenderer.flipX))
         { 
             Player.Instance.HP -= attacks[animID].Damage;
         }

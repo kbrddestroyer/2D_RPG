@@ -14,6 +14,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     [SerializeField, Range(0f, 100f)] protected float fMaxHP;
     [SerializeField, Range(0f, 10f)] private float fCorpseLifetime;
     [SerializeField, Range(0f, 100f)] protected float fReactionDistance;
+    [SerializeField, Range(0f, 100f)] protected float fCorrection;
     [SerializeField] private bool needToBeSummoned = true;
     [Header("GUI")]
     [SerializeField, AllowsNull] protected Slider hpSlider;
@@ -41,6 +42,11 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
             if (fHP <= 0f)
                 enabled = false;
         }
+    }
+
+    public float Correction
+    {
+        get => fCorrection;
     }
 
     protected virtual void Start()
@@ -208,6 +214,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
             Gizmos.DrawLineStrip(waypointsSpan, false);
         }
         Gizmos.DrawWireSphere(transform.position, fReactionDistance);
+        Gizmos.DrawWireCube(transform.position, new Vector3(fCorrection, fCorrection, 0));
     }
 
     protected virtual void OnValidate()

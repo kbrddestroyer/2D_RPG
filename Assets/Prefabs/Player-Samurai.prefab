@@ -283,7 +283,7 @@ MonoBehaviour:
   fSpeed: 11
   attacks:
   - fDamage: 1
-    fDamageDistance: 2
+    fDamageDistance: 1.5
     fYDispersion: 0
     type: 0
     sfx: {fileID: 8300000, guid: eb975b89e78e3d74eb67ff0cb943af59, type: 3}
@@ -295,7 +295,7 @@ MonoBehaviour:
   autoAttack: 0
   fDamageDelay: 0.1
   fTriggerDistance: 3
-  fMaxHP: 10
+  fMaxHP: 25
   enemy:
     serializedVersion: 2
     m_Bits: 256
