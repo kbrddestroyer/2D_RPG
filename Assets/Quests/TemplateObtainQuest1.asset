@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812723b0e7b9c154fa31bb560e2a085b, type: 3}
   m_Name: TemplateObtainQuest1
   m_EditorClassIdentifier: 
-  questLabel: "\u041D\u0430\u0439\u0442\u0438 \u043C\u043E\u0437\u0433\u0438"
-  questDescription: "\u041D\u0430\u0439\u0434\u0438 \u043C\u043E\u0437\u0433\u0438
-    \u0421\u0430\u043D\u0441\u0430"
+  questLabel: "\u041D\u0430\u0439\u0442\u0438 \u043A\u043B\u044E\u0447\u0438"
+  questDescription: "\u041D\u0430\u0439\u0434\u0438 \u043A\u043B\u044E\u0447\u0438
+    \u043E\u0442 \u0432\u0445\u043E\u0434\u043D\u043E\u0439 \u0434\u0432\u0435\u0440\u0438"
   reward: {fileID: 11400000, guid: 432477e2742e17b4888dae1990c5959a, type: 2}
   id: 1
   questStarted: 0
