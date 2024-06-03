@@ -16,7 +16,8 @@ public class Pickable : MonoBehaviour, IPickable, IMasterDialogue
     [SerializeField] protected Item itemSettings;
     [Header("Required")]
     [SerializeField] protected InventoryItem guiPrefab;
-    
+    [SerializeField] private Achievement[] relatedAchievements;
+
     private bool subscribed = false;
 
     public Item ItemSetting { get => itemSettings; }
@@ -33,6 +34,10 @@ public class Pickable : MonoBehaviour, IPickable, IMasterDialogue
     public void Pickup()
     {
         InventoryManager.Instance.AddItem(itemSettings);
+        foreach (Achievement achievement in relatedAchievements)
+            if (achievement.validate())
+                RootController.Instance.TriggerAchievement(achievement.Title);
+
         Unsubscribe();
         Destroy(this.gameObject);
     }

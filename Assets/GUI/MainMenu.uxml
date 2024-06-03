@@ -1,9 +1,10 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <Style src="project://database/Assets/GUI/style.uss?fileID=7433441132597879392&amp;guid=f6b3b3eb4dd4cb745b6d5fc770030dba&amp;type=3#style" />
     <ui:VisualElement style="flex-grow: 1; justify-content: space-around; width: 100%; height: 100%; align-items: flex-end;">
-        <ui:VisualElement style="flex-grow: 1; justify-content: center; align-items: center; width: 45%; position: relative; right: auto; left: auto;">
+        <ui:VisualElement style="flex-grow: 1; justify-content: center; align-items: flex-end; width: 45%; position: relative; right: auto; left: auto; padding-right: 30px;">
             <ui:Button text="Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="play" class="btn" />
             <ui:Button text="Credits" parse-escape-sequences="true" display-tooltip-when-elided="true" name="credits" class="btn" />
+            <ui:Button text="Achievements" parse-escape-sequences="true" display-tooltip-when-elided="true" name="achievements" class="btn" />
             <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="exit" class="btn" style="-unity-font: url(&apos;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=6e9a4a01b21f4b94cadc34448ff3ba56&amp;type=3#PressStart2P-Regular&apos;);" />
         </ui:VisualElement>
     </ui:VisualElement>

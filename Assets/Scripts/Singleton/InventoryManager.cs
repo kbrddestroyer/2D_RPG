@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SocialPlatforms.Impl;
 
 [Singleton]
 public class InventoryManager : MonoBehaviour
@@ -16,7 +17,7 @@ public class InventoryManager : MonoBehaviour
 
     private List<Item> items = new List<Item>();
     private List<QuestItem> quests = new List<QuestItem>();
-
+    
     private List<Item> itemsOnLoad;
 
     public bool Contains(Item item)

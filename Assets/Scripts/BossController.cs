@@ -11,6 +11,8 @@ public class BossController : AttackingEnemy
     [SerializeField] private string bossname;
     [Header("Boss Requirements")]
     [SerializeField] private Collider2D col;
+    [Header("Achievements")]
+    [SerializeField] private Achievement[] relatedAchievements;
 
     protected float passedTime = 0f;
 
@@ -46,6 +48,17 @@ public class BossController : AttackingEnemy
     {
         BossmodeGUI.Instance.Toggle(false);
 
+        PlayerPrefs.SetInt(GetHashCode().ToString(), 1);
+
+        foreach (Achievement achievement in relatedAchievements)
+            if (achievement.validate())
+                RootController.Instance.TriggerAchievement(achievement.Title);
+
         base.OnDeath();
+    }
+
+    public override int GetHashCode()
+    {
+        return this.bossname.GetHashCode();
     }
 }
