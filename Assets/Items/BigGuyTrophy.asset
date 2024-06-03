@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61bf65113ca54594ea64e3631a594e0e, type: 3}
+  m_Name: BigGuyTrophy
+  m_EditorClassIdentifier: 
+  icon: {fileID: -2071661944, guid: 4c0dba6b506bffc4c811bf4279c85f86, type: 3}
+  label: "\u041A\u0430\u043C\u0435\u0448\u0435\u043A"
+  isUsable: 0
