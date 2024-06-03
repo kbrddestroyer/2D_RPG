@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.SocialPlatforms.Impl;
 
 [Singleton]
 public class InventoryManager : MonoBehaviour
@@ -16,13 +17,12 @@ public class InventoryManager : MonoBehaviour
 
     private List<Item> items = new List<Item>();
     private List<QuestItem> quests = new List<QuestItem>();
+    
+    private List<Item> itemsOnLoad;
 
     public bool Contains(Item item)
     {
-        foreach (Item _item in items)
-            if (item.id == _item.id)
-                return true;
-        return false;
+        return items.Contains(item);
     }
 
     public void StartQuest(QuestItem quest)
@@ -51,21 +51,23 @@ public class InventoryManager : MonoBehaviour
     public void AddItem(Item item)
     {
         Items.Add(item);
-        Player.Instance.itemsPickedUpInLevel.Add(item);
         GameLevelManager.Instance.AddItem(item);
     }
 
     public void RemoveItem(Item item)
     {
         Items.Remove(item);
-        Player.Instance.itemsPickedUpInLevel.Remove(item);
         GameLevelManager.Instance.RebuildItems();
+    }
+
+    public void NotifyOnSpawn()
+    {
+        itemsOnLoad = new List<Item>(items);
     }
 
     public void NotifyOnPlayerDeath()
     {
-        foreach (Item item in Player.Instance.itemsPickedUpInLevel)
-            Items.Remove(item);
+        items = new List<Item>(itemsOnLoad);
     }
 
     public List<Item> Items { get => items; }

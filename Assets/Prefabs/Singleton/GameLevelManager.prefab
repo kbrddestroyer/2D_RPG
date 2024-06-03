@@ -51,3 +51,5 @@ MonoBehaviour:
   tInventoryListRoot: {fileID: 0}
   tQuestListRoot: {fileID: 0}
   tInventoryGUI: {fileID: 0}
+  shouldSpawn: 1
+  playables: {fileID: 11400000, guid: d04ffe4951ceaa54dbda46b60a648c0d, type: 2}

@@ -1,3 +1,4 @@
+using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class CreepSpawner : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField, Range(0f, 10f)] private float range;
+    [SerializeField, Range(0f, 100f)] private float activationDistance;
     [SerializeField, Range(0f, 10f)] private float delay;
     [SerializeField, Range(0, 10)] private uint creepCount;
     [Header("Requirements")]
@@ -30,6 +32,9 @@ public class CreepSpawner : MonoBehaviour
             passedTime += Time.deltaTime;
         else
         {
+            if (Vector3.Distance(Player.Instance.transform.position, transform.position) > activationDistance)
+                return;
+            
             passedTime = 0f;
             for (uint i = 0; i < creepCount; i++) 
                 Instantiate(creep, transform.position + RandomAspect(), Quaternion.identity);
@@ -42,6 +47,7 @@ public class CreepSpawner : MonoBehaviour
         Gizmos.color = gizmoColor;
 
         Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, activationDistance);
     }
 #endif
 }

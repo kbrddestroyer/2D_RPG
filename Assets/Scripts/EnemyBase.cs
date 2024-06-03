@@ -10,11 +10,11 @@ using UnityEngine.UI;
 public abstract class EnemyBase : MonoBehaviour, IDamagable
 {
     [SerializeField] private Tilemap wallsMap;
-    [SerializeField] protected Player player;
     [SerializeField] protected Animator animator;
     [SerializeField, Range(0f, 100f)] protected float fMaxHP;
     [SerializeField, Range(0f, 10f)] private float fCorpseLifetime;
     [SerializeField, Range(0f, 100f)] protected float fReactionDistance;
+    [SerializeField, Range(0f, 100f)] protected float fCorrection;
     [SerializeField] private bool needToBeSummoned = true;
     [Header("GUI")]
     [SerializeField, AllowsNull] protected Slider hpSlider;
@@ -44,6 +44,11 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
         }
     }
 
+    public float Correction
+    {
+        get => fCorrection;
+    }
+
     protected virtual void Start()
     {
         fHP = fMaxHP;
@@ -57,9 +62,6 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
             }
         }
 
-        if (!player)
-            player = FindObjectOfType<Player>();
-
         summoned = !needToBeSummoned;
     }
 
@@ -72,7 +74,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
         Destroy(this.gameObject, fCorpseLifetime);
     }
 
-    public void OnSummoned()
+    public virtual void OnSummoned()
     {
         summoned = true;
         if (hpSlider)
@@ -88,11 +90,11 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
         public Vector3Int point;
         public Waypoint parent;
         public float weight;
-        public Waypoint(Vector3Int point, Waypoint parent, Tilemap wallsMap, Player player)
+        public Waypoint(Vector3Int point, Waypoint parent, Tilemap wallsMap)
         {
             this.point = point;
             this.parent = parent;
-            this.weight = Vector2.Distance(wallsMap.LocalToWorld(point), player.transform.position);
+            this.weight = Vector2.Distance(wallsMap.LocalToWorld(point), Player.Instance.transform.position);
         }
     }
 
@@ -128,7 +130,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
         List<Vector3Int> closed = new List<Vector3Int>();
         PriorityQueue<Waypoint> open = new PriorityQueue<Waypoint>();
 
-        Waypoint start = new Waypoint(sourceTile, null, wallsMap, player);
+        Waypoint start = new Waypoint(sourceTile, null, wallsMap);
 
         open[start.weight] = start;
 
@@ -159,7 +161,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
                     Vector3Int pos = new Vector3Int(x, y, p.point.z);
                     if (wallsMap.GetTile(pos) == null)
                     {
-                        Waypoint point = new Waypoint(pos, p, wallsMap, player);
+                        Waypoint point = new Waypoint(pos, p, wallsMap);
                         open[point.weight] = point;
                     }
                 }
@@ -171,7 +173,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
 
     protected Stack<Vector3> getPath(Vector3 destination)
     {
-        Waypoint arr = getPathFromDestinationCoordinates(player.transform.position);
+        Waypoint arr = getPathFromDestinationCoordinates(destination);
         if (arr == null) return null;
         Stack<Vector3> waypoints = new Stack<Vector3>();
 
@@ -188,7 +190,7 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
 
     protected virtual void Update()
     {
-        if (Vector2.Distance(player.transform.position, transform.position) <= fReactionDistance && !summoned)
+        if (Vector2.Distance(Player.Instance.transform.position, transform.position) <= fReactionDistance && !summoned)
             animator.SetTrigger("summon");
     }
 
@@ -197,17 +199,22 @@ public abstract class EnemyBase : MonoBehaviour, IDamagable
     {
         Gizmos.color = Color.red;
 
-        Waypoint arr = getPathFromDestinationCoordinates(player.transform.position);
-        List<Vector3> waypoints = new List<Vector3>();
+        if (Player.Instance)
+        {
+            Waypoint arr = getPathFromDestinationCoordinates(Player.Instance.transform.position);
+            List<Vector3> waypoints = new List<Vector3>();
 
-        while (arr != null) {
-            waypoints.Add(wallsMap.CellToLocal(arr.point) + wallsMap.cellSize * 0.5f);
-            arr = arr.parent;
+            while (arr != null)
+            {
+                waypoints.Add(wallsMap.CellToLocal(arr.point) + wallsMap.cellSize * 0.5f);
+                arr = arr.parent;
+            }
+
+            ReadOnlySpan<Vector3> waypointsSpan = new ReadOnlySpan<Vector3>(waypoints.ToArray());
+            Gizmos.DrawLineStrip(waypointsSpan, false);
         }
-
-        ReadOnlySpan<Vector3> waypointsSpan = new ReadOnlySpan<Vector3>(waypoints.ToArray());
-        Gizmos.DrawLineStrip(waypointsSpan, false);
         Gizmos.DrawWireSphere(transform.position, fReactionDistance);
+        Gizmos.DrawWireCube(transform.position, new Vector3(fCorrection, fCorrection, 0));
     }
 
     protected virtual void OnValidate()

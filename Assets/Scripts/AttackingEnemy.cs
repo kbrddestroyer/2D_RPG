@@ -1,3 +1,4 @@
+using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
@@ -24,10 +25,24 @@ public class AttackingEnemy : MovingEnemy, IDamagable
     private int pickedAttackID = 0;
     private bool inAttack = false;
 
+    public override void OnSummoned()
+    {
+        base.OnSummoned();
+
+        collider.enabled = true;
+    }
+
+    protected override void Start()
+    {
+        base.Start();
+
+        collider.enabled = summoned;
+    }
+
     protected override void Update()
     {
         fPassedTime += Time.deltaTime;
-        if (summoned && fPassedTime > fAttackDelay && player != null && attacks[pickedAttackID].validatePredicate(transform.position, player.transform.position, spriteRenderer.flipX))
+        if (summoned && fPassedTime > fAttackDelay && attacks[pickedAttackID].validatePredicate(transform.position, 0, Player.Instance.transform.position, spriteRenderer.flipX))
         {
             Attack();
         }
@@ -53,9 +68,9 @@ public class AttackingEnemy : MovingEnemy, IDamagable
         if (animID >= attacks.Length)
             return;
 
-        if (attacks[animID].validatePredicate(transform.position, player.transform.position, spriteRenderer.flipX))
+        if (attacks[animID].validatePredicate(transform.position, 0, Player.Instance.transform.position, spriteRenderer.flipX))
         { 
-            player.HP -= attacks[animID].Damage;
+            Player.Instance.HP -= attacks[animID].Damage;
         }
         source.PlayOneShot(attacks[animID].SFX);
 

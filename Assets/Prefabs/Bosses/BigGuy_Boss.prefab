@@ -282,11 +282,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallsMap: {fileID: 0}
-  player: {fileID: 0}
   animator: {fileID: 5740931656530041827}
   fMaxHP: 100
   fCorpseLifetime: 5
   fReactionDistance: 15
+  fCorrection: 4.7
   needToBeSummoned: 0
   hpSlider: {fileID: 0}
   summoned: 0
@@ -309,12 +309,16 @@ MonoBehaviour:
     fYDispersion: 0
     type: 0
     sfx: {fileID: 8300000, guid: 58364bbf225139d48ab3f744dae7f710, type: 3}
-  fAttackDelay: 4
+  fAttackDelay: 3.6
   collider: {fileID: 4131055149479096097}
-  drop: []
-  cAttackGizmoColor: {r: 0, g: 0, b: 0, a: 1}
+  drop:
+  - item: {fileID: 2694074549312999840, guid: c8daf324cd20c424e82652a10affed05, type: 3}
+    chance: 100
+  cAttackGizmoColor: {r: 1, g: 0, b: 0, a: 1}
   bossname: "\u041A\u0430\u043C\u0435\u043D\u043D\u0430\u044F \u0433\u043D\u0438\u0434\u0430"
   col: {fileID: 4131055149479096097}
+  relatedAchievements:
+  - {fileID: 11400000, guid: 4c5f2198575aab948baf7581f086f032, type: 2}
   postAttackImmunity: 1.5
 --- !u!114 &3395057595360367417
 MonoBehaviour:
@@ -329,6 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   range: 7
+  activationDistance: 9.5
   delay: 10
   creepCount: 1
   creep: {fileID: 4050130868591390267, guid: 1a518917bc3de5b44a6b785d4929709f, type: 3}
