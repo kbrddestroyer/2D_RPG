@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RootController : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class RootController : MonoBehaviour
     public static RootController Instance { get => instance; }
 
     [SerializeField] private AchievementGUI achievement;
+    [SerializeField] private GameObject escapeTab;
+    [SerializeField] private string mainMenu;
 
     private Queue<string> queued = new Queue<string>();
 
@@ -33,5 +36,21 @@ public class RootController : MonoBehaviour
         queued.Enqueue(title);
         Debug.Log(title);
         StartCoroutine(DequeueAll());
+    }
+
+    public void ToMainMenu()
+    {
+        SceneManager.LoadScene(mainMenu);
+    }
+
+    public void ToggleEscapeTab(bool bState)
+    {
+        escapeTab.SetActive(bState);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            ToggleEscapeTab(!escapeTab.activeInHierarchy);
     }
 }
