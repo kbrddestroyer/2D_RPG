@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 [System.Serializable]
 public class Attack

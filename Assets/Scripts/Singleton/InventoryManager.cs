@@ -73,7 +73,7 @@ public class InventoryManager : MonoBehaviour
     public List<Item> Items { get => items; }
     public List<QuestItem> Quests { get => quests; }
 
-    private void Awake()
+    protected void Awake()
     {
         if (instance == null)
         {
