@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+[Serializable]
 [CreateAssetMenu(menuName = "Items/Healing Item")]
 public class HealingItem : Item
 {
