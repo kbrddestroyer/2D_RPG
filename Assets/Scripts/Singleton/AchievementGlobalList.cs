@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu]
 public class AchievementGlobalList : ScriptableObject
 {
-    public Achievement[] achievements;
+    public List<Achievement> achievements = new List<Achievement>();
 }

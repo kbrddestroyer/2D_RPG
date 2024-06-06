@@ -590,15 +590,15 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 82593322}
-          m_TargetAssemblyTypeName: LevelManagement.GameLevelManager, Assembly-CSharp
-          m_MethodName: CallGameManager
+          m_TargetAssemblyTypeName: LevelManagement.GameLevelManager, Sources
+          m_MethodName: GUIChangeLevel
           m_Mode: 5
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
-            m_StringArgument: Scenes/GameLevels/DEVELOPMENT/INDEV-BOSSMODE
+            m_StringArgument: Scenes/GameLevels/Chapter1/Level1
             m_BoolArgument: 0
           m_CallState: 2
     hover:
@@ -707,6 +707,50 @@ MonoBehaviour:
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: Achievements
+            m_BoolArgument: 0
+          m_CallState: 2
+    hover:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1322116349}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: 8b77f009d8efc814bb38d04b0448a2d6, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - id: restart
+    document: {fileID: 196912757}
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1322116349}
+          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+          m_MethodName: PlayOneShot
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 8300000, guid: eae9b9ac97176b24193c8b59b4927c86, type: 3}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Achievements
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 82593322}
+          m_TargetAssemblyTypeName: LevelManagement.GameLevelManager, Sources
+          m_MethodName: RestartGame
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: PlayerPicker
             m_BoolArgument: 0
           m_CallState: 2
     hover:
