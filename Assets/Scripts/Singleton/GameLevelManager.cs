@@ -105,6 +105,13 @@ namespace LevelManagement
             }
         }
 
+        public void GUIChangeLevel(string defaultName)
+        {
+            string sceneName = PlayerPrefs.GetString("scene", defaultName);
+
+            CallGameManager(sceneName);
+        }
+
         public void CallGameManager(string sceneName)
         {
             GameManager.Instance.Load(sceneName);

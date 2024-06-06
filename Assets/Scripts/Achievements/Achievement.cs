@@ -12,7 +12,7 @@ public abstract class Achievement : ScriptableObject
 
     public string Title { get => title; }
     public string Description { get => description; }
-    public bool Unlocked { get => unlocked; }
+    public bool Unlocked { get => unlocked; set => unlocked = value; }
     protected abstract bool validatePredicate();
 
     public bool validate()

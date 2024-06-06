@@ -71,6 +71,7 @@ public class InventoryManager : MonoBehaviour
     }
 
     public List<Item> Items { get => items; }
+    public List<Item> ItemsOnLoad { get => itemsOnLoad; }
     public List<QuestItem> Quests { get => quests; }
 
     protected void Awake()

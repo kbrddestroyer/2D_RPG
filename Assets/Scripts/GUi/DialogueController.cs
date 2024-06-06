@@ -8,6 +8,8 @@ using UnityEngine;
 public class DialogueController : Dialogue, IMasterDialogue
 {
     [SerializeField, Range(0f, 10f)] protected float fTriggerDistance;
+    [SerializeField] private Item[] itemAfterDialogue;
+    [SerializeField] private DialogueAchievement[] relatedAchievements;
     [Header("Gizmos")]
     [SerializeField] protected Color gizmoColor = new Color(0, 0, 0, 1);
 
@@ -27,6 +29,12 @@ public class DialogueController : Dialogue, IMasterDialogue
     public override void AfterTextDisplay()
     {
         base.AfterTextDisplay();
+        foreach (DialogueAchievement achievement in relatedAchievements)
+        {
+            achievement.validate();
+        }
+        foreach (Item item in itemAfterDialogue)
+            InventoryManager.Instance.AddItem(item);
         MasterDialogueController.Instance.Activate.SetActive(true);
     }
 

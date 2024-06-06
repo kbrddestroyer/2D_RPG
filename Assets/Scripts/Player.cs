@@ -134,6 +134,8 @@ namespace GameControllers
 
         protected virtual void OnDestroy()
         {
+            PlayerPrefs.SetString("scene", SceneManager.GetActiveScene().name);
+            PlayerPrefs.Save();
             if (HP <= 0)
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }

@@ -58,4 +58,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemList: {fileID: 11400000, guid: f4181268de7ee9e43b4463bf7be008d9, type: 2}
-  achievements: {fileID: 0}
+  questsList: {fileID: 11400000, guid: 22b350404e35e0e468629bc4d5f01e79, type: 2}
+  achievements: {fileID: 11400000, guid: 82f121c36070bae46a4837ae82801c21, type: 2}
