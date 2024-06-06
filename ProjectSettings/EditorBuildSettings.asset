@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/PlayerPicker.unity
+    guid: c6e40ce7d8178d04d87b44187c253a5b
+  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -13,11 +16,14 @@ EditorBuildSettings:
     guid: 2d63b99d0368fbc4982e49797361c006
   - enabled: 1
     path: Assets/Scenes/GameLevels/Chapter1/Level2.unity
-    guid: 812c194c18b55944dbad3c606771f7e9
+    guid: 296084c18d8ffdf44a5df5efef36624f
   - enabled: 1
     path: Assets/Scenes/GameLevels/Chapter1/Level3.unity
     guid: 6a9faaa188de4a546a66a2f0a370db2d
   - enabled: 1
     path: Assets/Scenes/GameLevels/DEVELOPMENT/INDEV-BOSSMODE.unity
     guid: 900303f0eaef57b43b93fb33c4b97592
+  - enabled: 1
+    path: Assets/Scenes/Achievements.unity
+    guid: d18a98bf41abaef4abca4c49fd737a7c
   m_configObjects: {}
