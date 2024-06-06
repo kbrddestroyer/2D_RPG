@@ -22,11 +22,6 @@ public class InventorySaver : MonoBehaviour
         save();
     }
 
-    private void DeleteSaveFile()
-    {
-        File.Delete(Application.persistentDataPath + "/inventoryPersistence.dat");
-    }
-
     private void save()
     {
         InventorySerialized levelState = new InventorySerialized();

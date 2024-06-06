@@ -2,17 +2,18 @@
     -unity-font: url('project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&guid=6e9a4a01b21f4b94cadc34448ff3ba56&type=3#PressStart2P-Regular');
     font-size: 45px;
     -unity-font-definition: initial;
-    background-color: rgba(0, 0, 0, 0);
-    color: rgb(255, 255, 255);
+    background-color: rgba(30, 0, 255, 0);
+    color: rgb(171, 180, 222);
     -unity-background-image-tint-color: rgba(0, 0, 0, 0);
     margin-top: 15px;
     margin-bottom: 0;
     padding-top: 15px;
     padding-bottom: 15px;
-    border-width: 0px;
+    border-width: 0;
     -unity-text-outline-width: 2px;
-    -unity-text-outline-color: rgb(41, 41, 41);
-    text-shadow: -7px 7px 0 rgba(0, 0, 0, 0.39);
+    -unity-text-outline-color: rgb(0, 2, 62);
+    text-shadow: -10px 7px 0 rgba(0, 0, 0, 0.68);
+    letter-spacing: 0;
 }
 
 .btn:hover {

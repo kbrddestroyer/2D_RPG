@@ -1,6 +1,7 @@
 using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -110,6 +111,14 @@ namespace LevelManagement
             string sceneName = PlayerPrefs.GetString("scene", defaultName);
 
             CallGameManager(sceneName);
+        }
+
+        public void RestartGame(string defaultName)
+        {
+            PlayerPrefs.DeleteKey("scene");
+
+            File.Delete(Application.persistentDataPath + "/inventoryPersistence.dat");
+            CallGameManager(defaultName);
         }
 
         public void CallGameManager(string sceneName)
