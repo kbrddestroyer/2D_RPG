@@ -58,7 +58,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 432477e2742e17b4888dae1990c5959a, type: 2}
     - target: {fileID: 5982850704761769735, guid: d0c90614827edcf478de42b23969245c, type: 3}
       propertyPath: relatedAchievements.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5982850704761769735, guid: d0c90614827edcf478de42b23969245c, type: 3}
       propertyPath: relatedAchievements.Array.data[0]

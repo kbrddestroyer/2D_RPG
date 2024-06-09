@@ -19,6 +19,9 @@ public class LevelSwitchTrigger : Trigger
             if (!manager.Contains(item))
                 return;
         }
+
+        foreach (Item item in itemsToUnlock)
+            manager.RemoveItem(item);
         GameLevelManager.Instance.CallGameManager(levelName);
     }
 
