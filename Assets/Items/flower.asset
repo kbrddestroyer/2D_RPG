@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: flower
   m_EditorClassIdentifier: 
   icon: {fileID: -180407075, guid: f5e587529dcab2d4f8df6344d13bd7b8, type: 3}
-  label: "\u0431\u0435\u043B\u044B\u0439 \u0446\u0432\u0435\u0442\u043E\u043A"
+  label: "\u0426\u0432\u0435\u0442\u043E\u043A"
   isUsable: 0

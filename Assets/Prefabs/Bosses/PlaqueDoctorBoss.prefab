@@ -189,12 +189,12 @@ MonoBehaviour:
   animator: {fileID: 2486121509259878691}
   fMaxHP: 100
   fCorpseLifetime: 5
-  fReactionDistance: 14.7
+  fReactionDistance: 35
   fCorrection: 1.2
-  needToBeSummoned: 1
+  needToBeSummoned: 0
   hpSlider: {fileID: 0}
   summoned: 1
-  fRerouteDistance: 1.03
+  fRerouteDistance: 1.2
   fStopDistance: 1.79
   fSpeed: 3
   stepSFX: {fileID: 8300000, guid: 26e08dda85b53f74b9dbaaa0c20f1955, type: 3}
@@ -203,7 +203,7 @@ MonoBehaviour:
   flip: 1
   gizmoColor: {r: 1, g: 1, b: 1, a: 1}
   attacks:
-  - fDamage: 2
+  - fDamage: 5
     fDamageDistance: 1.88
     fYDispersion: 0
     type: 0
@@ -214,7 +214,8 @@ MonoBehaviour:
   cAttackGizmoColor: {r: 0, g: 0, b: 0, a: 1}
   bossname: "\u0427\u0443\u043C\u043D\u043E\u0439 \u0414\u043E\u043A\u0442\u043E\u0440"
   col: {fileID: 2884685087486353111}
-  relatedAchievements: []
+  relatedAchievements:
+  - {fileID: 11400000, guid: a992a132d9bc847479fc622fc1e9bbf0, type: 2}
 --- !u!82 &5285665270150267197
 AudioSource:
   m_ObjectHideFlags: 0

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: mushrooms
   m_EditorClassIdentifier: 
   icon: {fileID: 679637265, guid: 4c0dba6b506bffc4c811bf4279c85f86, type: 3}
-  label: "\u0433\u0440\u0438\u0431"
+  label: "\u0413\u0440\u0438\u0431"
   isUsable: 1
   healingAmount: 5

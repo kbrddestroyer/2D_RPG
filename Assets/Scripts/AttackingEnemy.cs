@@ -25,6 +25,17 @@ public class AttackingEnemy : MovingEnemy, IDamagable
     private int pickedAttackID = 0;
     private bool inAttack = false;
 
+    public override float HP { 
+        get => base.HP; 
+        set
+        {
+            if (!inAttack)
+            {
+                base.HP = value;
+            }
+        }
+    }
+
     public override void OnSummoned()
     {
         base.OnSummoned();

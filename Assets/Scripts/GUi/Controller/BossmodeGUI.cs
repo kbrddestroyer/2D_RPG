@@ -14,7 +14,7 @@ public class BossmodeGUI : MonoBehaviour, ISingleton
     [SerializeField] private GameObject canvas;
     [SerializeField] private TMP_Text bossName;
     [SerializeField] private Slider bossHP;
-    [SerializeField] private Slider bossImmunity;
+    [SerializeField, AllowsNull] private Slider bossImmunity;
 
     public string Name { set => bossName.text = value; }
     public float HP
@@ -29,7 +29,8 @@ public class BossmodeGUI : MonoBehaviour, ISingleton
     {
         set
         {
-            bossImmunity.value = Mathf.Clamp(value, 0f, 1f);
+            if (bossImmunity)
+                bossImmunity.value = Mathf.Clamp(value, 0f, 1f);
         }
     }
 
