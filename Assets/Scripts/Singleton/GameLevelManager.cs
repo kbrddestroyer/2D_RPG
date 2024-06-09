@@ -31,6 +31,8 @@ namespace LevelManagement
         public Transform Root { get => tInventoryListRoot; }
         public Transform QuestRoot { get => tQuestListRoot; }
 
+        private List<InventoryItem> itemsOnGUI = new List<InventoryItem>();
+
         private void ToggleGUI(bool bState)
         {
             tInventoryGUI.SetActive(bState);
@@ -49,7 +51,7 @@ namespace LevelManagement
         {
             foreach (QuestItemGUI questOld in FindObjectsOfType<QuestItemGUI>())
             {
-                if (InventoryManager.Instance.Quests.Contains(questOld.QuestSettings) && !questOld.QuestSettings.questCompleted)
+                if (InventoryManager.Instance.Quests.Contains(questOld.QuestSettings) || !questOld.QuestSettings.questCompleted)
                     continue;
                 Destroy(questOld.gameObject);
             }
@@ -57,7 +59,15 @@ namespace LevelManagement
 
         public void AddItem(Item item)
         {
+            foreach (InventoryItem inventoryItem in itemsOnGUI)
+                if (item == inventoryItem.ItemSettings)
+                {
+                    inventoryItem.Count++;
+                    return;
+                }
             InventoryItem iItem = Instantiate(itemPrefab, Root);
+            itemsOnGUI.Add(iItem);
+            iItem.Count++;
             iItem.ItemSettings = item;
         }
 
@@ -67,7 +77,10 @@ namespace LevelManagement
             {
                 if (InventoryManager.Instance.Items.Contains(itemOld.ItemSettings))
                     continue;
-                Destroy(itemOld.gameObject);
+                itemOld.Count--;
+                Debug.Log(itemOld.Count);
+                if (itemOld.Count <= 0)
+                    Destroy(itemOld.gameObject);
             }
         }
 
