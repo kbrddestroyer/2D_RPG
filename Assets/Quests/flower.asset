@@ -19,4 +19,6 @@ MonoBehaviour:
   id: 0
   questStarted: 0
   questCompleted: 0
-  itemToObtain: {fileID: 11400000, guid: 2503ba5ae465a9f44aab4ebab3e26ce1, type: 2}
+  itemsToObtain:
+  - item: {fileID: 11400000, guid: 2503ba5ae465a9f44aab4ebab3e26ce1, type: 2}
+    amount: 5

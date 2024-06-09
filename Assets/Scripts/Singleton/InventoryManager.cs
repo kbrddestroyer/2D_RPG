@@ -20,9 +20,21 @@ public class InventoryManager : MonoBehaviour
     
     private List<Item> itemsOnLoad;
 
-    public bool Contains(Item item)
+    public bool Contains(Item item, int count=1)
     {
-        return items.Contains(item);
+        int counter = 0;
+        foreach (Item itemInInventory in items)
+        {
+            if (itemInInventory == item)
+            {
+                counter++;
+            }
+
+            if (counter == count)
+                return true;
+        }
+
+        return false;
     }
 
     public void StartQuest(QuestItem quest)
@@ -48,15 +60,17 @@ public class InventoryManager : MonoBehaviour
         GameLevelManager.Instance.RebuildQuests();
     }
 
-    public void AddItem(Item item)
+    public void AddItem(Item item, int count=1)
     {
-        Items.Add(item);
+        for (int i = 0; i < count; i++)
+            Items.Add(item);
         GameLevelManager.Instance.AddItem(item);
     }
 
-    public void RemoveItem(Item item)
+    public void RemoveItem(Item item, int count=1)
     {
-        Items.Remove(item);
+        for (int i = 0; i < count; i++)
+            Items.Remove(item);
         GameLevelManager.Instance.RebuildItems();
     }
 
