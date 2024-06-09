@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Crow
+  m_Controller: {fileID: 9100000, guid: 7aa11b784dab5794c8fa32f0a66cc686, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 7786fed2eb7fc9444beeb423941e9fc9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a35666c5a1ba7ec469309cfcaea5608b, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6ba2db9cf99120849b7fccbdd1a0a82a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6896f18ae35c11d45b554af6ba89b42a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fcd2385e37624644e81438729fff2cf5, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6896f18ae35c11d45b554af6ba89b42a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: d18f971e85cdf01409f31c6a7284ca1b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6896f18ae35c11d45b554af6ba89b42a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e26e82b571a5a1d4cb855feb22572736, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4114f39727270374db0626fd53f1e87c, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4b7964bd58907af478f7d5185f9d7017, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 33c3452fb5a1cb141b1be0dd7a7f198f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9e06f027c9c1c8d47ab8ae58efdb7ff2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6896f18ae35c11d45b554af6ba89b42a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1651bc7370bfb9a43a6690803114ad6f, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e7498acaa290ddb4a9fff091b1570788, type: 2}
