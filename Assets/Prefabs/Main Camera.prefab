@@ -44,8 +44,8 @@ Camera:
   m_GameObject: {fileID: 6694849095003973641}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -109,7 +109,6 @@ MonoBehaviour:
   fSpeed: 2
   fMinRange: 2.25
   fStopRange: 0.5
-  player: {fileID: 0}
   animator: {fileID: 6958238449802078005}
   gizmoColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!95 &6958238449802078005

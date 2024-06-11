@@ -46,7 +46,7 @@ public class TilemapSmoothener : MonoBehaviour
 
     private int getMonoFromDuoCoords(int x, int y)
     {
-
+        return 0;
     }
 
     private TileBase getSmoothed(Vector3Int pos)
