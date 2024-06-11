@@ -296,6 +296,7 @@ MonoBehaviour:
   fDamageDelay: 0.1
   fTriggerDistance: 3
   fMaxHP: 25
+  fCorrection: 0
   enemy:
     serializedVersion: 2
     m_Bits: 256
@@ -311,4 +312,3 @@ MonoBehaviour:
   gizmoColor: {r: 1, g: 0, b: 0, a: 1}
   triggerGizmoColor: {r: 1, g: 0, b: 0, a: 1}
   trigger: {fileID: 0}
-  itemsPickedUpInLevel: []

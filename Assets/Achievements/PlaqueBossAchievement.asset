@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d927a8c554370742ab6ce3df1315842, type: 3}
   m_Name: PlaqueBossAchievement
   m_EditorClassIdentifier: 
-  title: 
-  description: 
+  title: "\u0427\u0435\u0440\u043D\u0430\u044F \u0441\u043C\u0435\u0440\u0442\u044C"
+  description: "\u041E\u0442\u0432\u0435\u0441\u0442\u0438 \u0443\u0433\u0440\u043E\u0437\u0443
+    \u043E\u0442 \u0434\u0435\u0440\u0435\u0432\u0443\u0448\u043A\u0438 \u0432 \u043B\u0435\u0441\u0443"
   unlocked: 0
-  bossPrefab: {fileID: 0}
+  bossPrefab: {fileID: 8410743712500897214, guid: 62d9d732655ef5f4bbd01aac2088f2d4, type: 3}

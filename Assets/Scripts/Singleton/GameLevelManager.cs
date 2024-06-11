@@ -51,7 +51,7 @@ namespace LevelManagement
         {
             foreach (QuestItemGUI questOld in FindObjectsOfType<QuestItemGUI>())
             {
-                if (InventoryManager.Instance.Quests.Contains(questOld.QuestSettings) || !questOld.QuestSettings.questCompleted)
+                if (InventoryManager.Instance.Quests.Contains(questOld.QuestSettings) && !questOld.QuestSettings.questCompleted)
                     continue;
                 Destroy(questOld.gameObject);
             }

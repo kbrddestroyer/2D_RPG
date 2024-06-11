@@ -66,6 +66,7 @@ public class InventorySaver : MonoBehaviour
 
     private void load()
     {
+        Debug.Log("Loading data");
         BinaryFormatter binaryFormatter = new BinaryFormatter();
         FileStream file = new FileStream(Application.persistentDataPath + "/inventoryPersistence.dat", FileMode.Open);
 

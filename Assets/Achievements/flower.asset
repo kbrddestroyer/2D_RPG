@@ -15,4 +15,5 @@ MonoBehaviour:
   title: "\u0412 \u0442\u0438\u0448\u0438\u043D\u0435.."
   description: "\u0432\u044B\u0441\u043B\u0443\u0448\u0430\u0439\u0442\u0435 \u041B\u044E\u043A\u0430"
   unlocked: 0
-  items: []
+  items:
+  - {fileID: 11400000, guid: 2503ba5ae465a9f44aab4ebab3e26ce1, type: 2}

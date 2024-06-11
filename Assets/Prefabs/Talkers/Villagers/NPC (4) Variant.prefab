@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5018742198202865295
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 256684359350168670, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_Name
+      value: NPC (4) Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 801804772030438871, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 553410798, guid: 9b6cc296fe317884c824e364b5fe3994, type: 3}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 89.28
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 25.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.26
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.07845902
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.99691737
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 189
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4649881632750899643, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442339969234866562, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: cdd20f028443f154b8a5f1e886b93aef, type: 2}
+    - target: {fileID: 6195071249394218423, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: sDialogues.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195071249394218423, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: sDialogues.Array.data[0]
+      value: Want some jokes?
+      objectReference: {fileID: 0}
+    - target: {fileID: 6195071249394218423, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: sDialogues.Array.data[1]
+      value: Want some jokes?
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134022454429549813, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134022454429549813, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 8134022454429549813, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.017412823
+      objectReference: {fileID: 0}
+    - target: {fileID: 8495529252052286809, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 758f26867353e8d43b57ec4e8b02c564, type: 3}
+    m_RemovedComponents:
+    - {fileID: 6195071249394218423, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+    - {fileID: 8495529252052286809, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c329eac45d5b05408828fe907768e8e, type: 3}

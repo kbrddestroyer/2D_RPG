@@ -39,6 +39,7 @@ public class InventoryManager : MonoBehaviour
 
     public void StartQuest(QuestItem quest)
     {
+        if (quests.Contains(quest)) return;
         quests.Add(quest);
         quest.StartQuest();
         GameLevelManager.Instance.AddQuestToGUI(quest);

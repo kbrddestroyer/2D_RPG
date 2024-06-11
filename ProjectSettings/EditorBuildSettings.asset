@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameLevels/Chapter1/Boss.unity
     guid: 9e3a03e8d11bab64197749b618c8e365
   - enabled: 1
+    path: Assets/Scenes/GameLevels/Chapter1/Boss2.unity
+    guid: b640e3d26bf09e945a41a6735ac59c47
+  - enabled: 1
     path: Assets/Scenes/GameLevels/Chapter1/level4.unity
     guid: 8fa33283a374d5c449ff197ac3aae419
   - enabled: 1

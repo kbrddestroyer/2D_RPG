@@ -210,7 +210,9 @@ MonoBehaviour:
     sfx: {fileID: 8300000, guid: 26e08dda85b53f74b9dbaaa0c20f1955, type: 3}
   fAttackDelay: 2
   collider: {fileID: 2884685087486353111}
-  drop: []
+  drop:
+  - item: {fileID: 5104895100675537304, guid: 5cd1ac9448df5924c8a63d4269647af7, type: 3}
+    chance: 100
   cAttackGizmoColor: {r: 0, g: 0, b: 0, a: 1}
   bossname: "\u0427\u0443\u043C\u043D\u043E\u0439 \u0414\u043E\u043A\u0442\u043E\u0440"
   col: {fileID: 2884685087486353111}
