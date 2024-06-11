@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,6 +11,8 @@ public class TilemapSmoothener : MonoBehaviour
     [SerializeField] private TileBase baseTile;
     [SerializeField] private TileBase[] insideTiles;
     [SerializeField] private TileBase[] outsideTiles;
+
+    private int sampleSize = 3;
 
     private struct Sample
     {
@@ -46,12 +49,41 @@ public class TilemapSmoothener : MonoBehaviour
 
     private int getMonoFromDuoCoords(int x, int y)
     {
-        return 0;
+        return y * sampleSize + x;
     }
 
-    private TileBase getSmoothed(Vector3Int pos)
+    private Vector3Int getDirection(Vector3Int pivot, Vector3Int destination)
     {
-        return null;
+        return new Vector3Int(pivot.x - destination.x, pivot.y - destination.y);
+    }
+
+    private void Smooth(Vector3Int pos)
+    {
+        List<Vector3Int> directions = new List<Vector3Int>();
+
+        for (int i = 0; i < sampleSize; i++)
+            for (int j = 0; j < sampleSize; j++)
+            {
+                Vector3Int destination = new Vector3Int(i - 1, j - 1);
+                if (tilemap.GetTile(pos + destination) == baseTile)
+                {
+                    directions.Add(getDirection(pos, destination));
+                }
+            }
+
+        Vector3Int completedDirection = Vector3Int.zero;
+        foreach (Vector3Int direction in directions)
+        {
+            completedDirection += direction;
+        }
+        completedDirection.Clamp(new Vector3Int(-1, -1), new Vector3Int(1, 1));
+        completedDirection *= (directions.Count > 1 ? -1 : 1);
+        completedDirection += new Vector3Int(1, 1, 0);
+        TileBase[] tiles = (directions.Count > 1 ? outsideTiles : insideTiles);
+        Debug.Log(completedDirection);
+        int id = getMonoFromDuoCoords(completedDirection.x, completedDirection.y);
+
+        tilemap.SetTile(pos, tiles[id]);
     }
 
     public void SmoothGround()
@@ -65,10 +97,7 @@ public class TilemapSmoothener : MonoBehaviour
         for (int x = bounds.x; x < bounds.x + bounds.size.x; x++)
             for (int y = bounds.y; y < bounds.y + bounds.size.y; y++)
             {
-                if (tilemap.GetTile(new Vector3Int(x, y, z)) == baseTile)
-                {
-
-                }
+                Smooth(new Vector3Int(x, y));
             }
     }
 #endif

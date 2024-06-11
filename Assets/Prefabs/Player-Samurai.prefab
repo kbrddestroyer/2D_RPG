@@ -283,13 +283,13 @@ MonoBehaviour:
   fSpeed: 11
   attacks:
   - fDamage: 1
-    fDamageDistance: 1.5
+    fDamageDistance: 2.5
     fYDispersion: 0
     type: 0
     sfx: {fileID: 8300000, guid: eb975b89e78e3d74eb67ff0cb943af59, type: 3}
   - fDamage: 5
-    fDamageDistance: 3
-    fYDispersion: 5
+    fDamageDistance: 5
+    fYDispersion: 6
     type: 1
     sfx: {fileID: 8300000, guid: e7520f0472f886443b14434fd4742b0f, type: 3}
   autoAttack: 0

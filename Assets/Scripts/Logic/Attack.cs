@@ -25,7 +25,8 @@ public class Attack
             case AttackType.ATTACK_FORWARD:
                 return (
                     Mathf.Abs(playerPosition.x - position.x) - correction / 2 <= fDamageDistance &&
-                    Mathf.Abs(playerPosition.y - position.y) - correction / 2 <= fYDispersion / 2
+                    Mathf.Abs(playerPosition.y - position.y) - correction / 2 <= fYDispersion / 2 &&
+                    (flipped ^ (playerPosition.x > position.x))
                 );
             case AttackType.ATTACK_RANGE:
                 return Vector3.Distance(position, playerPosition) <= fDamageDistance + correction;

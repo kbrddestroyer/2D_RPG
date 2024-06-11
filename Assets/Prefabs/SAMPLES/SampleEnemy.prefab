@@ -265,7 +265,7 @@ MonoBehaviour:
   fMaxHP: 7
   fCorpseLifetime: 4
   fReactionDistance: 10
-  fCorrection: 0
+  fCorrection: 3.5
   needToBeSummoned: 1
   hpSlider: {fileID: 8965176617897071196}
   summoned: 0

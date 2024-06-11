@@ -1,6 +1,7 @@
 using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,9 +23,9 @@ namespace LevelManagement
         [SerializeField] private InventoryItem itemPrefab;
         [SerializeField] private QuestItemGUI questItemPrefab;
         [Header("Level settings")]
-        [SerializeField, AllowsNull] private Transform tInventoryListRoot;
-        [SerializeField, AllowsNull] private Transform tQuestListRoot;
-        [SerializeField] private GameObject tInventoryGUI;
+        [SerializeField, AllowNull] private Transform tInventoryListRoot;
+        [SerializeField, AllowNull] private Transform tQuestListRoot;
+        [SerializeField, AllowNull] private GameObject tInventoryGUI;
         [Header("Player Spawn")]
         [SerializeField] private bool shouldSpawn = true;
         [SerializeField] private PlayableList playables;
@@ -67,7 +68,7 @@ namespace LevelManagement
                 }
             InventoryItem iItem = Instantiate(itemPrefab, Root);
             itemsOnGUI.Add(iItem);
-            iItem.Count++;
+            iItem.Count = 1;
             iItem.ItemSettings = item;
         }
 
@@ -80,7 +81,10 @@ namespace LevelManagement
                 itemOld.Count--;
                 Debug.Log(itemOld.Count);
                 if (itemOld.Count <= 0)
+                {
                     Destroy(itemOld.gameObject);
+                    itemsOnGUI.Remove(itemOld);
+                }
             }
         }
 
@@ -131,6 +135,9 @@ namespace LevelManagement
             PlayerPrefs.DeleteKey("scene");
 
             File.Delete(Application.persistentDataPath + "/inventoryPersistence.dat");
+
+            FindObjectOfType<InventorySaver>().load();
+
             CallGameManager(defaultName);
         }
 
