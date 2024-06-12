@@ -26,6 +26,7 @@ namespace LevelManagement
         [SerializeField, AllowNull] private Transform tInventoryListRoot;
         [SerializeField, AllowNull] private Transform tQuestListRoot;
         [SerializeField, AllowNull] private GameObject tInventoryGUI;
+        [SerializeField, AllowNull] private List<Transform> spawns = new List<Transform>();
         [Header("Player Spawn")]
         [SerializeField] private bool shouldSpawn = true;
         [SerializeField] private PlayableList playables;
@@ -95,12 +96,17 @@ namespace LevelManagement
             if (InventoryManager.Instance == null)
                 Instantiate(inventoryManagerPrefab);
 
+            if (spawns.Count == 0)
+            {
+                spawns.Add(transform);
+                GameManager.Instance.Spawn = 0;
+            }
+
             if (shouldSpawn)
             {
                 int id = PlayerPrefs.GetInt("playable", 0);
-                Instantiate(playables.playable[id], transform.position, Quaternion.identity);
+                Instantiate(playables.playable[id], spawns[GameManager.Instance.Spawn].position, Quaternion.identity);
             }
-                
 
             if (tInventoryListRoot == null)
                 tInventoryListRoot = GameObject.FindGameObjectWithTag("InventoryRoot").transform;

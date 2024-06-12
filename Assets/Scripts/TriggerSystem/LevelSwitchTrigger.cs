@@ -9,6 +9,7 @@ public class LevelSwitchTrigger : Trigger
 {
     [SerializeField] private string levelName;
     [SerializeField] private Item[] itemsToUnlock;
+    [SerializeField] private int spawnIDOnNextLevel;
 
     protected override void Action()
     {
@@ -22,6 +23,7 @@ public class LevelSwitchTrigger : Trigger
 
         foreach (Item item in itemsToUnlock)
             manager.RemoveItem(item);
+        GameManager.Instance.Spawn = spawnIDOnNextLevel;
         GameLevelManager.Instance.CallGameManager(levelName);
     }
 
