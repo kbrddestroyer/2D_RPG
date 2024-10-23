@@ -1,6 +1,7 @@
 using GameControllers;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,14 +23,17 @@ namespace LevelManagement
         [SerializeField] private InventoryItem itemPrefab;
         [SerializeField] private QuestItemGUI questItemPrefab;
         [Header("Level settings")]
-        [SerializeField, AllowsNull] private Transform tInventoryListRoot;
-        [SerializeField, AllowsNull] private Transform tQuestListRoot;
-        [SerializeField] private GameObject tInventoryGUI;
+        [SerializeField, AllowNull] private Transform tInventoryListRoot;
+        [SerializeField, AllowNull] private Transform tQuestListRoot;
+        [SerializeField, AllowNull] private GameObject tInventoryGUI;
+        [SerializeField, AllowNull] private List<Transform> spawns = new List<Transform>();
         [Header("Player Spawn")]
         [SerializeField] private bool shouldSpawn = true;
         [SerializeField] private PlayableList playables;
         public Transform Root { get => tInventoryListRoot; }
         public Transform QuestRoot { get => tQuestListRoot; }
+
+        private List<InventoryItem> itemsOnGUI = new List<InventoryItem>();
 
         private void ToggleGUI(bool bState)
         {
@@ -57,7 +61,15 @@ namespace LevelManagement
 
         public void AddItem(Item item)
         {
+            foreach (InventoryItem inventoryItem in itemsOnGUI)
+                if (item == inventoryItem.ItemSettings)
+                {
+                    inventoryItem.Count++;
+                    return;
+                }
             InventoryItem iItem = Instantiate(itemPrefab, Root);
+            itemsOnGUI.Add(iItem);
+            iItem.Count = 1;
             iItem.ItemSettings = item;
         }
 
@@ -67,7 +79,13 @@ namespace LevelManagement
             {
                 if (InventoryManager.Instance.Items.Contains(itemOld.ItemSettings))
                     continue;
-                Destroy(itemOld.gameObject);
+                itemOld.Count--;
+                Debug.Log(itemOld.Count);
+                if (itemOld.Count <= 0)
+                {
+                    Destroy(itemOld.gameObject);
+                    itemsOnGUI.Remove(itemOld);
+                }
             }
         }
 
@@ -78,12 +96,17 @@ namespace LevelManagement
             if (InventoryManager.Instance == null)
                 Instantiate(inventoryManagerPrefab);
 
+            if (spawns.Count == 0)
+            {
+                spawns.Add(transform);
+                GameManager.Instance.Spawn = 0;
+            }
+
             if (shouldSpawn)
             {
                 int id = PlayerPrefs.GetInt("playable", 0);
-                Instantiate(playables.playable[id], transform.position, Quaternion.identity);
+                Instantiate(playables.playable[id], spawns[GameManager.Instance.Spawn].position, Quaternion.identity);
             }
-                
 
             if (tInventoryListRoot == null)
                 tInventoryListRoot = GameObject.FindGameObjectWithTag("InventoryRoot").transform;
@@ -118,6 +141,9 @@ namespace LevelManagement
             PlayerPrefs.DeleteKey("scene");
 
             File.Delete(Application.persistentDataPath + "/inventoryPersistence.dat");
+
+            FindObjectOfType<InventorySaver>().load();
+
             CallGameManager(defaultName);
         }
 

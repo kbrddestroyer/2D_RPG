@@ -1,0 +1,198 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8996559647859686187
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1615960948142972049, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_Size.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615960948142972049, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_Size.y
+      value: 0.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 1615960948142972049, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0131448
+      objectReference: {fileID: 0}
+    - target: {fileID: 2495268984670970353, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1beb556b15a20b447a9c0265c4cb8d7e, type: 3}
+    - target: {fileID: 2873127580449121666, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1000943101, guid: 474602a6d20479640a452cc6060ff99c, type: 3}
+    - target: {fileID: 4839023317055543390, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_Name
+      value: FlowerQuest Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885786303785235073, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 111bad498d17ea348989ce36ff97256b, type: 2}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: item
+      value: 
+      objectReference: {fileID: 11400000, guid: 3e1537cd74eda1848b55ba78dbc7aeeb, type: 2}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: questInactive.Array.data[0]
+      value: "*\u044E\u043D\u043E\u0448\u0430 \u043C\u043E\u043B\u0447\u0430 \u0441\u043C\u043E\u0442\u0440\u0438\u0442
+        \u043D\u0430 \u043F\u043E\u043B\u044F\u043D\u0443 \u0443\u0441\u0435\u044F\u043D\u0443\u044E
+        \u0446\u0432\u0435\u0442\u0430\u043C\u0438*"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: questInactive.Array.data[1]
+      value: "*\u0434\u0443\u043C\u0430\u044E \u0435\u043C\u0443 \u043D\u0430\u0434\u043E
+        \u043F\u043E\u0431\u044B\u0442\u044C \u043E\u0434\u043D\u043E\u043C\u0443*"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: questCompletedText.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: startQuestDialogue.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: questCompletedText.Array.data[0]
+      value: "\u0441\u043F\u0430\u0441\u0438\u0431\u043E \u0431\u043E\u043B\u043B\u044C\u0448\u043E\u0435"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: questCompletedText.Array.data[1]
+      value: "\u043F\u043E\u043C\u043D\u044E \u043A\u0430\u043A \u043C\u0430\u043B\u0435\u043D\u044C\u043A\u0438\u0439
+        \u0441\u043E\u0431\u0438\u0440\u0430\u043B \u0443\u0432\u0435\u0442\u044B
+        \u0432\u043C\u0435\u0441\u0442\u0435 \u0441 \u0434\u0440\u0443\u0437\u044C\u044F\u043C\u0438"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: questCompletedText.Array.data[2]
+      value: "\u043C\u044B \u043E\u0447\u0435\u043D\u044C \u043B\u044E\u0431\u0438\u043B\u0438
+        \u043F\u043B\u0435\u0441\u0442\u0438 \u0432\u0435\u043D\u043A\u0438 \u0438
+        \u043F\u0440\u043E\u0432\u043E\u0434\u0438\u043B\u0438 \u0442\u0443\u0442
+        \u043E\u0447\u0435\u043D\u044C \u043C\u043D\u043E\u0433\u043E \u0432\u0440\u0435\u043C\u0435\u043D\u0438"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: questCompletedText.Array.data[3]
+      value: "\u043D\u043E \u043A \u0441\u043E\u0436\u0430\u043B\u0435\u043D\u0438\u044E,
+        \u0432\u0440\u0435\u043C\u0435\u043D\u0430 \u043C\u0435\u043D\u044F\u044E\u0442\u0441\u044F..."
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: questCompletedText.Array.data[4]
+      value: ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: questCompletedText.Array.data[5]
+      value: "\u043D\u0430\u0434\u0435\u044E\u0441\u044C, \u0447\u0442\u043E \u0441\u0435\u0439\u0447\u0430\u0441
+        \u043C\u043E\u0438 \u0434\u0440\u0443\u0437\u044C\u044F \u0432 \u0445\u043E\u0440\u043E\u0448\u0435\u043C
+        \u043C\u0435\u0441\u0442\u0435"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: startQuestDialogue.Array.data[0]
+      value: "\u041E, \u043F\u0440\u0438\u0432\u0435\u0442"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: startQuestDialogue.Array.data[1]
+      value: "\u0442\u044B \u0442\u043E\u0436\u0435 \u043F\u0440\u0438\u0448\u0451\u043B
+        \u043E\u0442\u0434\u043E\u0445\u043D\u0443\u0442\u044C?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: startQuestDialogue.Array.data[2]
+      value: "\u0438\u043D\u043E\u0433\u0434\u0430 \u043F\u043E\u043B\u0435\u0437\u043D\u043E
+        \u043F\u043E\u0431\u044B\u0442\u044C \u043E\u0434\u043D\u043E\u043C\u0443"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: startQuestDialogue.Array.data[3]
+      value: "\u0432 \u0442\u0430\u043A\u0438\u0435 \u043C\u043E\u043C\u0435\u043D\u0442\u044B
+        \u044F \u043B\u044E\u0431\u043B\u044E \u043F\u0440\u0438\u0445\u043E\u0434\u0438\u0442\u044C
+        \u0441\u044E\u0434\u0430"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: startQuestDialogue.Array.data[4]
+      value: "\u0442\u0443\u0442 \u043E\u0447\u0435\u043D\u044C \u043A\u0440\u0430\u0441\u0438\u0432\u043E
+        \u0438 \u0442\u0438\u0445\u043E"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: startQuestDialogue.Array.data[5]
+      value: "\u044F \u0442\u0443\u0442 \u0441\u043E\u0431\u0438\u0440\u0430\u044E 
+        \u043D\u0435\u0431\u043E\u043B\u044C\u0448\u043E\u0439 \u0431\u0443\u043A\u0435\u0442\u0438\u043A"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: startQuestDialogue.Array.data[6]
+      value: "\u043C\u043E\u0436\u0435\u0448\u044C \u043C\u043D\u0435 \u043D\u0435\u043C\u043D\u043E\u0433\u043E
+        \u043F\u043E\u043C\u043E\u0447\u044C?"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: inProgressQuestDialogue.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6525603481410602398, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: inProgressQuestDialogue.Array.data[0]
+      value: "\u043F\u0440\u0438\u043D\u0435\u0441\u0438 \u043C\u043D\u0435 \u043F\u043E\u0436\u0430\u043B\u0443\u0439\u0441\u0442\u0430
+        \u0446\u0432\u0435\u0442\u043E\u0447\u0435\u043A"
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -8.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 33.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8304992418547513414, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 44f4f4b6384654744a6de7a42f1eda93, type: 3}

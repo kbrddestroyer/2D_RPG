@@ -15,8 +15,10 @@ MonoBehaviour:
   questLabel: "\u041D\u0430\u0439\u0442\u0438 \u043A\u043B\u044E\u0447\u0438"
   questDescription: "\u041D\u0430\u0439\u0434\u0438 \u043A\u043B\u044E\u0447\u0438
     \u043E\u0442 \u0432\u0445\u043E\u0434\u043D\u043E\u0439 \u0434\u0432\u0435\u0440\u0438"
-  reward: {fileID: 11400000, guid: 57c96fb6f4f241b4fbd446eef0b76764, type: 2}
+  reward: {fileID: 11400000, guid: c69f41ef88574104e834b3894bd560d7, type: 2}
   id: 1
   questStarted: 0
   questCompleted: 0
-  itemToObtain: {fileID: 11400000, guid: 432477e2742e17b4888dae1990c5959a, type: 2}
+  itemsToObtain:
+  - item: {fileID: 11400000, guid: 432477e2742e17b4888dae1990c5959a, type: 2}
+    amount: 1

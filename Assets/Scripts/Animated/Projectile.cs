@@ -11,6 +11,7 @@ public class Projectile : MonoBehaviour
 
     private bool flip;
     private float fDamage;
+    private bool damageDealt = false;
 
     public bool Flip { 
         set
@@ -24,12 +25,18 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (damageDealt) return;
+
+        if (collision.GetComponent<Projectile>())
+            return;
+
         EnemyBase enemy = collision.GetComponent<EnemyBase>();
         if (enemy)
         {
             enemy.HP -= fDamage;
             lifetime = 0;
         }
+        damageDealt = true;
         Destroy(this.gameObject, lifetime);
         enabled = false;
     }

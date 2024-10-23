@@ -13,13 +13,13 @@ public class BossController : AttackingEnemy
     [SerializeField] private Collider2D col;
     [Header("Achievements")]
     [SerializeField] private Achievement[] relatedAchievements;
-
+    [SerializeField] private bool activated = true;
     protected float passedTime = 0f;
 
     private new void Start()
     {
         base.Start();
-        ActivateBossmode();
+        if (activated) ActivateBossmode();
     }
 
     protected override void UpdateGUIElement(float value)

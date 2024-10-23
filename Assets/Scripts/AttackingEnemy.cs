@@ -25,6 +25,17 @@ public class AttackingEnemy : MovingEnemy, IDamagable
     private int pickedAttackID = 0;
     private bool inAttack = false;
 
+    public override float HP { 
+        get => base.HP; 
+        set
+        {
+            if (!inAttack)
+            {
+                base.HP = value;
+            }
+        }
+    }
+
     public override void OnSummoned()
     {
         base.OnSummoned();
@@ -83,7 +94,7 @@ public class AttackingEnemy : MovingEnemy, IDamagable
 
         foreach (ItemDrop item in drop)
         {
-            float randomChance = UnityEngine.Random.Range(0, 100) / 100.0f;
+            float randomChance = Random.Range(0, 100);
             if (randomChance < item.chance)
             {
                 Instantiate(item.item.gameObject, transform.position, transform.rotation);

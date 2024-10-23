@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance { get => instance; }
 
+    private int selectedSpawn = 0;
+    public int Spawn { get => selectedSpawn; set => selectedSpawn = value; }
+
     private IEnumerator LoadSceneCoroutine(string sceneName)
     {
         // Background task to load scene

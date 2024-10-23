@@ -64,10 +64,23 @@ public class InventorySaver : MonoBehaviour
         file.Close();
     }
 
-    private void load()
+    public void load()
     {
+        Debug.Log("Loading data");
+        foreach (QuestItem quest in questsList.quests)
+            quest.questStarted = quest.questCompleted = false;
+
         BinaryFormatter binaryFormatter = new BinaryFormatter();
-        FileStream file = new FileStream(Application.persistentDataPath + "/inventoryPersistence.dat", FileMode.Open);
+        FileStream file;
+        try
+        {
+            file = new FileStream(Application.persistentDataPath + "/inventoryPersistence.dat", FileMode.Open);
+        }
+        catch
+        {
+            Debug.LogWarning("No save file");
+            return;
+        }
 
         InventorySerialized levelState = binaryFormatter.Deserialize(file) as InventorySerialized;
         foreach (int item in levelState.Items)
@@ -78,6 +91,7 @@ public class InventorySaver : MonoBehaviour
         foreach (int questID in levelState.Quests)
         {
             QuestItem questItem = questsList.quests[questID];
+            questItem.questStarted = true;
             InventoryManager.Instance.StartQuest(questItem);
         }
 

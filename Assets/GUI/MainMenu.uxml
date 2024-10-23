@@ -4,7 +4,6 @@
         <ui:VisualElement style="flex-grow: 1; justify-content: center; align-items: flex-end; width: 65%; position: relative; right: auto; left: auto; padding-right: 30px;">
             <ui:Button text="Play" parse-escape-sequences="true" display-tooltip-when-elided="true" name="play" class="btn" />
             <ui:Button text="Restart" parse-escape-sequences="true" display-tooltip-when-elided="true" name="restart" class="btn" />
-            <ui:Button text="Credits" parse-escape-sequences="true" display-tooltip-when-elided="true" name="credits" class="btn" />
             <ui:Button text="Achievements" parse-escape-sequences="true" display-tooltip-when-elided="true" name="achievements" class="btn" />
             <ui:Button text="Exit" parse-escape-sequences="true" display-tooltip-when-elided="true" name="exit" class="btn" style="-unity-font: url(&apos;project://database/Assets/Fonts/PressStart2P-Regular.ttf?fileID=12800000&amp;guid=6e9a4a01b21f4b94cadc34448ff3ba56&amp;type=3#PressStart2P-Regular&apos;);" />
         </ui:VisualElement>

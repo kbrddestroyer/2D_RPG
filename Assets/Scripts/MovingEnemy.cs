@@ -23,6 +23,22 @@ public abstract class MovingEnemy : EnemyBase, IDamagable
     {
         currentPoint = transform.position;
         base.Start();
+
+        StartCoroutine(AutoRepath());
+    }
+
+    private IEnumerator AutoRepath()
+    {
+        while (HP > 0)
+        {
+            currentWaypoints.Clear();
+            currentWaypoints = getPath(Player.Instance.transform.position);
+            if (currentWaypoints.Count > 0 )
+            {
+                currentPoint = currentWaypoints.Pop();
+            }
+            yield return new WaitForSeconds(1);
+        }
     }
 
     protected override void Update()
